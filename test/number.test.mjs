@@ -104,6 +104,7 @@ describe('Number', function() {
             expect(UtilityEngine.isNumber(Number.NEGATIVE_INFINITY)).to.equal(true);
         });
 
+
         it('should return false when value is null', () => {
             expect(UtilityEngine.isNumber(null)).to.equal(false);
         });
@@ -150,6 +151,48 @@ describe('Number', function() {
 
         it('should return false when value is too small decimal', () => {
             expect(UtilityEngine.isNumber(-0.01, 0, 1)).to.equal(false);
+        });
+
+
+        it('should return false when minimum parameter is null', () => {
+            expect(UtilityEngine.isNumber(1, null)).to.equal(false);
+        });
+
+        it('should return false when minimum parameter is a string', () => {
+            expect(UtilityEngine.isNumber(1, 'min')).to.equal(false);
+        });
+
+        it('should return false when minimum parameter is an array', () => {
+            expect(UtilityEngine.isNumber(1, [])).to.equal(false);
+        });
+
+        it('should return false when minimum parameter is an object', () => {
+            expect(UtilityEngine.isNumber(1, {})).to.equal(false);
+        });
+
+        it('should return false when minimum parameter is a function', () => {
+            expect(UtilityEngine.isNumber(1, function() {})).to.equal(false);
+        });
+
+
+        it('should return false when maximum parameter is null', () => {
+            expect(UtilityEngine.isNumber(1, 0, null)).to.equal(false);
+        });
+
+        it('should return false when maximum parameter is a string', () => {
+            expect(UtilityEngine.isNumber(1, 0, 'min')).to.equal(false);
+        });
+
+        it('should return false when maximum parameter is an array', () => {
+            expect(UtilityEngine.isNumber(1, 0, [])).to.equal(false);
+        });
+
+        it('should return false when maximum parameter is an object', () => {
+            expect(UtilityEngine.isNumber(1, 0, {})).to.equal(false);
+        });
+
+        it('should return false when maximum parameter is a function', () => {
+            expect(UtilityEngine.isNumber(1, 0, function() {})).to.equal(false);
         });
     });
 });
