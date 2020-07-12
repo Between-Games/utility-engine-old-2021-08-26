@@ -14,8 +14,8 @@
 // ╔═════╝ ║   ║ ║   ║ ║ ║ ╚═╗╔══╝ ╚══╗║ ║║ ╚╝ ║║ ╚═══╝ ║
 // ╚═══════╝   ╚═╝   ╚═╝ ╚═══╝╚═══════╝╚═╝╚════╝╚═══════╝
 
-export function isFilledString(value) {             // The provided value was found to be a filled string
-    return isString(value) && '' !== value.trim();  // The provided value was found to be a filled string
+export function isFilledString(value, maximumLength = Number.POSITIVE_INFINITY) {   // The provided value was found to be a filled string
+    return isString(value, 1, maximumLength) && '' !== value.trim();                // The provided value was found to be a filled string
 }
 
 export function isEmptyString(value) {              // The provided value was found to be an empty string

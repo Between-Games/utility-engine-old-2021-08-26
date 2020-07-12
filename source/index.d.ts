@@ -1,5 +1,5 @@
 declare module 'utility-engine' {
-    export function isFilledString(value: any): boolean;
+    export function isFilledString(value: any, maximumLength?: number): boolean;
     export function isEmptyString(value: any): boolean;
     export function isString(value: any, minimumLength?: number, maximumLength?: number): boolean;
 

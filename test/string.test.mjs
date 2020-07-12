@@ -223,45 +223,123 @@ describe('String', function() {
     // ╔══╝ ╚══╗╔═════╝ ║         ║ ║      ╔══╝ ╚══╗║ ╚═════╗║ ╚═════╗║ ╚═════╗╔╝ ╚══╝ ║         ╔═════╝ ║   ║ ║   ║ ║ ║ ╚═╗╔══╝ ╚══╗║ ║║ ╚╝ ║║ ╚═══╝ ║
     // ╚═══════╝╚═══════╝         ╚═╝      ╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═══════╝         ╚═══════╝   ╚═╝   ╚═╝ ╚═══╝╚═══════╝╚═╝╚════╝╚═══════╝
 
-    describe('#isFilledString(VALUE)', function() {
-        it('Should return true when value is a filled string', () => {
-            expect(UtilityEngine.isFilledString('string')).to.equal(true);
+    describe('#isFilledString(value, maximumLength)', function() {
+        describe('#isFilledString(VALUE, maximumLength)', function() {
+            it('Should return true when value is a filled string', () => {
+                expect(UtilityEngine.isFilledString('string')).to.equal(true);
+            });
+
+            it('Should return true when value is minimum length string', () => {
+                expect(UtilityEngine.isFilledString('1')).to.equal(true);
+            });
+
+            it('Should return true when value is maximum length string', () => {
+                expect(UtilityEngine.isFilledString('123', 3)).to.equal(true);
+            });
+
+            it('Should return true when value is short enough length string', () => {
+                expect(UtilityEngine.isFilledString('1', 3)).to.equal(true);
+            });
+
+            it('Should return true when value is long enough length string', () => {
+                expect(UtilityEngine.isFilledString('12', 3)).to.equal(true);
+            });
+
+
+            it('Should return false when value is an empty string', () => {
+                expect(UtilityEngine.isFilledString('')).to.equal(false);
+            });
+
+            it('Should return false when value is a whitespace character', () => {
+                expect(UtilityEngine.isFilledString(' ')).to.equal(false);
+            });
+
+            it('Should return false when value is true', () => {
+                expect(UtilityEngine.isFilledString(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false', () => {
+                expect(UtilityEngine.isFilledString(false)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isFilledString(null)).to.equal(false);
+            });
+
+            it('Should return false when value is undefined', () => {
+                expect(UtilityEngine.isFilledString(undefined)).to.equal(false);
+            });
+
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.isFilledString({})).to.equal(false);
+            });
+
+            it('Should return false when value is a number', () => {
+                expect(UtilityEngine.isFilledString(0)).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.isFilledString([])).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isFilledString(function() {
+                })).to.equal(false);
+            });
+
+            it('Should return false when value is too long string', () => {
+                expect(UtilityEngine.isFilledString('123', 2)).to.equal(false);
+            });
         });
 
-        it('Should return false when value is an empty string', () => {
-            expect(UtilityEngine.isFilledString('')).to.equal(false);
-        });
+        describe('#isFilledString(value, MAXIMUMLENGTH)', function() {
+            it('Should return true when maximum length parameter is undefined', () => {
+                expect(UtilityEngine.isFilledString('123', undefined)).to.equal(true);
+            });
 
-        it('Should return false when value is true', () => {
-            expect(UtilityEngine.isFilledString(true)).to.equal(false);
-        });
+            it('Should return true when maximum length parameter is big enough', () => {
+                expect(UtilityEngine.isFilledString('123', 4)).to.equal(true);
+            });
 
-        it('Should return false when value is false', () => {
-            expect(UtilityEngine.isFilledString(false)).to.equal(false);
-        });
 
-        it('Should return false when value is null', () => {
-            expect(UtilityEngine.isFilledString(null)).to.equal(false);
-        });
+            it('Should return false when maximum length parameter is null', () => {
+                expect(UtilityEngine.isFilledString('123', null)).to.equal(false);
+            });
 
-        it('Should return false when value is undefined', () => {
-            expect(UtilityEngine.isFilledString(undefined)).to.equal(false);
-        });
+            it('Should return false when maximum length parameter is true', () => {
+                expect(UtilityEngine.isFilledString('123', true)).to.equal(false);
+            });
 
-        it('Should return false when value is an object', () => {
-            expect(UtilityEngine.isFilledString({})).to.equal(false);
-        });
+            it('Should return false when maximum length parameter is false', () => {
+                expect(UtilityEngine.isFilledString('123', false)).to.equal(false);
+            });
 
-        it('Should return false when value is a number', () => {
-            expect(UtilityEngine.isFilledString(0)).to.equal(false);
-        });
+            it('Should return false when maximum length parameter is null', () => {
+                expect(UtilityEngine.isFilledString('123', null)).to.equal(false);
+            });
+            it('Should return false when maximum length parameter is an object', () => {
+                expect(UtilityEngine.isFilledString('123', {})).to.equal(false);
+            });
 
-        it('Should return false when value is an array', () => {
-            expect(UtilityEngine.isFilledString([])).to.equal(false);
-        });
+            it('Should return false when maximum length parameter is a string', () => {
+                expect(UtilityEngine.isFilledString('123', 'string')).to.equal(false);
+            });
 
-        it('Should return false when value is a function', () => {
-            expect(UtilityEngine.isFilledString(function() {})).to.equal(false);
+            it('Should return false when maximum length parameter is an array', () => {
+                expect(UtilityEngine.isFilledString('123', [])).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is a function', () => {
+                expect(UtilityEngine.isFilledString('123', function() {})).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter negative number', () => {
+                expect(UtilityEngine.isFilledString('123', -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is too small', () => {
+                expect(UtilityEngine.isFilledString('123', 2)).to.equal(false);
+            });
         });
     });
 
