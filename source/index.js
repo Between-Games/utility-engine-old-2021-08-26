@@ -22,8 +22,14 @@ export function isEmptyString(value) {              // The provided value was fo
     return isString(value) && '' === value.trim();  // The provided value was found to be an empty string
 }
 
-export function isString(value) {                           // The submitted value was found to be a valid string
-    return value != null && value.constructor === String;   // The submitted value was found to be a valid string
+export function isString(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {  // The submitted value was found to be a valid string
+    return isPositiveNumber(minimumLength) &&                                                   //
+        isPositiveNumber(maximumLength) &&                                                      //
+        maximumLength >= minimumLength &&                                                       //
+        value != null &&                                                                        //
+        value.constructor === String &&                                                         //
+        value.length >= minimumLength &&                                                        //
+        value.length <= maximumLength;                                                          //
 }
 
 // ╔════╗╔═╗╔═╗   ╔═╗╔═══════╗╔══════╗ ╔═══════╗╔═══════╗
