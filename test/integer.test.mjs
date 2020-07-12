@@ -168,11 +168,11 @@ describe('Integer', function() {
                 expect(UtilityEngine.isInteger(1, 0.9)).to.equal(true);
             });
 
-            it('Should return true when maximum parameter is a small enough primitive number', () => {
+            it('Should return true when minimum parameter is a small enough primitive number', () => {
                 expect(UtilityEngine.isInteger(1, Number(0))).to.equal(true);
             });
 
-            it('Should return true when maximum parameter is a small enough primitive decimal', () => {
+            it('Should return true when minimum parameter is a small enough primitive decimal', () => {
                 expect(UtilityEngine.isInteger(1, Number(0.9))).to.equal(true);
             });
 
@@ -420,6 +420,166 @@ describe('Integer', function() {
 
             it('Should return false when maximum parameter is a too small decimal', () => {
                 expect(UtilityEngine.isPositiveInteger(1, 0.9)).to.equal(false);
+            });
+        });
+    });
+
+    // ╔═══════╗╔═══════╗         ╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗╔═══════╗         ╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔╗ ║║ ║║ ╔═════╝║ ╔═════╝║ ╔═══╗ ║╚══╗ ╔══╝╚══╗ ╔══╝║ ║   ║ ║║ ╔═════╝         ╚══╗ ╔══╝║ ╔╗ ║║ ║╚══╗ ╔══╝║ ╔═════╝║ ╔═════╝║ ╔═════╝║ ╔═══╗ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ║║ ║║ ║║ ╚═════╗║ ║ ╔═══╗║ ╚═══╝ ║   ║ ║      ║ ║   ║ ╚╗ ╔╝ ║║ ╚═════╗╔═══════╗   ║ ║   ║ ║║ ║║ ║   ║ ║   ║ ╚═════╗║ ║ ╔═══╗║ ╚═════╗║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ║║ ║║ ║║ ╔═════╝║ ║ ╚═╗ ║║ ╔═══╗ ║   ║ ║      ║ ║   ╚╗ ║ ║ ╔╝║ ╔═════╝╚═══════╝   ║ ║   ║ ║║ ║║ ║   ║ ║   ║ ╔═════╝║ ║ ╚═╗ ║║ ╔═════╝║ ╔═╗ ╔═╝
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ║║ ╚╝ ║║ ╚═════╗║ ╚═══╝ ║║ ║   ║ ║   ║ ║   ╔══╝ ╚══╗ ║ ╚═╝ ║ ║ ╚═════╗         ╔══╝ ╚══╗║ ║║ ╚╝ ║   ║ ║   ║ ╚═════╗║ ╚═══╝ ║║ ╚═════╗║ ║ ║ ╚═╗
+    // ╚═══════╝╚═══════╝         ╚═╝╚════╝╚═══════╝╚═══════╝╚═╝   ╚═╝   ╚═╝   ╚═══════╝ ╚═════╝ ╚═══════╝         ╚═══════╝╚═╝╚════╝   ╚═╝   ╚═══════╝╚═══════╝╚═══════╝╚═╝ ╚═══╝
+
+    describe('#isNegativeInteger(value, minimum)', function() {
+        describe('#isNegativeInteger(VALUE, minimum)', function() {
+            it('Should return true when value is a neutral zero', () => {
+                expect(UtilityEngine.isNegativeInteger(0)).to.equal(true);
+            });
+
+            it('Should return true when value is a positive zero', () => {
+                expect(UtilityEngine.isNegativeInteger(+0)).to.equal(true);
+            });
+
+            it('Should return true when value is a negative zero', () => {
+                expect(UtilityEngine.isNegativeInteger(-0)).to.equal(true);
+            });
+
+            it('Should return true when value is a negative number', () => {
+                expect(UtilityEngine.isNegativeInteger(-1)).to.equal(true);
+            });
+
+            it('Should return true when value is minimum number', () => {
+                expect(UtilityEngine.isNegativeInteger(-100, -100)).to.equal(true);
+            });
+
+            it('Should return true when value is a big enough number', () => {
+                expect(UtilityEngine.isNegativeInteger(-99, -100)).to.equal(true);
+            });
+
+            it('Should return true when value is a small enough number', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, -100)).to.equal(true);
+            });
+
+            it('Should return true when value is a primitive number', () => {
+                expect(UtilityEngine.isNegativeInteger(Number('-1'))).to.equal(true);
+            });
+
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isNegativeInteger(null)).to.equal(false);
+            });
+
+            it('Should return false when value is undefined', () => {
+                expect(UtilityEngine.isNegativeInteger(undefined)).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.isNegativeInteger([])).to.equal(false);
+            });
+
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.isNegativeInteger({})).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isNegativeInteger(function() {})).to.equal(false);
+            });
+
+            it('Should return false when value is a true boolean', () => {
+                expect(UtilityEngine.isNegativeInteger(true)).to.equal(false);
+            });
+
+            it('Should return false when value is a false boolean', () => {
+                expect(UtilityEngine.isNegativeInteger(false)).to.equal(false);
+            });
+
+            it('Should return false when value is a string number', () => {
+                expect(UtilityEngine.isNegativeInteger('1')).to.equal(false);
+            });
+
+            it('Should return false when value is a positive number', () => {
+                expect(UtilityEngine.isNegativeInteger(1)).to.equal(false);
+            });
+
+            it('Should return false when value is a positive decimal', () => {
+                expect(UtilityEngine.isNegativeInteger(+1.1)).to.equal(false);
+            });
+
+            it('Should return false when value is a negative decimal', () => {
+                expect(UtilityEngine.isNegativeInteger(-1.1)).to.equal(false);
+            });
+
+            it('Should return false when value is too big number', () => {
+                expect(UtilityEngine.isNegativeInteger(101, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is too small decimal', () => {
+                expect(UtilityEngine.isNegativeInteger(-0.01, 0)).to.equal(false);
+            });
+
+            it('Should return false when value is a primitive decimal', () => {
+                expect(UtilityEngine.isNegativeInteger(Number('1.1'))).to.equal(false);
+            });
+
+            it('Should return false when value is positive infinity', () => {
+                expect(UtilityEngine.isNegativeInteger(Number.POSITIVE_INFINITY)).to.equal(false);
+            });
+
+            it('Should return false when value is negative infinity', () => {
+                expect(UtilityEngine.isNegativeInteger(Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
+        });
+
+        describe('#isNegativeInteger(value, MINIMUM)', function() {
+            it('Should return true when minimum parameter is undefined', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, undefined)).to.equal(true);
+            });
+
+            it('Should return true when minimum parameter is a small enough number', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, -2)).to.equal(true);
+            });
+
+            it('Should return true when minimum parameter is a small enough decimal', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, -2.1)).to.equal(true);
+            });
+
+            it('Should return true when minimum parameter is a small enough primitive number', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, Number(-2))).to.equal(true);
+            });
+
+            it('Should return true when minimum parameter is a small enough primitive decimal', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, Number(-2.1))).to.equal(true);
+            });
+
+
+            it('Should return false when minimum parameter is null', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, null)).to.equal(false);
+            });
+
+            it('Should return false when minimum parameter is a string', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, 'min')).to.equal(false);
+            });
+
+            it('Should return false when minimum parameter is an array', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, [])).to.equal(false);
+            });
+
+            it('Should return false when minimum parameter is an object', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, {})).to.equal(false);
+            });
+
+            it('Should return false when minimum parameter is a function', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, function() {
+                })).to.equal(false);
+            });
+
+            it('Should return false when minimum parameter is a too big number', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, 2)).to.equal(false);
+            });
+
+            it('Should return false when minimum parameter is a too big decimal', () => {
+                expect(UtilityEngine.isNegativeInteger(-1, 1.1)).to.equal(false);
             });
         });
     });

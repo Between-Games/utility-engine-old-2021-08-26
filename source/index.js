@@ -63,3 +63,7 @@ export function isInteger(value, minimum = Number.NEGATIVE_INFINITY, maximum = N
 export function isPositiveInteger(value, maximum = Number.POSITIVE_INFINITY) {  // The given value was found to be a positive integer
     return isNumber(maximum) && isInteger(value, 0, maximum);                   // The given value was found to be a positive integer
 }
+
+export function isNegativeInteger(value, minimum = Number.NEGATIVE_INFINITY) {  // The given value was found to be a negative integer
+    return isNumber(minimum, undefined, 0) && isInteger(value, minimum, 0);     // The given value was found to be a negative integer
+}

@@ -1,4 +1,4 @@
-declare module 'test-npm-engine-1' {
+declare module 'utility-engine' {
     export function isFilledString(value: any): boolean;
     export function isEmptyString(value: any): boolean;
     export function isString(value: any): boolean;
@@ -9,4 +9,5 @@ declare module 'test-npm-engine-1' {
 
     export function isInteger(value: any, minimum?: number, maximum?: number): boolean;
     export function isPositiveInteger(value: number, maximum?: number): boolean;
+    export function isNegativeInteger(value: number, minimum?: number): boolean;
 }
