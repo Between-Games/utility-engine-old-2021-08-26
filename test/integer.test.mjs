@@ -58,19 +58,19 @@ describe('Integer', function() {
             });
 
             it('Should return true when value is minimum number', () => {
-                expect(UtilityEngine.isInteger(100, 0, 100)).to.equal(true);
+                expect(UtilityEngine.isInteger(0, 0, 100)).to.equal(true);
             });
 
             it('Should return true when value is maximum number', () => {
-                expect(UtilityEngine.isInteger(0, 0, 100)).to.equal(true);
-            });
-
-            it('Should return true when value is a big enough number', () => {
                 expect(UtilityEngine.isInteger(100, 0, 100)).to.equal(true);
             });
 
+            it('Should return true when value is a big enough number', () => {
+                expect(UtilityEngine.isInteger(99, 0, 100)).to.equal(true);
+            });
+
             it('Should return true when value is a small enough number', () => {
-                expect(UtilityEngine.isInteger(0, 0, 100)).to.equal(true);
+                expect(UtilityEngine.isInteger(1, 0, 100)).to.equal(true);
             });
 
             it('Should return true when value is a primitive number', () => {
@@ -256,6 +256,170 @@ describe('Integer', function() {
 
             it('Should return false when maximum parameter is a too small decimal', () => {
                 expect(UtilityEngine.isInteger(1, undefined, 0.9)).to.equal(false);
+            });
+        });
+    });
+
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗╔═══════╗         ╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝╚══╗ ╔══╝║ ║   ║ ║║ ╔═════╝         ╚══╗ ╔══╝║ ╔╗ ║║ ║╚══╗ ╔══╝║ ╔═════╝║ ╔═════╝║ ╔═════╝║ ╔═══╗ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═══╝ ║║ ║   ║ ║║ ╚═════╗   ║ ║      ║ ║      ║ ║   ║ ╚╗ ╔╝ ║║ ╚═════╗╔═══════╗   ║ ║   ║ ║║ ║║ ║   ║ ║   ║ ╚═════╗║ ║ ╔═══╗║ ╚═════╗║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═════╝║ ║   ║ ║╚═════╗ ║   ║ ║      ║ ║      ║ ║   ╚╗ ║ ║ ╔╝║ ╔═════╝╚═══════╝   ║ ║   ║ ║║ ║║ ║   ║ ║   ║ ╔═════╝║ ║ ╚═╗ ║║ ╔═════╝║ ╔═╗ ╔═╝
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ║      ║ ╚═══╝ ║╔═════╝ ║╔══╝ ╚══╗   ║ ║   ╔══╝ ╚══╗ ║ ╚═╝ ║ ║ ╚═════╗         ╔══╝ ╚══╗║ ║║ ╚╝ ║   ║ ║   ║ ╚═════╗║ ╚═══╝ ║║ ╚═════╗║ ║ ║ ╚═╗
+    // ╚═══════╝╚═══════╝         ╚═╝      ╚═══════╝╚═══════╝╚═══════╝   ╚═╝   ╚═══════╝ ╚═════╝ ╚═══════╝         ╚═══════╝╚═╝╚════╝   ╚═╝   ╚═══════╝╚═══════╝╚═══════╝╚═╝ ╚═══╝
+
+    describe('#isPositiveInteger(value, maximum)', function() {
+        describe('#isPositiveInteger(VALUE, maximum)', function() {
+            it('Should return true when value is a neutral zero', () => {
+                expect(UtilityEngine.isPositiveInteger(0)).to.equal(true);
+            });
+
+            it('Should return true when value is a positive zero', () => {
+                expect(UtilityEngine.isPositiveInteger(+0)).to.equal(true);
+            });
+
+            it('Should return true when value is a negative zero', () => {
+                expect(UtilityEngine.isPositiveInteger(-0)).to.equal(true);
+            });
+
+            it('Should return true when value is a positive number', () => {
+                expect(UtilityEngine.isPositiveInteger(+1)).to.equal(true);
+            });
+
+            it('Should return true when value is minimum number', () => {
+                expect(UtilityEngine.isPositiveInteger(0, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is maximum number', () => {
+                expect(UtilityEngine.isPositiveInteger(100, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is a big enough number', () => {
+                expect(UtilityEngine.isPositiveInteger(99, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is a small enough number', () => {
+                expect(UtilityEngine.isPositiveInteger(1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is a primitive number', () => {
+                expect(UtilityEngine.isPositiveInteger(Number('1'))).to.equal(true);
+            });
+
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isPositiveInteger(null)).to.equal(false);
+            });
+
+            it('Should return false when value is undefined', () => {
+                expect(UtilityEngine.isPositiveInteger(undefined)).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.isPositiveInteger([])).to.equal(false);
+            });
+
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.isPositiveInteger({})).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isPositiveInteger(function() {})).to.equal(false);
+            });
+
+            it('Should return false when value is a true boolean', () => {
+                expect(UtilityEngine.isPositiveInteger(true)).to.equal(false);
+            });
+
+            it('Should return false when value is a false boolean', () => {
+                expect(UtilityEngine.isPositiveInteger(false)).to.equal(false);
+            });
+
+            it('Should return false when value is a string number', () => {
+                expect(UtilityEngine.isPositiveInteger('1')).to.equal(false);
+            });
+
+            it('Should return false when value is a negative number', () => {
+                expect(UtilityEngine.isPositiveInteger(-1)).to.equal(false);
+            });
+
+            it('Should return false when value is a positive decimal', () => {
+                expect(UtilityEngine.isPositiveInteger(+1.1)).to.equal(false);
+            });
+
+            it('Should return false when value is a negative decimal', () => {
+                expect(UtilityEngine.isPositiveInteger(-1.1)).to.equal(false);
+            });
+
+            it('Should return false when value is too big number', () => {
+                expect(UtilityEngine.isPositiveInteger(101, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is too small decimal', () => {
+                expect(UtilityEngine.isPositiveInteger(-0.01, 0)).to.equal(false);
+            });
+
+            it('Should return false when value is a primitive decimal', () => {
+                expect(UtilityEngine.isPositiveInteger(Number('1.1'))).to.equal(false);
+            });
+
+            it('Should return false when value is positive infinity', () => {
+                expect(UtilityEngine.isPositiveInteger(Number.POSITIVE_INFINITY)).to.equal(false);
+            });
+
+            it('Should return false when value is negative infinity', () => {
+                expect(UtilityEngine.isPositiveInteger(Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
+        });
+
+        describe('#isPositiveInteger(value, MAXIMUM)', function() {
+            it('Should return true when maximum parameter is undefined', () => {
+                expect(UtilityEngine.isPositiveInteger(1, undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum parameter is a big enough number', () => {
+                expect(UtilityEngine.isPositiveInteger(1, 1)).to.equal(true);
+            });
+
+            it('Should return true when maximum parameter is a big enough decimal', () => {
+                expect(UtilityEngine.isPositiveInteger(1, 1.1)).to.equal(true);
+            });
+
+            it('Should return true when maximum parameter is a big enough primitive number', () => {
+                expect(UtilityEngine.isPositiveInteger(1, Number(1))).to.equal(true);
+            });
+
+            it('Should return true when maximum parameter is a big enough primitive decimal', () => {
+                expect(UtilityEngine.isPositiveInteger(1, Number(1.1))).to.equal(true);
+            });
+
+
+            it('Should return false when maximum parameter is null', () => {
+                expect(UtilityEngine.isPositiveInteger(1, null)).to.equal(false);
+            });
+
+            it('Should return false when maximum parameter is a string', () => {
+                expect(UtilityEngine.isPositiveInteger(1, 'min')).to.equal(false);
+            });
+
+            it('Should return false when maximum parameter is an array', () => {
+                expect(UtilityEngine.isPositiveInteger(1, [])).to.equal(false);
+            });
+
+            it('Should return false when maximum parameter is an object', () => {
+                expect(UtilityEngine.isPositiveInteger(1, {})).to.equal(false);
+            });
+
+            it('Should return false when maximum parameter is a function', () => {
+                expect(UtilityEngine.isPositiveInteger(1, function() {
+                })).to.equal(false);
+            });
+
+            it('Should return false when maximum parameter is a too small number', () => {
+                expect(UtilityEngine.isPositiveInteger(1, 0)).to.equal(false);
+            });
+
+            it('Should return false when maximum parameter is a too small decimal', () => {
+                expect(UtilityEngine.isPositiveInteger(1, 0.9)).to.equal(false);
             });
         });
     });

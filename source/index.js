@@ -57,5 +57,9 @@ export function isNegativeNumber(value, minimum = Number.NEGATIVE_INFINITY) {   
 export function isInteger(value, minimum = Number.NEGATIVE_INFINITY, maximum = Number.POSITIVE_INFINITY) {  // The provided value was found to be a valid integer
     if (!isNumber(minimum) || !isNumber(maximum) || minimum > maximum) return false;                        // The given size parameters were found to be invalid
 
-    return Number.isInteger(value) && isNumber(value, minimum, maximum);                                    //
+    return Number.isInteger(value) && isNumber(value, minimum, maximum);                                    // The provided value was found to be a valid integer
+}
+
+export function isPositiveInteger(value, maximum = Number.POSITIVE_INFINITY) {  // The given value was found to be a positive integer
+    return isNumber(maximum) && isInteger(value, 0, maximum);                   // The given value was found to be a positive integer
 }
