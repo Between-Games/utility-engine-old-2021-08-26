@@ -33,14 +33,16 @@ export function isString(value) {                           // The submitted val
 // ║ ║║ ╚╝ ║║ ╚═══╝ ║║ ║║ ║║ ║║ ╚═══╝ ║║ ╚═════╗║ ║ ║ ╚═╗
 // ╚═╝╚════╝╚═══════╝╚═╝╚═╝╚═╝╚═══════╝╚═══════╝╚═╝ ╚═══╝
 
-// TODO: Investigate if function should return false of throw error on invalid optional parameters
+export function isNumber(value, minimum = Number.NEGATIVE_INFINITY, maximum = Number.POSITIVE_INFINITY) {   // The submitted value was found to be a valid number
+    if (typeof minimum !== 'number' || typeof maximum !== 'number' || minimum > maximum) return false;      // The given size parameters were found to be invalid
 
-export function isNumber(value, minimum = Number.NEGATIVE_INFINITY, maximum = Number.POSITIVE_INFINITY) {       // The submitted value was found to be a valid number
-    if (typeof minimum !== 'number' || typeof maximum !== 'number' || minimum > maximum) return false;          // The given size parameters were found to be invalid
-
-    return typeof value === 'number' && value >= minimum && value <= maximum;                                   // The submitted value was found to be a valid number
+    return typeof value === 'number' && value >= minimum && value <= maximum;                               // The submitted value was found to be a valid number
 }
 
 export function isPositiveNumber(value, maximum = Number.POSITIVE_INFINITY) {   // The given value was found to be a positive number
-    return isNumber(maximum, 0) && isNumber(value, 0, maximum);                 //
+    return isNumber(maximum, 0) && isNumber(value, 0, maximum);                 // The given value was found to be a positive number
+}
+
+export function isNegativeNumber(value, minimum = Number.NEGATIVE_INFINITY) {   // The given value was found to be a negative number
+    return isNumber(minimum, undefined, 0) && isNumber(value, minimum, 0);      // The given value was found to be a negative number
 }
