@@ -108,10 +108,16 @@ export function isFunction(value) {         //
 // ║ ║║ ╚╝ ║║ ╚═══╝ ║║ ╚═════╗║ ╚═════╗╔══╝ ╚══╗╔═════╝ ║║ ║   ║ ║
 // ╚═╝╚════╝╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═╝   ╚═╝
 
+export function isUndefined(value) { //
+    return value === undefined;      //
+}
+
+export function isNullish(value) {  //
+    return value == null;           //
+}
+
 export function isNull(value) { //
     return value === null;      //
 }
 
-export function isUndefined(value) { //
-    return value === undefined;      //
-}
+

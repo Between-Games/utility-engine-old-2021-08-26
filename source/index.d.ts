@@ -17,5 +17,6 @@ declare module 'utility-engine' {
     export function isFunction(value: any): boolean;
 
     export function isNull(value: any): boolean;
+    export function isNullish(value: any): boolean;
     export function isUndefined(value: any): boolean;
 }

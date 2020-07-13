@@ -118,6 +118,96 @@ describe('Function', function() {
         });
     });
 
+    // ╔═══════╗╔═══════╗         ╔════╗╔═╗╔═╗   ╔═╗╔═╗      ╔═╗      ╔═══════╗╔═══════╗╔═╗   ╔═╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔╗ ║║ ║║ ║   ║ ║║ ║      ║ ║      ╚══╗ ╔══╝║ ╔═════╝║ ║   ║ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ║║ ║║ ║║ ║   ║ ║║ ║      ║ ║         ║ ║   ║ ╚═════╗║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ║║ ║║ ║║ ║   ║ ║║ ║      ║ ║         ║ ║   ╚═════╗ ║║ ╔═══╗ ║
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ║║ ╚╝ ║║ ╚═══╝ ║║ ╚═════╗║ ╚═════╗╔══╝ ╚══╗╔═════╝ ║║ ║   ║ ║
+    // ╚═══════╝╚═══════╝         ╚═╝╚════╝╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═╝   ╚═╝
+
+    describe('#isNullish(VALUE)', function() {
+        it('Should return true when value is null', () => {
+            expect(UtilityEngine.isNullish(null)).to.equal(true);
+        });
+
+        it('Should return true when value is undefined', () => {
+            expect(UtilityEngine.isNullish(undefined)).to.equal(true);
+        });
+
+
+        it('Should return false when value is an empty object', () => {
+            expect(UtilityEngine.isNullish({})).to.equal(false);
+        });
+
+        it('Should return false when value is a function', () => {
+            expect(UtilityEngine.isNullish(function() {})).to.equal(false);
+        });
+
+        it('Should return false when value is a filled object', () => {
+            expect(UtilityEngine.isNullish({foo: 'bar'})).to.equal(false);
+        });
+
+        it('Should return false when value is true boolean', () => {
+            expect(UtilityEngine.isNullish(true)).to.equal(false);
+        });
+
+        it('Should return false when value is false boolean', () => {
+            expect(UtilityEngine.isNullish(false)).to.equal(false);
+        });
+
+        it('Should return false when value is a zero', () => {
+            expect(UtilityEngine.isNullish(0)).to.equal(false);
+        });
+
+        it('Should return false when value is a number', () => {
+            expect(UtilityEngine.isNullish(1)).to.equal(false);
+        });
+
+        it('Should return false when value is a primitive number', () => {
+            expect(UtilityEngine.isNullish(Number('1'))).to.equal(false);
+        });
+
+        it('Should return false when value is a wrapped primitive number', () => {
+            expect(UtilityEngine.isNullish(new Number('1'))).to.equal(false);
+        });
+
+        it('Should return false when value is a string', () => {
+            expect(UtilityEngine.isNullish('string')).to.equal(false);
+        });
+
+        it('Should return false when value is a primitive string', () => {
+            expect(UtilityEngine.isNullish(String('string'))).to.equal(false);
+        });
+
+        it('Should return false when value is a wrapped primitive string', () => {
+            expect(UtilityEngine.isNullish(new String('string'))).to.equal(false);
+        });
+
+        it('Should return false when value is an array', () => {
+            expect(UtilityEngine.isNullish([])).to.equal(false);
+        });
+
+        it('Should return false when value is a map', () => {
+            expect(UtilityEngine.isNullish(new Map())).to.equal(false);
+        });
+
+        it('Should return false when value is a date', () => {
+            expect(UtilityEngine.isNullish(new Date())).to.equal(false);
+        });
+
+        it('Should return false when value is a class instance', () => {
+            expect(UtilityEngine.isNullish(new (class Class {})())).to.equal(false);
+        });
+
+        it('Should return false when value is a class instance', () => {
+            expect(UtilityEngine.isNullish(new (class Class {}))).to.equal(false);
+        });
+
+        it('Should return false when value is a class declaration', () => {
+            expect(UtilityEngine.isNullish(class Class {})).to.equal(false);
+        });
+    });
+
     // ╔═══════╗╔═══════╗         ╔═╗   ╔═╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗
     // ╚══╗ ╔══╝║ ╔═════╝         ║ ║   ║ ║║ ╔╗ ║║ ║╚╗ ╔══╗ ║║ ╔═════╝║ ╔═════╝╚══╗ ╔══╝║ ╔╗ ║║ ║║ ╔═════╝╚╗ ╔══╗ ║
     //    ║ ║   ║ ╚═════╗╔═══════╗║ ║   ║ ║║ ║║ ║║ ║ ║ ║  ║ ║║ ╚═════╗║ ╚═════╗   ║ ║   ║ ║║ ║║ ║║ ╚═════╗ ║ ║  ║ ║
