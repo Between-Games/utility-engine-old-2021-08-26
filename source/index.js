@@ -89,3 +89,14 @@ export function isPositiveInteger(value, maximum = Number.POSITIVE_INFINITY) {  
 export function isNegativeInteger(value, minimum = Number.NEGATIVE_INFINITY) {      // The given value was found to be a negative integer
     return isNegativeNumber(minimum, undefined, 0) && isInteger(value, minimum, 0); // The given value was found to be a negative integer
 }
+
+// ╔═══════╗╔═╗   ╔═╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔════╗╔═╗
+// ║ ╔═════╝║ ║   ║ ║║ ╔╗ ║║ ║║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═══╗ ║║ ╔╗ ║║ ║
+// ║ ╚═════╗║ ║   ║ ║║ ║║ ║║ ║║ ║         ║ ║      ║ ║   ║ ║   ║ ║║ ║║ ║║ ║
+// ║ ╔═════╝║ ║   ║ ║║ ║║ ║║ ║║ ║         ║ ║      ║ ║   ║ ║   ║ ║║ ║║ ║║ ║
+// ║ ║      ║ ╚═══╝ ║║ ║║ ╚╝ ║║ ╚═════╗   ║ ║   ╔══╝ ╚══╗║ ╚═══╝ ║║ ║║ ╚╝ ║
+// ╚═╝      ╚═══════╝╚═╝╚════╝╚═══════╝   ╚═╝   ╚═══════╝╚═══════╝╚═╝╚════╝
+
+export function isFunction(value) {         //
+    return typeof(value) === 'function';    //
+}

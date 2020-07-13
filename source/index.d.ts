@@ -13,4 +13,6 @@ declare module 'utility-engine' {
 
     export function isObject(value: any): boolean;
     export function isObjectLiteral(value: any): boolean;
+
+    export function isFunction(value: any): boolean;
 }

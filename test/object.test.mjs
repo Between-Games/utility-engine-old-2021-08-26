@@ -5,7 +5,6 @@
 // ║ ╚═══╝ ║║ ╚═══╝ ║╔═══╝ ║  ║ ╚═════╗║ ╚═════╗   ║ ║   ╔═╗   ║ ║   ║ ╚═════╗╔═════╝ ║   ║ ║   ╔═╗║ ║║ ║║ ║╔═══╝ ║  ╔═════╝ ║
 // ╚═══════╝╚═══════╝╚═════╝  ╚═══════╝╚═══════╝   ╚═╝   ╚═╝   ╚═╝   ╚═══════╝╚═══════╝   ╚═╝   ╚═╝╚═╝╚═╝╚═╝╚═════╝  ╚═══════╝
 
-
 'use strict';   // Extend JavaScript strict mode to the entire script
 
 // ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
@@ -73,11 +72,11 @@ describe('Object', function() {
             expect(UtilityEngine.isObject(class Class {})).to.equal(true);
         });
 
-        it('Should return false when value is a wrapped primitive string', () => {
+        it('Should return true when value is a wrapped primitive string', () => {
             expect(UtilityEngine.isObject(new String('string'))).to.equal(true);
         });
 
-        it('Should return false when value is a wrapped primitive number', () => {
+        it('Should return true when value is a wrapped primitive number', () => {
             expect(UtilityEngine.isObject(new Number('1'))).to.equal(true);
         });
 
@@ -188,7 +187,7 @@ describe('Object', function() {
             expect(UtilityEngine.isObjectLiteral(new Date())).to.equal(false);
         });
 
-        it('Should return false when value is a class definition', () => {
+        it('Should return false when value is a class declaration', () => {
             expect(UtilityEngine.isObjectLiteral(class Class {})).to.equal(false);
         });
 
