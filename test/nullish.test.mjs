@@ -117,4 +117,94 @@ describe('Function', function() {
             expect(UtilityEngine.isNull(class Class {})).to.equal(false);
         });
     });
+
+    // ╔═══════╗╔═══════╗         ╔═╗   ╔═╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ║   ║ ║║ ╔╗ ║║ ║╚╗ ╔══╗ ║║ ╔═════╝║ ╔═════╝╚══╗ ╔══╝║ ╔╗ ║║ ║║ ╔═════╝╚╗ ╔══╗ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ║   ║ ║║ ║║ ║║ ║ ║ ║  ║ ║║ ╚═════╗║ ╚═════╗   ║ ║   ║ ║║ ║║ ║║ ╚═════╗ ║ ║  ║ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ║   ║ ║║ ║║ ║║ ║ ║ ║  ║ ║║ ╔═════╝║ ╔═════╝   ║ ║   ║ ║║ ║║ ║║ ╔═════╝ ║ ║  ║ ║
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ╚═══╝ ║║ ║║ ╚╝ ║╔╝ ╚══╝ ║║ ╚═════╗║ ║      ╔══╝ ╚══╗║ ║║ ╚╝ ║║ ╚═════╗╔╝ ╚══╝ ║
+    // ╚═══════╝╚═══════╝         ╚═══════╝╚═╝╚════╝╚═══════╝╚═══════╝╚═╝      ╚═══════╝╚═╝╚════╝╚═══════╝╚═══════╝
+
+    describe('#isUndefined(VALUE)', function() {
+        it('Should return true when value is undefined', () => {
+            expect(UtilityEngine.isUndefined(undefined)).to.equal(true);
+        });
+
+
+        it('Should return false when value is null', () => {
+            expect(UtilityEngine.isUndefined(null)).to.equal(false);
+        });
+
+        it('Should return false when value is an empty object', () => {
+            expect(UtilityEngine.isUndefined({})).to.equal(false);
+        });
+
+        it('Should return false when value is a function', () => {
+            expect(UtilityEngine.isUndefined(function() {})).to.equal(false);
+        });
+
+        it('Should return false when value is a filled object', () => {
+            expect(UtilityEngine.isUndefined({foo: 'bar'})).to.equal(false);
+        });
+
+        it('Should return false when value is true boolean', () => {
+            expect(UtilityEngine.isUndefined(true)).to.equal(false);
+        });
+
+        it('Should return false when value is false boolean', () => {
+            expect(UtilityEngine.isUndefined(false)).to.equal(false);
+        });
+
+        it('Should return false when value is a zero', () => {
+            expect(UtilityEngine.isUndefined(0)).to.equal(false);
+        });
+
+        it('Should return false when value is a number', () => {
+            expect(UtilityEngine.isUndefined(1)).to.equal(false);
+        });
+
+        it('Should return false when value is a primitive number', () => {
+            expect(UtilityEngine.isUndefined(Number('1'))).to.equal(false);
+        });
+
+        it('Should return false when value is a wrapped primitive number', () => {
+            expect(UtilityEngine.isUndefined(new Number('1'))).to.equal(false);
+        });
+
+        it('Should return false when value is a string', () => {
+            expect(UtilityEngine.isUndefined('string')).to.equal(false);
+        });
+
+        it('Should return false when value is a primitive string', () => {
+            expect(UtilityEngine.isUndefined(String('string'))).to.equal(false);
+        });
+
+        it('Should return false when value is a wrapped primitive string', () => {
+            expect(UtilityEngine.isUndefined(new String('string'))).to.equal(false);
+        });
+
+        it('Should return false when value is an array', () => {
+            expect(UtilityEngine.isUndefined([])).to.equal(false);
+        });
+
+        it('Should return false when value is a map', () => {
+            expect(UtilityEngine.isUndefined(new Map())).to.equal(false);
+        });
+
+        it('Should return false when value is a date', () => {
+            expect(UtilityEngine.isUndefined(new Date())).to.equal(false);
+        });
+
+        it('Should return false when value is a class instance', () => {
+            expect(UtilityEngine.isUndefined(new (class Class {})())).to.equal(false);
+        });
+
+        it('Should return false when value is a class instance', () => {
+            expect(UtilityEngine.isUndefined(new (class Class {}))).to.equal(false);
+        });
+
+        it('Should return false when value is a class declaration', () => {
+            expect(UtilityEngine.isUndefined(class Class {})).to.equal(false);
+        });
+    });
 });
