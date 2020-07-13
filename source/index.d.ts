@@ -10,4 +10,7 @@ declare module 'utility-engine' {
     export function isInteger(value: any, minimum?: number, maximum?: number): boolean;
     export function isPositiveInteger(value: number, maximum?: number): boolean;
     export function isNegativeInteger(value: number, minimum?: number): boolean;
+
+    export function isObject(value: any): boolean;
+    export function isObjectLiteral(value: any): boolean;
 }
