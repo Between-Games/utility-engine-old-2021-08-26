@@ -30,12 +30,15 @@ export function isObjectLiteral(value) {        //
 // ║ ╚═════╗║ ╚═════╗║ ║   ║ ║╔═════╝ ║╔═════╝ ║
 // ╚═══════╝╚═══════╝╚═╝   ╚═╝╚═══════╝╚═══════╝
 
-
 export function isClass(value) {                                            //
     return isObject(value) &&                                               //
         isObject(value.prototype) &&                                        //
         isObject(value.prototype.constructor) &&                            //
         value.prototype.constructor.toString().substring(0, 5) === 'class'; //
+}
+
+export function isClassInstance(value) {                                                //
+    return isObject(value) && value.constructor.toString().substring(0, 5) === 'class'; //
 }
 
 // ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔════╗╔═╗╔═══════╗
