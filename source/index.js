@@ -23,6 +23,21 @@ export function isObjectLiteral(value) {        //
         value.constructor.name === 'Object';    //
 }
 
+// ╔═══════╗╔═╗      ╔═══════╗╔═══════╗╔═══════╗
+// ║ ╔═════╝║ ║      ║ ╔═══╗ ║║ ╔═════╝║ ╔═════╝
+// ║ ║      ║ ║      ║ ╚═══╝ ║║ ╚═════╗║ ╚═════╗
+// ║ ║      ║ ║      ║ ╔═══╗ ║╚═════╗ ║╚═════╗ ║
+// ║ ╚═════╗║ ╚═════╗║ ║   ║ ║╔═════╝ ║╔═════╝ ║
+// ╚═══════╝╚═══════╝╚═╝   ╚═╝╚═══════╝╚═══════╝
+
+
+export function isClass(value) {                                            //
+    return isObject(value) &&                                               //
+        isObject(value.prototype) &&                                        //
+        isObject(value.prototype.constructor) &&                            //
+        value.prototype.constructor.toString().substring(0, 5) === 'class'; //
+}
+
 // ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔════╗╔═╗╔═══════╗
 // ║ ╔═════╝╚══╗ ╔══╝║ ╔═══╗ ║╚══╗ ╔══╝║ ╔╗ ║║ ║║ ╔═════╝
 // ║ ╚═════╗   ║ ║   ║ ╚═══╝ ║   ║ ║   ║ ║║ ║║ ║║ ║ ╔═══╗
