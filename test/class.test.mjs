@@ -62,94 +62,192 @@ describe('Class', function() {
     // ╔══╝ ╚══╗╔═════╝ ║         ║ ╚═════╗║ ╚═════╗║ ║   ║ ║╔═════╝ ║╔═════╝ ║
     // ╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝╚═╝   ╚═╝╚═══════╝╚═══════╝
 
-    describe('#isClass(VALUE)', function() {
-        it('Should return true when value is a superclass', () => {
-            expect(UtilityEngine.isClass(Superclass)).to.equal(true);
+    describe('#isClass(value, superclassValue)', function() {
+        describe('#isClass(VALUE, superclassValue)', function() {
+            it('Should return true when value is a superclass', () => {
+                expect(UtilityEngine.isClass(Superclass)).to.equal(true);
+            });
+
+            it('Should return true when value is a subclass', () => {
+                expect(UtilityEngine.isClass(Subclass)).to.equal(true);
+            });
+
+            it('Should return true when value is a subclass of a subclass', () => {
+                expect(UtilityEngine.isClass(SubSubclass)).to.equal(true);
+            });
+
+
+            it('Should return false when value is a superclass instance', () => {
+                expect(UtilityEngine.isClass(superclassInstance)).to.equal(false);
+            });
+
+            it('Should return false when value is a subclass instance', () => {
+                expect(UtilityEngine.isClass(subclassInstance)).to.equal(false);
+            });
+
+            it('Should return false when value is a subclass of a subclass instance', () => {
+                expect(UtilityEngine.isClass(subSubclassInstance)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isClass(null)).to.equal(false);
+            });
+
+            it('Should return false when value is undefined', () => {
+                expect(UtilityEngine.isClass(undefined)).to.equal(false);
+            });
+
+            it('Should return false when value is an empty object', () => {
+                expect(UtilityEngine.isClass({})).to.equal(false);
+            });
+
+            it('Should return false when value is a filled object', () => {
+                expect(UtilityEngine.isClass({foo: 'bar'})).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isClass(function() {
+                })).to.equal(false);
+            });
+
+            it('Should return false when value is true boolean', () => {
+                expect(UtilityEngine.isClass(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false boolean', () => {
+                expect(UtilityEngine.isClass(false)).to.equal(false);
+            });
+
+            it('Should return false when value is a number', () => {
+                expect(UtilityEngine.isClass(1)).to.equal(false);
+            });
+
+            it('Should return false when value is a primitive number', () => {
+                expect(UtilityEngine.isClass(Number('1'))).to.equal(false);
+            });
+
+            it('Should return false when value is a wrapped primitive number', () => {
+                expect(UtilityEngine.isClass(new Number('1'))).to.equal(false);
+            });
+
+            it('Should return false when value is a string', () => {
+                expect(UtilityEngine.isClass('string')).to.equal(false);
+            });
+
+            it('Should return false when value is a primitive string', () => {
+                expect(UtilityEngine.isClass(String('string'))).to.equal(false);
+            });
+
+            it('Should return false when value is a wrapped primitive string', () => {
+                expect(UtilityEngine.isClass(new String('string'))).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.isClass([])).to.equal(false);
+            });
+
+            it('Should return false when value is a map', () => {
+                expect(UtilityEngine.isClass(new Map())).to.equal(false);
+            });
+
+            it('Should return false when value is a date', () => {
+                expect(UtilityEngine.isClass(new Date())).to.equal(false);
+            });
         });
 
-        it('Should return true when value is a subclass', () => {
-            expect(UtilityEngine.isClass(Subclass)).to.equal(true);
-        });
+        describe('#isClass(value, SUPERCLASSVALUE)', function() {
+            it('Should return true when value is undefined', () => {
+                expect(UtilityEngine.isClass(Subclass, undefined)).to.equal(true);
+            });
 
-        it('Should return true when value is a subclass of a subclass', () => {
-            expect(UtilityEngine.isClass(SubSubclass)).to.equal(true);
-        });
+            it('Should return true when value is a superclass', () => {
+                expect(UtilityEngine.isClass(Subclass, Superclass)).to.equal(true);
+            });
+
+            it('Should return true when value is a subclass of a subclass of a subclass', () => {
+                expect(UtilityEngine.isClass(SubSubclass, Subclass)).to.equal(true);
+            });
 
 
-        it('Should return false when value is a superclass instance', () => {
-            expect(UtilityEngine.isClass(superclassInstance)).to.equal(false);
-        });
+            it('Should return false when value is a subclass of a subclass', () => {
+                expect(UtilityEngine.isClass(Subclass, SubSubclass)).to.equal(false);
+            });
 
-        it('Should return false when value is a subclass instance', () => {
-            expect(UtilityEngine.isClass(subclassInstance)).to.equal(false);
-        });
+            it('Should return false when value is the same as given class', () => {
+                expect(UtilityEngine.isClass(Subclass, Subclass)).to.equal(false);
+            });
 
-        it('Should return false when value is a subclass of a subclass instance', () => {
-            expect(UtilityEngine.isClass(subSubclassInstance)).to.equal(false);
-        });
+            it('Should return false when value is a superclass instance', () => {
+                expect(UtilityEngine.isClass(Subclass, superclassInstance)).to.equal(false);
+            });
 
-        it('Should return false when value is null', () => {
-            expect(UtilityEngine.isClass(null)).to.equal(false);
-        });
+            it('Should return false when value is a subclass instance', () => {
+                expect(UtilityEngine.isClass(Subclass, subclassInstance)).to.equal(false);
+            });
 
-        it('Should return false when value is undefined', () => {
-            expect(UtilityEngine.isClass(undefined)).to.equal(false);
-        });
+            it('Should return false when value is a subclass of a subclass instance', () => {
+                expect(UtilityEngine.isClass(Subclass, subSubclassInstance)).to.equal(false);
+            });
 
-        it('Should return false when value is an empty object', () => {
-            expect(UtilityEngine.isClass({})).to.equal(false);
-        });
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isClass(Subclass, null)).to.equal(false);
+            });
 
-        it('Should return false when value is a filled object', () => {
-            expect(UtilityEngine.isClass({foo: 'bar'})).to.equal(false);
-        });
+            it('Should return false when value is an empty object', () => {
+                expect(UtilityEngine.isClass(Subclass, {})).to.equal(false);
+            });
 
-        it('Should return false when value is a function', () => {
-            expect(UtilityEngine.isClass(function() {})).to.equal(false);
-        });
+            it('Should return false when value is a filled object', () => {
+                expect(UtilityEngine.isClass(Subclass, {foo: 'bar'})).to.equal(false);
+            });
 
-        it('Should return false when value is true boolean', () => {
-            expect(UtilityEngine.isClass(true)).to.equal(false);
-        });
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isClass(Subclass, function() {})).to.equal(false);
+            });
 
-        it('Should return false when value is false boolean', () => {
-            expect(UtilityEngine.isClass(false)).to.equal(false);
-        });
+            it('Should return false when value is true boolean', () => {
+                expect(UtilityEngine.isClass(Subclass, true)).to.equal(false);
+            });
 
-        it('Should return false when value is a number', () => {
-            expect(UtilityEngine.isClass(1)).to.equal(false);
-        });
+            it('Should return false when value is false boolean', () => {
+                expect(UtilityEngine.isClass(Subclass, false)).to.equal(false);
+            });
 
-        it('Should return false when value is a primitive number', () => {
-            expect(UtilityEngine.isClass(Number('1'))).to.equal(false);
-        });
+            it('Should return false when value is a number', () => {
+                expect(UtilityEngine.isClass(Subclass, 1)).to.equal(false);
+            });
 
-        it('Should return false when value is a wrapped primitive number', () => {
-            expect(UtilityEngine.isClass(new Number('1'))).to.equal(false);
-        });
+            it('Should return false when value is a primitive number', () => {
+                expect(UtilityEngine.isClass(Subclass, Number('1'))).to.equal(false);
+            });
 
-        it('Should return false when value is a string', () => {
-            expect(UtilityEngine.isClass('string')).to.equal(false);
-        });
+            it('Should return false when value is a wrapped primitive number', () => {
+                expect(UtilityEngine.isClass(Subclass, new Number('1'))).to.equal(false);
+            });
 
-        it('Should return false when value is a primitive string', () => {
-            expect(UtilityEngine.isClass(String('string'))).to.equal(false);
-        });
+            it('Should return false when value is a string', () => {
+                expect(UtilityEngine.isClass(Subclass, 'string')).to.equal(false);
+            });
 
-        it('Should return false when value is a wrapped primitive string', () => {
-            expect(UtilityEngine.isClass(new String('string'))).to.equal(false);
-        });
+            it('Should return false when value is a primitive string', () => {
+                expect(UtilityEngine.isClass(Subclass, String('string'))).to.equal(false);
+            });
 
-        it('Should return false when value is an array', () => {
-            expect(UtilityEngine.isClass([])).to.equal(false);
-        });
+            it('Should return false when value is a wrapped primitive string', () => {
+                expect(UtilityEngine.isClass(Subclass, new String('string'))).to.equal(false);
+            });
 
-        it('Should return false when value is a map', () => {
-            expect(UtilityEngine.isClass(new Map())).to.equal(false);
-        });
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.isClass(Subclass, [])).to.equal(false);
+            });
 
-        it('Should return false when value is a date', () => {
-            expect(UtilityEngine.isClass(new Date())).to.equal(false);
+            it('Should return false when value is a map', () => {
+                expect(UtilityEngine.isClass(Subclass, new Map())).to.equal(false);
+            });
+
+            it('Should return false when value is a date', () => {
+                expect(UtilityEngine.isClass(Subclass, new Date())).to.equal(false);
+            });
         });
     });
 
