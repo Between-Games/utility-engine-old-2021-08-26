@@ -41,10 +41,14 @@ export function isClassInstance(value) {                                        
     return isObject(value) && value.constructor.toString().substring(0, 5) === 'class'; //
 }
 
-export function isSubclassOfSuperclass(subclassValue, superclassValue) {    //
-    return isClass(subclassValue) &&                                        //
-        isClass(superclassValue) &&                                         //
+export function isSuperclassOfSubclass(superclassValue, subclassValue) {    //
+    return isClass(superclassValue) &&                                      //
+        isClass(subclassValue) &&                                           //
         subclassValue.prototype instanceof superclassValue;                 //
+}
+
+export function isSubclassOfSuperclass(subclassValue, superclassValue) {    //
+    return isSuperclassOfSubclass(superclassValue, subclassValue);          //
 }
 
 // ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔════╗╔═╗╔═══════╗
