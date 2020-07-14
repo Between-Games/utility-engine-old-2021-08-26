@@ -16,6 +16,7 @@ declare module 'utility-engine' {
 
     export function isClass(value: any): boolean;
     export function isClassInstance(value: any): boolean;
+    export function isSubclassOfSuperclass(subclassValue: any, superclassValue: any): boolean;
 
     export function isFunction(value: any): boolean;
 

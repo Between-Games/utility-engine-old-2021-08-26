@@ -41,6 +41,12 @@ export function isClassInstance(value) {                                        
     return isObject(value) && value.constructor.toString().substring(0, 5) === 'class'; //
 }
 
+export function isSubclassOfSuperclass(subclassValue, superclassValue) {    //
+    return isClass(subclassValue) &&                                        //
+        isClass(superclassValue) &&                                         //
+        subclassValue.prototype instanceof superclassValue;                 //
+}
+
 // ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔════╗╔═╗╔═══════╗
 // ║ ╔═════╝╚══╗ ╔══╝║ ╔═══╗ ║╚══╗ ╔══╝║ ╔╗ ║║ ║║ ╔═════╝
 // ║ ╚═════╗   ║ ║   ║ ╚═══╝ ║   ║ ║   ║ ║║ ║║ ║║ ║ ╔═══╗
