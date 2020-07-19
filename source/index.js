@@ -38,8 +38,10 @@ export function isClass(value, superclassValue) {                               
         (isUndefined(superclassValue) || isSubclassOfSuperclass(value, superclassValue));   //
 }
 
-export function isClassInstance(value) {                                                //
-    return isObject(value) && value.constructor.toString().substring(0, 5) === 'class'; //
+export function isClassInstance(value, superclassValue) {                                               //
+    return isObject(value) &&                                                                           //
+        value.constructor.toString().substring(0, 5) === 'class' &&                                     //
+        (isUndefined(superclassValue) || isClass(superclassValue) && value instanceof superclassValue); //
 }
 
 export function isSuperclassOfSubclass(superclassValue, subclassValue) {    //

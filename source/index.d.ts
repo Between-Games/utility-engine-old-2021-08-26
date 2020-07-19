@@ -15,7 +15,7 @@ declare module 'utility-engine' {
     export function isObjectLiteral(value: any): boolean;
 
     export function isClass(value: any, superclassValue?: any): boolean;
-    export function isClassInstance(value: any): boolean;
+    export function isClassInstance(value: any, superclassValue?: any): boolean;
     export function isSubclassOfSuperclass(subclassValue: any, superclassValue: any): boolean;
     export function isSuperclassOfSubclass(superclassValue: any, subclassValue: any): boolean;
 
