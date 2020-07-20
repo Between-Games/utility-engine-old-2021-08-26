@@ -172,4 +172,18 @@ export function isNull(value) { //
     return value === null;      //
 }
 
+// ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗
+// ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ║   ║ ║
+// ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║
+// ║ ╔═══╗ ║║ ╔═╗ ╔═╝║ ╔═╗ ╔═╝║ ╔═══╗ ║╚═════╗ ║
+// ║ ║   ║ ║║ ║ ║ ╚═╗║ ║ ║ ╚═╗║ ║   ║ ║╔═════╝ ║
+// ╚═╝   ╚═╝╚═╝ ╚═══╝╚═╝ ╚═══╝╚═╝   ╚═╝╚═══════╝
 
+export function isArray(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {   //
+    return isPositiveNumber(minimumLength) &&                                                   //
+        isPositiveNumber(maximumLength) &&                                                      //
+        maximumLength >= minimumLength &&                                                       //
+        Array.isArray(value) &&                                                                 //
+        value.length >= minimumLength &&                                                        //
+        value.length <= maximumLength;                                                          //
+}

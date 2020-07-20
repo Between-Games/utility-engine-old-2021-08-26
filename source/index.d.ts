@@ -27,4 +27,6 @@ declare module 'utility-engine' {
     export function isNull(value: any): boolean;
     export function isNullish(value: any): boolean;
     export function isUndefined(value: any): boolean;
+
+    export function isArray(value: any, minimumLength?: number, maximumLength?: number): boolean;
 }
