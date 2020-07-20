@@ -187,3 +187,7 @@ export function isArray(value, minimumLength = 0, maximumLength = Number.POSITIV
         value.length >= minimumLength &&                                                        //
         value.length <= maximumLength;                                                          //
 }
+
+export function isFilledArray(value, maximumLength = Number.POSITIVE_INFINITY) {    //
+    return isArray(value, 1, maximumLength);                                        //
+}

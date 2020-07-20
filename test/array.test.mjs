@@ -226,4 +226,134 @@ describe('Array', function() {
             });
         });
     });
+
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═╗      ╔═╗      ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═════╝╚══╗ ╔══╝║ ║      ║ ║      ║ ╔═════╝╚╗ ╔══╗ ║         ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ║   ║ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═════╗   ║ ║   ║ ║      ║ ║      ║ ╚═════╗ ║ ║  ║ ║╔═══════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═════╝   ║ ║   ║ ║      ║ ║      ║ ╔═════╝ ║ ║  ║ ║╚═══════╝║ ╔═══╗ ║║ ╔═╗ ╔═╝║ ╔═╗ ╔═╝║ ╔═══╗ ║╚═════╗ ║
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ║      ╔══╝ ╚══╗║ ╚═════╗║ ╚═════╗║ ╚═════╗╔╝ ╚══╝ ║         ║ ║   ║ ║║ ║ ║ ╚═╗║ ║ ║ ╚═╗║ ║   ║ ║╔═════╝ ║
+    // ╚═══════╝╚═══════╝         ╚═╝      ╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═══════╝         ╚═╝   ╚═╝╚═╝ ╚═══╝╚═╝ ╚═══╝╚═╝   ╚═╝╚═══════╝
+
+    describe('#isFilledArray(value, maximumLength)', function() {
+        describe('#isFilledArray(VALUE, maximumLength)', function() {
+            it('Should return true when value is a filled array', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3])).to.equal(true);
+            });
+
+            it('Should return true when value is maximum length array', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], 3)).to.equal(true);
+            });
+
+            it('Should return true when value is short enough length array', () => {
+                expect(UtilityEngine.isFilledArray([1], 3)).to.equal(true);
+            });
+
+            it('Should return true when value is long enough length array', () => {
+                expect(UtilityEngine.isFilledArray([1, 2], 3)).to.equal(true);
+            });
+
+
+            it('Should return false when value is an empty array', () => {
+                expect(UtilityEngine.isFilledArray([])).to.equal(false);
+            });
+
+            it('Should return false when value is too short array', () => {
+                expect(UtilityEngine.isFilledArray([])).to.equal(false);
+            });
+
+            it('Should return false when value is too big array', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], 2)).to.equal(false);
+            });
+
+            it('Should return false when value is true', () => {
+                expect(UtilityEngine.isFilledArray(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false', () => {
+                expect(UtilityEngine.isFilledArray(false)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isFilledArray(null)).to.equal(false);
+            });
+
+            it('Should return false when value is undefined', () => {
+                expect(UtilityEngine.isFilledArray(undefined)).to.equal(false);
+            });
+
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.isFilledArray({})).to.equal(false);
+            });
+
+            it('Should return false when value is an empty string', () => {
+                expect(UtilityEngine.isFilledArray('')).to.equal(false);
+            });
+
+            it('Should return false when value is a filled string', () => {
+                expect(UtilityEngine.isFilledArray('string')).to.equal(false);
+            });
+
+            it('Should return false when value is a number', () => {
+                expect(UtilityEngine.isFilledArray(0)).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isFilledArray(function() {})).to.equal(false);
+            });
+        });
+
+        describe('#isFilledArray(value, MAXIMUMLENGTH)', function() {
+            it('Should return true when maximum length parameter is undefined', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is big enough', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], 4)).to.equal(true);
+            });
+
+
+            it('Should return false when maximum length parameter is smaller than minimum length', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], 1)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is null', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], null)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is true', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], true)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is false', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], false)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is null', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], null)).to.equal(false);
+            });
+            it('Should return false when maximum length parameter is an object', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], {})).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is a string', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], 'string')).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is an array', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], [])).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is a function', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], function() {})).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter negative number', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is too small', () => {
+                expect(UtilityEngine.isFilledArray([1, 2, 3], 2)).to.equal(false);
+            });
+        });
+    });
 });

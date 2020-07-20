@@ -29,4 +29,5 @@ declare module 'utility-engine' {
     export function isUndefined(value: any): boolean;
 
     export function isArray(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function isFilledArray(value: any, maximumLength?: number): boolean;
 }
