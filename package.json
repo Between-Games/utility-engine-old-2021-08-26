@@ -5,7 +5,7 @@
   "main": "source/index.js",
   "scripts": {
     "test": "npx mocha",
-    "build": "npx webpack"
+    "build": "npx webpack --watch"
   },
   "repository": {
     "type": "git",
