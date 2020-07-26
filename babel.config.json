@@ -1,0 +1,16 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env", {
+                "forceAllTransforms": true
+            }
+        ],
+        [
+            "minify", {
+                "mangle": {},
+                "keepFnName": true,
+                "keepClassName": true
+            }
+        ]
+    ]
+}
