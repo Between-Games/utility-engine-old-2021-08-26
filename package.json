@@ -2,7 +2,7 @@
   "name": "utility-engine",
   "version": "0.0.0",
   "description": "Upcoming details...",
-  "main": "source/index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "npx mocha",
     "build": "npx webpack --watch"
