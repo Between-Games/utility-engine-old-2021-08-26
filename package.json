@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A collection of JavaScript utility functionalities",
   "main": "build/index.js",
+  "files": ["build"],
   "scripts": {
     "test": "npx mocha",
     "build": "npx webpack --watch"
