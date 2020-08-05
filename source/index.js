@@ -18,6 +18,11 @@ export function isObject(value) {   //
     return value === Object(value); //
 }
 
+export function isFilledObject(value) {     //
+    return isObjectLiteral(value) &&        //
+        Object.entries(value).length > 0;   //
+}
+
 export function isObjectLiteral(value) {        //
     return isObject(value) &&                   //
         value.constructor.name === 'Object';    //

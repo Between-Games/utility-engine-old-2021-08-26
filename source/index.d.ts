@@ -12,6 +12,7 @@ declare module 'utility-engine' {
     export function isNegativeInteger(value: number, minimum?: number): boolean;
 
     export function isObject(value: any): boolean;
+    export function isFilledObject(value: any): boolean;
     export function isObjectLiteral(value: any): boolean;
 
     export function isClass(value: any, superclassValue?: any): boolean;

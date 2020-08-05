@@ -114,6 +114,91 @@ describe('Object', function() {
         });
     });
 
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═╗      ╔═╗      ╔═══════╗╔═══════╗         ╔═══════╗╔══════╗ ╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═════╝╚══╗ ╔══╝║ ║      ║ ║      ║ ╔═════╝╚╗ ╔══╗ ║         ║ ╔═══╗ ║║ ╔══╗ ║ ╚═══╗ ╔═╝║ ╔═════╝║ ╔═════╝╚══╗ ╔══╝
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═════╗   ║ ║   ║ ║      ║ ║      ║ ╚═════╗ ║ ║  ║ ║╔═══════╗║ ║   ║ ║║ ╚══╝ ╚╗    ║ ║  ║ ╚═════╗║ ║         ║ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═════╝   ║ ║   ║ ║      ║ ║      ║ ╔═════╝ ║ ║  ║ ║╚═══════╝║ ║   ║ ║║ ╔═══╗ ║    ║ ║  ║ ╔═════╝║ ║         ║ ║
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ║      ╔══╝ ╚══╗║ ╚═════╗║ ╚═════╗║ ╚═════╗╔╝ ╚══╝ ║         ║ ╚═══╝ ║║ ╚═══╝ ║╔═══╝ ║  ║ ╚═════╗║ ╚═════╗   ║ ║
+    // ╚═══════╝╚═══════╝         ╚═╝      ╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝╚═════╝  ╚═══════╝╚═══════╝   ╚═╝
+
+    describe('#isFilledObject(VALUE)', function() {
+        it('Should return true when value is a filled object', () => {
+            expect(UtilityEngine.isFilledObject({foo: 'bar'})).to.equal(true);
+        });
+
+        it('Should return false when value is an empty object', () => {
+            expect(UtilityEngine.isFilledObject({})).to.equal(false);
+        });
+
+        it('Should return false when value is a function', () => {
+            expect(UtilityEngine.isFilledObject(function() {})).to.equal(false);
+        });
+
+        it('Should return false when value is a class instance', () => {
+            expect(UtilityEngine.isFilledObject(new (class Class {})())).to.equal(false);
+        });
+
+        it('Should return false when value is a class instance', () => {
+            expect(UtilityEngine.isFilledObject(new (class Class {}))).to.equal(false);
+        });
+
+        it('Should return false when value is an array', () => {
+            expect(UtilityEngine.isFilledObject([])).to.equal(false);
+        });
+
+        it('Should return false when value is a map', () => {
+            expect(UtilityEngine.isFilledObject(new Map())).to.equal(false);
+        });
+
+        it('Should return false when value is a date', () => {
+            expect(UtilityEngine.isFilledObject(new Date())).to.equal(false);
+        });
+
+        it('Should return false when value is a class definition', () => {
+            expect(UtilityEngine.isFilledObject(class Class {})).to.equal(false);
+        });
+
+        it('Should return false when value is a wrapped primitive string', () => {
+            expect(UtilityEngine.isFilledObject(new String('string'))).to.equal(false);
+        });
+
+        it('Should return false when value is a wrapped primitive number', () => {
+            expect(UtilityEngine.isFilledObject(new Number('1'))).to.equal(false);
+        });
+
+        it('Should return false when value is null', () => {
+            expect(UtilityEngine.isFilledObject(null)).to.equal(false);
+        });
+
+        it('Should return false when value is undefined', () => {
+            expect(UtilityEngine.isFilledObject(undefined)).to.equal(false);
+        });
+
+        it('Should return false when value is true boolean', () => {
+            expect(UtilityEngine.isFilledObject(true)).to.equal(false);
+        });
+
+        it('Should return false when value is false boolean', () => {
+            expect(UtilityEngine.isFilledObject(false)).to.equal(false);
+        });
+
+        it('Should return false when value is a number', () => {
+            expect(UtilityEngine.isFilledObject(1)).to.equal(false);
+        });
+
+        it('Should return false when value is a primitive number', () => {
+            expect(UtilityEngine.isFilledObject(Number('1'))).to.equal(false);
+        });
+
+        it('Should return false when value is a string', () => {
+            expect(UtilityEngine.isFilledObject('string')).to.equal(false);
+        });
+
+        it('Should return false when value is a primitive string', () => {
+            expect(UtilityEngine.isFilledObject(String('string'))).to.equal(false);
+        });
+    });
+
     // ╔═══════╗╔═══════╗         ╔═══════╗╔══════╗ ╔═══════╗╔═══════╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗
     // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═══╗ ║║ ╔══╗ ║ ╚═══╗ ╔═╝║ ╔═════╝║ ╔═════╝╚══╗ ╔══╝         ║ ║      ╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║║ ╔═══╗ ║║ ║
     //    ║ ║   ║ ╚═════╗╔═══════╗║ ║   ║ ║║ ╚══╝ ╚╗    ║ ║  ║ ╚═════╗║ ║         ║ ║   ╔═══════╗║ ║         ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║
