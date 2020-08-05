@@ -23,6 +23,11 @@ export function isFilledObject(value) {     //
         Object.entries(value).length > 0;   //
 }
 
+export function isEmptyObject(value) {      //
+    return isObjectLiteral(value) &&        //
+        Object.entries(value).length === 0; //
+}
+
 export function isObjectLiteral(value) {        //
     return isObject(value) &&                   //
         value.constructor.name === 'Object';    //

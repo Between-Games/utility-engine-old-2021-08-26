@@ -114,6 +114,93 @@ describe('Object', function() {
         });
     });
 
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗         ╔═══════╗╔══════╗ ╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═════╝║ ╔╗ ╔╗ ║║ ╔═══╗ ║╚══╗ ╔══╝║ ║   ║ ║         ║ ╔═══╗ ║║ ╔══╗ ║ ╚═══╗ ╔═╝║ ╔═════╝║ ╔═════╝╚══╗ ╔══╝
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═════╗║ ║║ ║║ ║║ ╚═══╝ ║   ║ ║   ║ ╚═══╝ ║╔═══════╗║ ║   ║ ║║ ╚══╝ ╚╗    ║ ║  ║ ╚═════╗║ ║         ║ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═════╝║ ║║ ║║ ║║ ╔═════╝   ║ ║   ╚═════╗ ║╚═══════╝║ ║   ║ ║║ ╔═══╗ ║    ║ ║  ║ ╔═════╝║ ║         ║ ║
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ╚═════╗║ ║║ ║║ ║║ ║         ║ ║   ╔═════╝ ║         ║ ╚═══╝ ║║ ╚═══╝ ║╔═══╝ ║  ║ ╚═════╗║ ╚═════╗   ║ ║
+    // ╚═══════╝╚═══════╝         ╚═══════╝╚═╝╚═╝╚═╝╚═╝         ╚═╝   ╚═══════╝         ╚═══════╝╚═══════╝╚═════╝  ╚═══════╝╚═══════╝   ╚═╝
+
+    describe('#isFilledObject(VALUE)', function() {
+        it('Should return true when value is an empty object', () => {
+            expect(UtilityEngine.isEmptyObject({})).to.equal(true);
+        });
+
+
+        it('Should return false when value is a filled object', () => {
+            expect(UtilityEngine.isEmptyObject({foo: 'bar'})).to.equal(false);
+        });
+
+        it('Should return false when value is a function', () => {
+            expect(UtilityEngine.isEmptyObject(function() {})).to.equal(false);
+        });
+
+        it('Should return false when value is a class instance', () => {
+            expect(UtilityEngine.isEmptyObject(new (class Class {})())).to.equal(false);
+        });
+
+        it('Should return false when value is a class instance', () => {
+            expect(UtilityEngine.isEmptyObject(new (class Class {}))).to.equal(false);
+        });
+
+        it('Should return false when value is an array', () => {
+            expect(UtilityEngine.isEmptyObject([])).to.equal(false);
+        });
+
+        it('Should return false when value is a map', () => {
+            expect(UtilityEngine.isEmptyObject(new Map())).to.equal(false);
+        });
+
+        it('Should return false when value is a date', () => {
+            expect(UtilityEngine.isEmptyObject(new Date())).to.equal(false);
+        });
+
+        it('Should return false when value is a class definition', () => {
+            expect(UtilityEngine.isEmptyObject(class Class {})).to.equal(false);
+        });
+
+        it('Should return false when value is a wrapped primitive string', () => {
+            expect(UtilityEngine.isEmptyObject(new String('string'))).to.equal(false);
+        });
+
+        it('Should return false when value is a wrapped primitive number', () => {
+            expect(UtilityEngine.isEmptyObject(new Number('1'))).to.equal(false);
+        });
+
+        it('Should return false when value is null', () => {
+            expect(UtilityEngine.isEmptyObject(null)).to.equal(false);
+        });
+
+        it('Should return false when value is undefined', () => {
+            expect(UtilityEngine.isEmptyObject(undefined)).to.equal(false);
+        });
+
+        it('Should return false when value is true boolean', () => {
+            expect(UtilityEngine.isEmptyObject(true)).to.equal(false);
+        });
+
+        it('Should return false when value is false boolean', () => {
+            expect(UtilityEngine.isEmptyObject(false)).to.equal(false);
+        });
+
+        it('Should return false when value is a number', () => {
+            expect(UtilityEngine.isEmptyObject(1)).to.equal(false);
+        });
+
+        it('Should return false when value is a primitive number', () => {
+            expect(UtilityEngine.isEmptyObject(Number('1'))).to.equal(false);
+        });
+
+        it('Should return false when value is a string', () => {
+            expect(UtilityEngine.isEmptyObject('string')).to.equal(false);
+        });
+
+        it('Should return false when value is a primitive string', () => {
+            expect(UtilityEngine.isEmptyObject(String('string'))).to.equal(false);
+        });
+    });
+
+
     // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═╗      ╔═╗      ╔═══════╗╔═══════╗         ╔═══════╗╔══════╗ ╔═══════╗╔═══════╗╔═══════╗╔═══════╗
     // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═════╝╚══╗ ╔══╝║ ║      ║ ║      ║ ╔═════╝╚╗ ╔══╗ ║         ║ ╔═══╗ ║║ ╔══╗ ║ ╚═══╗ ╔═╝║ ╔═════╝║ ╔═════╝╚══╗ ╔══╝
     //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═════╗   ║ ║   ║ ║      ║ ║      ║ ╚═════╗ ║ ║  ║ ║╔═══════╗║ ║   ║ ║║ ╚══╝ ╚╗    ║ ║  ║ ╚═════╗║ ║         ║ ║
