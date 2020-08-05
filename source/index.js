@@ -14,8 +14,33 @@
 // ║ ╚═══╝ ║║ ╚═══╝ ║╔═══╝ ║  ║ ╚═════╗║ ╚═════╗   ║ ║
 // ╚═══════╝╚═══════╝╚═════╝  ╚═══════╝╚═══════╝   ╚═╝
 
+export function deflateObject(object, propertyKeyReference = '', deflatedObject = {}) {                         // Deflate object literal but stack property key path
+    if (!isObjectLiteral(object)) throw new TypeError('Cannot deflate the non-object value that was given');    // The provided value was found to be of invalid type
+
+    for (const propertyKey in object) {                                                                         // Loop through the properties of the provided object
+        const propertyValue = object[propertyKey];                                                              // Get the value associated with current property ket
+
+        if (isObjectLiteral(propertyValue)) {                                                                   // The property value was found to be a filled object
+            deflateObject(propertyValue, `${propertyKeyReference}${propertyKey}.`, deflatedObject);             // Deflate object literal but stack property key path
+        } else deflatedObject[`${propertyKeyReference}${propertyKey}`] = propertyValue;                         // Populate property of the submitted deflated object
+    }
+
+
+    return deflatedObject;                                                                                      // Return the newly deflated object that was provided
+}
+
 export function isObject(value) {   //
     return value === Object(value); //
+}
+
+export function isFilledObject(value) {     //
+    return isObjectLiteral(value) &&        //
+        Object.entries(value).length > 0;   //
+}
+
+export function isEmptyObject(value) {      //
+    return isObjectLiteral(value) &&        //
+        Object.entries(value).length === 0; //
 }
 
 export function isObjectLiteral(value) {        //
