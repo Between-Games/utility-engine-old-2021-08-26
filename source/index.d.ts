@@ -15,6 +15,7 @@ declare module 'utility-engine' {
     export function isEmptyObject(value: any): boolean;
     export function isFilledObject(value: any): boolean;
     export function isObjectLiteral(value: any): boolean;
+    export function deflateObject(value: object): boolean;
 
     export function isClass(value: any, superclassValue?: any): boolean;
     export function isClassInstance(value: any, superclassValue?: any): boolean;
