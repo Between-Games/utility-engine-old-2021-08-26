@@ -1,7 +1,7 @@
 {
-  "name": "utility-engine",
-  "version": "0.0.0",
-  "description": "Upcoming details...",
+  "name": "@sarc/utility-engine",
+  "version": "0.1.0",
+  "description": "A collection of JavaScript utility functionalities",
   "main": "build/index.js",
   "scripts": {
     "test": "npx mocha",
