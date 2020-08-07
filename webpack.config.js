@@ -14,8 +14,9 @@ module.exports = {
 
     output: {
         filename: 'index.js',
-        library: 'utility-engine',
-        libraryTarget: 'commonjs2',
+        library: 'UtilityEngine',
+        libraryTarget: 'umd',
+        globalObject: 'this',
         path: path.resolve(__dirname, 'build'),
     },
 
