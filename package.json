@@ -6,7 +6,8 @@
   "files": ["dist"],
   "scripts": {
     "test": "npx mocha",
-    "build": "npx webpack --watch"
+    "build": "webpack --watch",
+    "prepublishOnly": "webpack"
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,7 @@ module.exports = {
     mode: 'production',
     entry: './src/index.js',
 
-    watch: true,
+    watch: (process.argv.includes('--watch')),
     watchOptions: {
         poll: 1000,
         aggregateTimeout: 200,
