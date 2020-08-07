@@ -3,7 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'production',
-    entry: './source/index.js',
+    entry: './src/index.js',
 
     watch: true,
     watchOptions: {
@@ -17,14 +17,14 @@ module.exports = {
         library: 'UtilityEngine',
         libraryTarget: 'umd',
         globalObject: 'this',
-        path: path.resolve(__dirname, 'build'),
+        path: path.resolve(__dirname, 'dist'),
     },
 
     plugins: [
         new CopyPlugin({
             patterns: [
                 {
-                    from: 'source/index.d.ts',
+                    from: 'src/index.d.ts',
                 },
             ],
         }),

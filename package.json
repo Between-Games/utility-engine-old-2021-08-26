@@ -2,8 +2,8 @@
   "name": "@s-a-r-c/utility-engine",
   "version": "0.1.0",
   "description": "A collection of JavaScript utility functionalities",
-  "main": "build/index.js",
-  "files": ["build"],
+  "main": "dist/index.js",
+  "files": ["dist"],
   "scripts": {
     "test": "npx mocha",
     "build": "npx webpack --watch"
