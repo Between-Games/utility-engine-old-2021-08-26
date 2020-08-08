@@ -3,6 +3,7 @@ declare module 'utility-engine' {
     export function isEmptyString(value: any): boolean;
     export function hasWhitespace(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasDigit(value: any, minimumCount?: number, maximumCount?: number): boolean;
+    export function hasLetter(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function isString(value: any, minimumLength?: number, maximumLength?: number): boolean;
 
     export function isNumber(value: any, minimum?: number, maximum?: number): boolean;

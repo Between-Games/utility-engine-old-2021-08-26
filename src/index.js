@@ -105,7 +105,14 @@ export function hasDigit(value, minimumCount = 1, maximumCount = Number.POSITIVE
     return isNumber(minimumCount, 0, maximumCount) &&                                           //
         isNumber(maximumCount, minimumCount) &&                                                 //
         isString(value, minimumCount) &&                                                        //
-        isArray(value.match(/\d/g) || [], minimumCount, maximumCount);                         //
+        isArray(value.match(/\d/g) || [], minimumCount, maximumCount);                          //
+}
+
+export function hasLetter(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   // The value was found to be a string with whitespace
+    return isNumber(minimumCount, 0, maximumCount) &&                                           //
+        isNumber(maximumCount, minimumCount) &&                                                 //
+        isString(value, minimumCount) &&                                                        //
+        isArray((value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []), minimumCount, maximumCount);         //
 }
 
 export function isString(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {  // The submitted value was found to be a valid string
