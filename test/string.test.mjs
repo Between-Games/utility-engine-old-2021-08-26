@@ -392,37 +392,29 @@ describe('String', function() {
         });
     });
 
-    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═╗╔═╗╔═╗╔═╗   ╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
-    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ║║ ║║ ║║ ║   ║ ║╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═════╝║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝║ ╔═════╝
-    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ║║ ║║ ║║ ╚═══╝ ║   ║ ║      ║ ║   ║ ╚═════╗║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║      ║ ╚═════╗
-    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝║ ║║ ║║ ║║ ╔═══╗ ║   ║ ║      ║ ║   ║ ╔═════╝╚═════╗ ║║ ╔═════╝║ ╔═══╗ ║║ ║      ║ ╔═════╝
-    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚╝ ╚╝ ║║ ║   ║ ║╔══╝ ╚══╗   ║ ║   ║ ╚═════╗╔═════╝ ║║ ║      ║ ║   ║ ║║ ╚═════╗║ ╚═════╗
-    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═╝   ╚═╝╚═══════╝   ╚═╝   ╚═══════╝╚═══════╝╚═╝      ╚═╝   ╚═╝╚═══════╝╚═══════╝
+    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═╗╔═╗╔═╗╔═╗   ╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═╗   ╔═╗╔════╗╔═╗╔═══════╗
+    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ║║ ║║ ║║ ║   ║ ║╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═════╝║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝║ ╔═════╝         ║ ╔═════╝║ ╔═══╗ ║║ ║   ║ ║║ ╔╗ ║║ ║╚══╗ ╔══╝
+    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ║║ ║║ ║║ ╚═══╝ ║   ║ ║      ║ ║   ║ ╚═════╗║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║      ║ ╚═════╗╔═══════╗║ ║      ║ ║   ║ ║║ ║   ║ ║║ ║║ ║║ ║   ║ ║
+    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝║ ║║ ║║ ║║ ╔═══╗ ║   ║ ║      ║ ║   ║ ╔═════╝╚═════╗ ║║ ╔═════╝║ ╔═══╗ ║║ ║      ║ ╔═════╝╚═══════╝║ ║      ║ ║   ║ ║║ ║   ║ ║║ ║║ ║║ ║   ║ ║
+    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚╝ ╚╝ ║║ ║   ║ ║╔══╝ ╚══╗   ║ ║   ║ ╚═════╗╔═════╝ ║║ ║      ║ ║   ║ ║║ ╚═════╗║ ╚═════╗         ║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║║ ╚╝ ║   ║ ║
+    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═╝   ╚═╝╚═══════╝   ╚═╝   ╚═══════╝╚═══════╝╚═╝      ╚═╝   ╚═╝╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝╚═══════╝╚═╝╚════╝   ╚═╝
 
     describe('#hasWhitespaceCount(value, minimumCount, maximumCount)', function() {
         describe('#hasWhitespaceCount(VALUE, minimumCount, maximumCount)', function() {
-            it('Should return true when value has a whitespace character', () => {
+            it('Should return true when value is whitespace character', () => {
                 expect(UtilityEngine.hasWhitespaceCount(' ')).to.equal(true);
             });
 
-            it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespaceCount(' string')).to.equal(true);
+            it('Should return true when value is whitespace characters', () => {
+                expect(UtilityEngine.hasWhitespaceCount('  ')).to.equal(true);
             });
 
-            it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespaceCount('string ')).to.equal(true);
+            it('Should return true when value is mixed characters', () => {
+                expect(UtilityEngine.hasWhitespaceCount('123 ABC abc $#& .!?')).to.equal(true);
             });
 
-            it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespaceCount(' string ')).to.equal(true);
-            });
-
-            it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespaceCount(' str ing ')).to.equal(true);
-            });
-
-            it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespaceCount(' s t r i ng ')).to.equal(true);
+            it('Should return true when value is a sentence', () => {
+                expect(UtilityEngine.hasWhitespaceCount('No more half-measures')).to.equal(true);
             });
 
 
@@ -430,8 +422,24 @@ describe('String', function() {
                 expect(UtilityEngine.hasWhitespaceCount('')).to.equal(false);
             });
 
-            it('Should return false when value is a filled string', () => {
-                expect(UtilityEngine.hasWhitespaceCount('string')).to.equal(false);
+            it('Should return false when value is lower case letter characters', () => {
+                expect(UtilityEngine.hasWhitespaceCount('abcdefghijklmnopqrstuvwxyz')).to.equal(false);
+            });
+
+            it('Should return false when value is upper case letter characters', () => {
+                expect(UtilityEngine.hasWhitespaceCount('ABCDEFGHIJKLMNOPQRSTUVWXYZ')).to.equal(false);
+            });
+
+            it('Should return false when value is lower case accented letter characters', () => {
+                expect(UtilityEngine.hasWhitespaceCount('àáâäæãåāèéêëēėęôöòóœøōõ')).to.equal(false);
+            });
+
+            it('Should return false when value has upper case accented letter characters', () => {
+                expect(UtilityEngine.hasWhitespaceCount('ÀÁÂÄÆÃÅĀÈÉÊËĒĖĘÔÖÒÓŒØŌÕ')).to.equal(false);
+            });
+
+            it('Should return false when value is special characters', () => {
+                expect(UtilityEngine.hasWhitespaceCount('.:;•°×÷‰<>~`^!?(){}[]!@#$%$^&*()_шФ-+"/|\\\'')).to.equal(false);
             });
 
             it('Should return false when value is true', () => {
@@ -612,37 +620,25 @@ describe('String', function() {
         });
     });
 
-    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
-    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ╚╗ ╔══╗ ║╚══╗ ╔══╝║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝
-    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗ ║ ║  ║ ║   ║ ║   ║ ║ ╔═══╗   ║ ║      ║ ║
-    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝ ║ ║  ║ ║   ║ ║   ║ ║ ╚═╗ ║   ║ ║      ║ ║
-    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ╔╝ ╚══╝ ║╔══╝ ╚══╗║ ╚═══╝ ║╔══╝ ╚══╗   ║ ║
-    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═══════╝╚═══════╝╚═══════╝   ╚═╝
+    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═╗   ╔═╗╔════╗╔═╗╔═══════╗
+    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ╚╗ ╔══╗ ║╚══╗ ╔══╝║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝         ║ ╔═════╝║ ╔═══╗ ║║ ║   ║ ║║ ╔╗ ║║ ║╚══╗ ╔══╝
+    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗ ║ ║  ║ ║   ║ ║   ║ ║ ╔═══╗   ║ ║      ║ ║   ╔═══════╗║ ║      ║ ║   ║ ║║ ║   ║ ║║ ║║ ║║ ║   ║ ║
+    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝ ║ ║  ║ ║   ║ ║   ║ ║ ╚═╗ ║   ║ ║      ║ ║   ╚═══════╝║ ║      ║ ║   ║ ║║ ║   ║ ║║ ║║ ║║ ║   ║ ║
+    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ╔╝ ╚══╝ ║╔══╝ ╚══╗║ ╚═══╝ ║╔══╝ ╚══╗   ║ ║            ║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║║ ╚╝ ║   ║ ║
+    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═══════╝╚═══════╝╚═══════╝   ╚═╝            ╚═══════╝╚═══════╝╚═══════╝╚═╝╚════╝   ╚═╝
 
     describe('#hasDigitCount(value, minimumCount, maximumCount)', function() {
         describe('#hasDigitCount(VALUE, minimumCount, maximumCount)', function() {
-            it('Should return true when value has a digit character', () => {
+            it('Should return true when value is a  numerical character', () => {
                 expect(UtilityEngine.hasDigitCount('1')).to.equal(true);
             });
 
-            it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigitCount('123')).to.equal(true);
+            it('Should return true when value is numerical characters', () => {
+                expect(UtilityEngine.hasDigitCount('0123456789')).to.equal(true);
             });
 
-            it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigitCount('1string2')).to.equal(true);
-            });
-
-            it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigitCount('1string2string3')).to.equal(true);
-            });
-
-            it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigitCount('1 string 2 string 3')).to.equal(true);
-            });
-
-            it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigitCount('1 2 3 4 5 6 7 8 9')).to.equal(true);
+            it('Should return true when value is mixed characters', () => {
+                expect(UtilityEngine.hasDigitCount('123 ABC abc $#& .!?')).to.equal(true);
             });
 
 
@@ -650,8 +646,32 @@ describe('String', function() {
                 expect(UtilityEngine.hasDigitCount('')).to.equal(false);
             });
 
-            it('Should return false when value is a filled string', () => {
-                expect(UtilityEngine.hasDigitCount('string')).to.equal(false);
+            it('Should return false when value is a whitespace character', () => {
+                expect(UtilityEngine.hasDigitCount(' ')).to.equal(false);
+            });
+
+            it('Should return false when value is lower case letter characters', () => {
+                expect(UtilityEngine.hasDigitCount('abcdefghijklmnopqrstuvwxyz')).to.equal(false);
+            });
+
+            it('Should return false when value is upper case letter characters', () => {
+                expect(UtilityEngine.hasDigitCount('ABCDEFGHIJKLMNOPQRSTUVWXYZ')).to.equal(false);
+            });
+
+            it('Should return false when value is lower case accented letter characters', () => {
+                expect(UtilityEngine.hasDigitCount('àáâäæãåāèéêëēėęôöòóœøōõ')).to.equal(false);
+            });
+
+            it('Should return false when value has upper case accented letter characters', () => {
+                expect(UtilityEngine.hasDigitCount('ÀÁÂÄÆÃÅĀÈÉÊËĒĖĘÔÖÒÓŒØŌÕ')).to.equal(false);
+            });
+
+            it('Should return false when value is special characters', () => {
+                expect(UtilityEngine.hasDigitCount('.:;•°×÷‰<>~`^!?(){}[]!@#$%$^&*()_шФ-+"/|\\\'')).to.equal(false);
+            });
+
+            it('Should return false when value is a sentence', () => {
+                expect(UtilityEngine.hasDigitCount('No more half-measures')).to.equal(false);
             });
 
             it('Should return false when value is true', () => {
@@ -830,38 +850,69 @@ describe('String', function() {
         });
     });
 
-    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
-    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
-    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║
-    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝║ ║      ║ ╔═════╝   ║ ║      ║ ║   ║ ╔═════╝║ ╔═╗ ╔═╝
-    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗
-    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
+    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═╗   ╔═╗╔════╗╔═╗╔═══════╗
+    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║         ║ ╔═════╝║ ╔═══╗ ║║ ║   ║ ║║ ╔╗ ║║ ║╚══╗ ╔══╝
+    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║╔═══════╗║ ║      ║ ║   ║ ║║ ║   ║ ║║ ║║ ║║ ║   ║ ║
+    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝║ ║      ║ ╔═════╝   ║ ║      ║ ║   ║ ╔═════╝║ ╔═╗ ╔═╝╚═══════╝║ ║      ║ ║   ║ ║║ ║   ║ ║║ ║║ ║║ ║   ║ ║
+    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗         ║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║║ ╚╝ ║   ║ ║
+    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝         ╚═══════╝╚═══════╝╚═══════╝╚═╝╚════╝   ╚═╝
 
     describe('#hasLetterCount(value, minimumCount, maximumCount)', function() {
         describe('#hasLetterCount(VALUE, minimumCount, maximumCount)', function() {
-            it('Should return true when value has a letter character', () => {
+            it('Should return true when value is a lower case letter character', () => {
+                expect(UtilityEngine.hasLetterCount('a')).to.equal(true);
+            });
+
+            it('Should return true when value is an upper case letter character', () => {
                 expect(UtilityEngine.hasLetterCount('À')).to.equal(true);
             });
 
-            it('Should return true when value has many letter characters', () => {
-                expect(UtilityEngine.hasLetterCount('1AZ 2Aa z3ÀŽ 4àž 5Œœ  .:;×÷<>~`^!?(){}[]!@#$%^&*()_-+"/|\\\'')).to.equal(true);
+            it('Should return true when value is an accented lower case letter character', () => {
+                expect(UtilityEngine.hasLetterCount('à')).to.equal(true);
             });
 
-            it('Should return true when value has a letter character', () => {
-                expect(UtilityEngine.hasLetterCount(' a à æ œ o 6 7 8 9')).to.equal(true);
+            it('Should return true when value is an accented upper case letter character', () => {
+                expect(UtilityEngine.hasLetterCount('À')).to.equal(true);
             });
 
+            it('Should return true when value is lower case letter characters', () => {
+                expect(UtilityEngine.hasLetterCount('abcdefghijklmnopqrstuvwxyz')).to.equal(true);
+            });
+
+            it('Should return true when value is upper case letter characters', () => {
+                expect(UtilityEngine.hasLetterCount('ABCDEFGHIJKLMNOPQRSTUVWXYZ')).to.equal(true);
+            });
+
+            it('Should return true when value is lower case accented letter characters', () => {
+                expect(UtilityEngine.hasLetterCount('àáâäæãåāèéêëēėęôöòóœøōõ')).to.equal(true);
+            });
+
+            it('Should return true when value has upper case accented letter characters', () => {
+                expect(UtilityEngine.hasLetterCount('ÀÁÂÄÆÃÅĀÈÉÊËĒĖĘÔÖÒÓŒØŌÕ')).to.equal(true);
+            });
+
+            it('Should return true when value is a sentence', () => {
+                expect(UtilityEngine.hasLetterCount('No more half-measures')).to.equal(true);
+            });
+
+            it('Should return true when value is mixed characters', () => {
+                expect(UtilityEngine.hasLetterCount('123 ABC abc $#& .!?')).to.equal(true);
+            });
 
             it('Should return false when value is an empty string', () => {
                 expect(UtilityEngine.hasLetterCount('')).to.equal(false);
             });
 
-            it('Should return false when value is only whitespace character', () => {
+            it('Should return false when value is a whitespace character', () => {
                 expect(UtilityEngine.hasLetterCount(' ')).to.equal(false);
             });
 
-            it('Should return false when value has only special characters', () => {
-                expect(UtilityEngine.hasLetterCount(' .:;×÷<>~`^!?(){}[]!@#$%^&*()_-+"/|\\\'')).to.equal(false);
+            it('Should return false when value is numerical characters', () => {
+                expect(UtilityEngine.hasLetterCount('0123456789')).to.equal(false);
+            });
+
+            it('Should return false when value is special characters', () => {
+                expect(UtilityEngine.hasLetterCount('.:;•°×÷‰<>~`^!?(){}[]!@#$%$^&*()_шФ-+"/|\\\'')).to.equal(false);
             });
 
             it('Should return false when value is true', () => {
