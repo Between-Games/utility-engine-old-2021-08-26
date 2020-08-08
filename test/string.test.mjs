@@ -399,71 +399,211 @@ describe('String', function() {
     // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚╝ ╚╝ ║║ ║   ║ ║╔══╝ ╚══╗   ║ ║   ║ ╚═════╗╔═════╝ ║║ ║      ║ ║   ║ ║║ ╚═════╗║ ╚═════╗
     // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═╝   ╚═╝╚═══════╝   ╚═╝   ╚═══════╝╚═══════╝╚═╝      ╚═╝   ╚═╝╚═══════╝╚═══════╝
 
-    describe('#hasWhitespace(VALUE)', function() {
-        it('Should return true when value has a whitespace character', () => {
-            expect(UtilityEngine.hasWhitespace(' ')).to.equal(true);
+    describe('#hasWhitespace(value, minimumCount, maximumCount)', function() {
+        describe('#hasWhitespace(VALUE, minimumCount, maximumCount)', function() {
+            it('Should return true when value has a whitespace character', () => {
+                expect(UtilityEngine.hasWhitespace(' ')).to.equal(true);
+            });
+
+            it('Should return true when value has a whitespace character', () => {
+                expect(UtilityEngine.hasWhitespace(' string')).to.equal(true);
+            });
+
+            it('Should return true when value has a whitespace character', () => {
+                expect(UtilityEngine.hasWhitespace('string ')).to.equal(true);
+            });
+
+            it('Should return true when value has a whitespace character', () => {
+                expect(UtilityEngine.hasWhitespace(' string ')).to.equal(true);
+            });
+
+            it('Should return true when value has a whitespace character', () => {
+                expect(UtilityEngine.hasWhitespace(' str ing ')).to.equal(true);
+            });
+
+            it('Should return true when value has a whitespace character', () => {
+                expect(UtilityEngine.hasWhitespace(' s t r i ng ')).to.equal(true);
+            });
+
+
+            it('Should return false when value is an empty string', () => {
+                expect(UtilityEngine.hasWhitespace('')).to.equal(false);
+            });
+
+            it('Should return false when value is a filled string', () => {
+                expect(UtilityEngine.hasWhitespace('string')).to.equal(false);
+            });
+
+            it('Should return false when value is true', () => {
+                expect(UtilityEngine.hasWhitespace(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false', () => {
+                expect(UtilityEngine.hasWhitespace(false)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.hasWhitespace(null)).to.equal(false);
+            });
+
+            it('Should return false when value is undefined', () => {
+                expect(UtilityEngine.hasWhitespace(undefined)).to.equal(false);
+            });
+
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.hasWhitespace({})).to.equal(false);
+            });
+
+            it('Should return false when value is a number', () => {
+                expect(UtilityEngine.hasWhitespace(0)).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.hasWhitespace([])).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.hasWhitespace(function() {
+                })).to.equal(false);
+            });
         });
 
-        it('Should return true when value has a whitespace character', () => {
-            expect(UtilityEngine.hasWhitespace(' string')).to.equal(true);
+        describe('#hasWhitespace(value, MINIMUMCOUNT, maximumCount)', function() {
+            it('Should return true when minimum count parameter is undefined', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is small enough', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 1)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is big enough', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 2)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is at minimum', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 1)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is at maximum', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 3)).to.equal(true);
+            });
+
+
+            it('Should return false when minimum count parameter is too big', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 4)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is too small', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 0)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is bigger than maximum count', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 4, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is null', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', null)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is true', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', true)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is false', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', false)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is an object', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', {})).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is a string', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 'string')).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is an array', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', [])).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is a function', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', function() {})).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter negative number', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is positive infinity', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', Number.POSITIVE_INFINITY)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is negative infinity', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
         });
 
-        it('Should return true when value has a whitespace character', () => {
-            expect(UtilityEngine.hasWhitespace('string ')).to.equal(true);
-        });
+        describe('#hasWhitespace(value, minimumCount, MAXIMUMCOUNT)', function() {
+            it('Should return true when maximum count parameter is undefined', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, undefined)).to.equal(true);
+            });
 
-        it('Should return true when value has a whitespace character', () => {
-            expect(UtilityEngine.hasWhitespace(' string ')).to.equal(true);
-        });
+            it('Should return true when maximum count parameter is just small enough', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 3)).to.equal(true);
+            });
 
-        it('Should return true when value has a whitespace character', () => {
-            expect(UtilityEngine.hasWhitespace(' str ing ')).to.equal(true);
-        });
+            it('Should return true when maximum count parameter is big enough', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 4)).to.equal(true);
+            });
 
-        it('Should return true when value has a whitespace character', () => {
-            expect(UtilityEngine.hasWhitespace(' s t r i ng ')).to.equal(true);
-        });
+            it('Should return true when maximum count parameter is positive infinity', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
+            });
 
 
-        it('Should return false when value is an empty string', () => {
-            expect(UtilityEngine.hasWhitespace('')).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is too small', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 2)).to.equal(false);
+            });
 
-        it('Should return false when value is a filled string', () => {
-            expect(UtilityEngine.hasWhitespace('string')).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is smaller than minimum count', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 4, 3)).to.equal(false);
+            });
 
-        it('Should return false when value is true', () => {
-            expect(UtilityEngine.hasWhitespace(true)).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is null', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, null)).to.equal(false);
+            });
 
-        it('Should return false when value is false', () => {
-            expect(UtilityEngine.hasWhitespace(false)).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is true', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, true)).to.equal(false);
+            });
 
-        it('Should return false when value is null', () => {
-            expect(UtilityEngine.hasWhitespace(null)).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is false', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, false)).to.equal(false);
+            });
 
-        it('Should return false when value is undefined', () => {
-            expect(UtilityEngine.hasWhitespace(undefined)).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is an object', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, {})).to.equal(false);
+            });
 
-        it('Should return false when value is an object', () => {
-            expect(UtilityEngine.hasWhitespace({})).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is a string', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 'string')).to.equal(false);
+            });
 
-        it('Should return false when value is a number', () => {
-            expect(UtilityEngine.hasWhitespace(0)).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is an array', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, [])).to.equal(false);
+            });
 
-        it('Should return false when value is an array', () => {
-            expect(UtilityEngine.hasWhitespace([])).to.equal(false);
-        });
+            it('Should return false when maximum count parameter is a function', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, function() {})).to.equal(false);
+            });
 
-        it('Should return false when value is a function', () => {
-            expect(UtilityEngine.hasWhitespace(function() {
-            })).to.equal(false);
+            it('Should return false when maximum count parameter negative number', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is negative infinity', () => {
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
         });
     });
 });

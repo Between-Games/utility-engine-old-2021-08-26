@@ -94,14 +94,16 @@ export function isEmptyString(value) {              // The provided value was fo
     return isString(value) && '' === value.trim();  // The provided value was found to be an empty string
 }
 
-export function hasWhitespace(value) {              // The value was found to be a string with whitespace
-    return isString(value) && value.includes(' ');  // The value was found to be a string with whitespace
+export function hasWhitespace(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   // The value was found to be a string with whitespace
+    return isNumber(minimumCount, 1, maximumCount) &&                                               //
+        isNumber(maximumCount, minimumCount) &&                                                     //
+        isString(value, minimumCount) &&                                                            //
+        isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                              //
 }
 
 export function isString(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {  // The submitted value was found to be a valid string
-    return isPositiveNumber(minimumLength) &&                                                   //
-        isPositiveNumber(maximumLength) &&                                                      //
-        maximumLength >= minimumLength &&                                                       //
+    return isNumber(minimumLength, 0, maximumLength) &&                                         //
+        isNumber(maximumLength, minimumLength) &&                                               //
         value != null &&                                                                        //
         value.constructor === String &&                                                         //
         value.length >= minimumLength &&                                                        //
