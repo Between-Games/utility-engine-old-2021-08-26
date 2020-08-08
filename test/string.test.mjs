@@ -391,4 +391,79 @@ describe('String', function() {
             expect(UtilityEngine.isEmptyString(function() {})).to.equal(false);
         });
     });
+
+    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═╗╔═╗╔═╗╔═╗   ╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ║║ ║║ ║║ ║   ║ ║╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═════╝║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝║ ╔═════╝
+    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ║║ ║║ ║║ ╚═══╝ ║   ║ ║      ║ ║   ║ ╚═════╗║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║      ║ ╚═════╗
+    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝║ ║║ ║║ ║║ ╔═══╗ ║   ║ ║      ║ ║   ║ ╔═════╝╚═════╗ ║║ ╔═════╝║ ╔═══╗ ║║ ║      ║ ╔═════╝
+    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚╝ ╚╝ ║║ ║   ║ ║╔══╝ ╚══╗   ║ ║   ║ ╚═════╗╔═════╝ ║║ ║      ║ ║   ║ ║║ ╚═════╗║ ╚═════╗
+    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═╝   ╚═╝╚═══════╝   ╚═╝   ╚═══════╝╚═══════╝╚═╝      ╚═╝   ╚═╝╚═══════╝╚═══════╝
+
+    describe('#hasWhitespace(VALUE)', function() {
+        it('Should return true when value has a whitespace character', () => {
+            expect(UtilityEngine.hasWhitespace(' ')).to.equal(true);
+        });
+
+        it('Should return true when value has a whitespace character', () => {
+            expect(UtilityEngine.hasWhitespace(' string')).to.equal(true);
+        });
+
+        it('Should return true when value has a whitespace character', () => {
+            expect(UtilityEngine.hasWhitespace('string ')).to.equal(true);
+        });
+
+        it('Should return true when value has a whitespace character', () => {
+            expect(UtilityEngine.hasWhitespace(' string ')).to.equal(true);
+        });
+
+        it('Should return true when value has a whitespace character', () => {
+            expect(UtilityEngine.hasWhitespace(' str ing ')).to.equal(true);
+        });
+
+        it('Should return true when value has a whitespace character', () => {
+            expect(UtilityEngine.hasWhitespace(' s t r i ng ')).to.equal(true);
+        });
+
+
+        it('Should return false when value is an empty string', () => {
+            expect(UtilityEngine.hasWhitespace('')).to.equal(false);
+        });
+
+        it('Should return false when value is a filled string', () => {
+            expect(UtilityEngine.hasWhitespace('string')).to.equal(false);
+        });
+
+        it('Should return false when value is true', () => {
+            expect(UtilityEngine.hasWhitespace(true)).to.equal(false);
+        });
+
+        it('Should return false when value is false', () => {
+            expect(UtilityEngine.hasWhitespace(false)).to.equal(false);
+        });
+
+        it('Should return false when value is null', () => {
+            expect(UtilityEngine.hasWhitespace(null)).to.equal(false);
+        });
+
+        it('Should return false when value is undefined', () => {
+            expect(UtilityEngine.hasWhitespace(undefined)).to.equal(false);
+        });
+
+        it('Should return false when value is an object', () => {
+            expect(UtilityEngine.hasWhitespace({})).to.equal(false);
+        });
+
+        it('Should return false when value is a number', () => {
+            expect(UtilityEngine.hasWhitespace(0)).to.equal(false);
+        });
+
+        it('Should return false when value is an array', () => {
+            expect(UtilityEngine.hasWhitespace([])).to.equal(false);
+        });
+
+        it('Should return false when value is a function', () => {
+            expect(UtilityEngine.hasWhitespace(function() {
+            })).to.equal(false);
+        });
+    });
 });
