@@ -482,20 +482,20 @@ describe('String', function() {
             });
 
             it('Should return true when minimum count parameter is at minimum', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 1)).to.equal(true);
+                expect(UtilityEngine.hasWhitespace('1 2 3 ', 0)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is at maximum', () => {
                 expect(UtilityEngine.hasWhitespace('1 2 3 ', 3)).to.equal(true);
             });
 
+            it('Should return true when minimum count parameter is zero', () => {
+                expect(UtilityEngine.hasWhitespace('0', 0)).to.equal(true);
+            });
+
 
             it('Should return false when minimum count parameter is too big', () => {
                 expect(UtilityEngine.hasWhitespace('1 2 3 ', 4)).to.equal(false);
-            });
-
-            it('Should return false when minimum count parameter is too small', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 0)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is bigger than maximum count', () => {
@@ -555,6 +555,11 @@ describe('String', function() {
             it('Should return true when maximum count parameter is big enough', () => {
                 expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 4)).to.equal(true);
             });
+
+            it('Should return true when maximum and minimum count parameters are zero', () => {
+                expect(UtilityEngine.hasWhitespace('0', 0, 0)).to.equal(true);
+            });
+
 
             it('Should return true when maximum count parameter is positive infinity', () => {
                 expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, Number.POSITIVE_INFINITY)).to.equal(true);

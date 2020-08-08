@@ -95,7 +95,7 @@ export function isEmptyString(value) {              // The provided value was fo
 }
 
 export function hasWhitespace(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   // The value was found to be a string with whitespace
-    return isNumber(minimumCount, 1, maximumCount) &&                                               //
+    return isNumber(minimumCount, 0, maximumCount) &&                                               //
         isNumber(maximumCount, minimumCount) &&                                                     //
         isString(value, minimumCount) &&                                                            //
         isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                              //
