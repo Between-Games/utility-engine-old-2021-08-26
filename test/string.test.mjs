@@ -399,215 +399,215 @@ describe('String', function() {
     // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚╝ ╚╝ ║║ ║   ║ ║╔══╝ ╚══╗   ║ ║   ║ ╚═════╗╔═════╝ ║║ ║      ║ ║   ║ ║║ ╚═════╗║ ╚═════╗
     // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═╝   ╚═╝╚═══════╝   ╚═╝   ╚═══════╝╚═══════╝╚═╝      ╚═╝   ╚═╝╚═══════╝╚═══════╝
 
-    describe('#hasWhitespace(value, minimumCount, maximumCount)', function() {
-        describe('#hasWhitespace(VALUE, minimumCount, maximumCount)', function() {
+    describe('#hasWhitespaceCount(value, minimumCount, maximumCount)', function() {
+        describe('#hasWhitespaceCount(VALUE, minimumCount, maximumCount)', function() {
             it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespace(' ')).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount(' ')).to.equal(true);
             });
 
             it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespace(' string')).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount(' string')).to.equal(true);
             });
 
             it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespace('string ')).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('string ')).to.equal(true);
             });
 
             it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespace(' string ')).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount(' string ')).to.equal(true);
             });
 
             it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespace(' str ing ')).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount(' str ing ')).to.equal(true);
             });
 
             it('Should return true when value has a whitespace character', () => {
-                expect(UtilityEngine.hasWhitespace(' s t r i ng ')).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount(' s t r i ng ')).to.equal(true);
             });
 
 
             it('Should return false when value is an empty string', () => {
-                expect(UtilityEngine.hasWhitespace('')).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('')).to.equal(false);
             });
 
             it('Should return false when value is a filled string', () => {
-                expect(UtilityEngine.hasWhitespace('string')).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('string')).to.equal(false);
             });
 
             it('Should return false when value is true', () => {
-                expect(UtilityEngine.hasWhitespace(true)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount(true)).to.equal(false);
             });
 
             it('Should return false when value is false', () => {
-                expect(UtilityEngine.hasWhitespace(false)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount(false)).to.equal(false);
             });
 
             it('Should return false when value is null', () => {
-                expect(UtilityEngine.hasWhitespace(null)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount(null)).to.equal(false);
             });
 
             it('Should return false when value is undefined', () => {
-                expect(UtilityEngine.hasWhitespace(undefined)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount(undefined)).to.equal(false);
             });
 
             it('Should return false when value is an object', () => {
-                expect(UtilityEngine.hasWhitespace({})).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount({})).to.equal(false);
             });
 
             it('Should return false when value is a number', () => {
-                expect(UtilityEngine.hasWhitespace(0)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount(0)).to.equal(false);
             });
 
             it('Should return false when value is an array', () => {
-                expect(UtilityEngine.hasWhitespace([])).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount([])).to.equal(false);
             });
 
             it('Should return false when value is a function', () => {
-                expect(UtilityEngine.hasWhitespace(function() {
+                expect(UtilityEngine.hasWhitespaceCount(function() {
                 })).to.equal(false);
             });
         });
 
-        describe('#hasWhitespace(value, MINIMUMCOUNT, maximumCount)', function() {
+        describe('#hasWhitespaceCount(value, MINIMUMCOUNT, maximumCount)', function() {
             it('Should return true when minimum count parameter is undefined', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is small enough', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 1)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', 1)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is big enough', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 2)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', 2)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is at minimum', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 0)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', 0)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is at maximum', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 3)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', 3)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is zero', () => {
-                expect(UtilityEngine.hasWhitespace('0', 0)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('0', 0)).to.equal(true);
             });
 
 
             it('Should return false when minimum count parameter is too big', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 4)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', 4)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is bigger than maximum count', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 4, 3)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', 4, 3)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is null', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', null)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', null)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is true', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', true)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', true)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is false', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', false)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', false)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is an object', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', {})).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', {})).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is a string', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 'string')).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', 'string')).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is an array', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', [])).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', [])).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is a function', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', function() {})).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', function() {})).to.equal(false);
             });
 
             it('Should return false when minimum count parameter negative number', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', -1)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', -1)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is positive infinity', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', Number.POSITIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', Number.POSITIVE_INFINITY)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is negative infinity', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', Number.NEGATIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
 
-        describe('#hasWhitespace(value, minimumCount, MAXIMUMCOUNT)', function() {
+        describe('#hasWhitespaceCount(value, minimumCount, MAXIMUMCOUNT)', function() {
             it('Should return true when maximum count parameter is undefined', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, undefined)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, undefined)).to.equal(true);
             });
 
             it('Should return true when maximum count parameter is just small enough', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 3)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, 3)).to.equal(true);
             });
 
             it('Should return true when maximum count parameter is big enough', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 4)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, 4)).to.equal(true);
             });
 
             it('Should return true when maximum and minimum count parameters are zero', () => {
-                expect(UtilityEngine.hasWhitespace('0', 0, 0)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('0', 0, 0)).to.equal(true);
             });
 
 
             it('Should return true when maximum count parameter is positive infinity', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
             });
 
 
             it('Should return false when maximum count parameter is too small', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 2)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, 2)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is smaller than minimum count', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', 4, 3)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', 4, 3)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is null', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, null)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, null)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is true', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, true)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, true)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is false', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, false)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, false)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is an object', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, {})).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, {})).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is a string', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, 'string')).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, 'string')).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is an array', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, [])).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, [])).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is a function', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, function() {})).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, function() {})).to.equal(false);
             });
 
             it('Should return false when maximum count parameter negative number', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, -1)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, -1)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is negative infinity', () => {
-                expect(UtilityEngine.hasWhitespace('1 2 3 ', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasWhitespaceCount('1 2 3 ', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
     });
@@ -619,213 +619,213 @@ describe('String', function() {
     // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ╔╝ ╚══╝ ║╔══╝ ╚══╗║ ╚═══╝ ║╔══╝ ╚══╗   ║ ║
     // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═══════╝╚═══════╝╚═══════╝   ╚═╝
 
-    describe('#hasDigit(value, minimumCount, maximumCount)', function() {
-        describe('#hasDigit(VALUE, minimumCount, maximumCount)', function() {
+    describe('#hasDigitCount(value, minimumCount, maximumCount)', function() {
+        describe('#hasDigitCount(VALUE, minimumCount, maximumCount)', function() {
             it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigit('1')).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('1')).to.equal(true);
             });
 
             it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigit('123')).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123')).to.equal(true);
             });
 
             it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigit('1string2')).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('1string2')).to.equal(true);
             });
 
             it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigit('1string2string3')).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('1string2string3')).to.equal(true);
             });
 
             it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigit('1 string 2 string 3')).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('1 string 2 string 3')).to.equal(true);
             });
 
             it('Should return true when value has a digit character', () => {
-                expect(UtilityEngine.hasDigit('1 2 3 4 5 6 7 8 9')).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('1 2 3 4 5 6 7 8 9')).to.equal(true);
             });
 
 
             it('Should return false when value is an empty string', () => {
-                expect(UtilityEngine.hasDigit('')).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('')).to.equal(false);
             });
 
             it('Should return false when value is a filled string', () => {
-                expect(UtilityEngine.hasDigit('string')).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('string')).to.equal(false);
             });
 
             it('Should return false when value is true', () => {
-                expect(UtilityEngine.hasDigit(true)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount(true)).to.equal(false);
             });
 
             it('Should return false when value is false', () => {
-                expect(UtilityEngine.hasDigit(false)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount(false)).to.equal(false);
             });
 
             it('Should return false when value is null', () => {
-                expect(UtilityEngine.hasDigit(null)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount(null)).to.equal(false);
             });
 
             it('Should return false when value is undefined', () => {
-                expect(UtilityEngine.hasDigit(undefined)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount(undefined)).to.equal(false);
             });
 
             it('Should return false when value is an object', () => {
-                expect(UtilityEngine.hasDigit({})).to.equal(false);
+                expect(UtilityEngine.hasDigitCount({})).to.equal(false);
             });
 
             it('Should return false when value is a number', () => {
-                expect(UtilityEngine.hasDigit(0)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount(0)).to.equal(false);
             });
 
             it('Should return false when value is an array', () => {
-                expect(UtilityEngine.hasDigit([])).to.equal(false);
+                expect(UtilityEngine.hasDigitCount([])).to.equal(false);
             });
 
             it('Should return false when value is a function', () => {
-                expect(UtilityEngine.hasDigit(function() {})).to.equal(false);
+                expect(UtilityEngine.hasDigitCount(function() {})).to.equal(false);
             });
         });
 
-        describe('#hasDigit(value, MINIMUMCOUNT, maximumCount)', function() {
+        describe('#hasDigitCount(value, MINIMUMCOUNT, maximumCount)', function() {
             it('Should return true when minimum count parameter is undefined', () => {
-                expect(UtilityEngine.hasDigit('123', undefined)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123', undefined)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is small enough', () => {
-                expect(UtilityEngine.hasDigit('123', 1)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123', 1)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is big enough', () => {
-                expect(UtilityEngine.hasDigit('123', 2)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123', 2)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is at minimum', () => {
-                expect(UtilityEngine.hasDigit('123', 0)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123', 0)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is at maximum', () => {
-                expect(UtilityEngine.hasDigit('123', 3)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123', 3)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is zero', () => {
-                expect(UtilityEngine.hasDigit('123', 0)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123', 0)).to.equal(true);
             });
 
 
             it('Should return false when minimum count parameter is too big', () => {
-                expect(UtilityEngine.hasDigit('123', 4)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', 4)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is bigger than maximum count', () => {
-                expect(UtilityEngine.hasDigit('123', 4, 3)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', 4, 3)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is null', () => {
-                expect(UtilityEngine.hasDigit('123', null)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', null)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is true', () => {
-                expect(UtilityEngine.hasDigit('123', true)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', true)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is false', () => {
-                expect(UtilityEngine.hasDigit('123', false)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', false)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is an object', () => {
-                expect(UtilityEngine.hasDigit('123', {})).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', {})).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is a string', () => {
-                expect(UtilityEngine.hasDigit('123', 'string')).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', 'string')).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is an array', () => {
-                expect(UtilityEngine.hasDigit('123', [])).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', [])).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is a function', () => {
-                expect(UtilityEngine.hasDigit('123', function() {})).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', function() {})).to.equal(false);
             });
 
             it('Should return false when minimum count parameter negative number', () => {
-                expect(UtilityEngine.hasDigit('123', -1)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', -1)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is positive infinity', () => {
-                expect(UtilityEngine.hasDigit('123', Number.POSITIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', Number.POSITIVE_INFINITY)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is negative infinity', () => {
-                expect(UtilityEngine.hasDigit('123', Number.NEGATIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
 
-        describe('#hasDigit(value, minimumCount, MAXIMUMCOUNT)', function() {
+        describe('#hasDigitCount(value, minimumCount, MAXIMUMCOUNT)', function() {
             it('Should return true when maximum count parameter is undefined', () => {
-                expect(UtilityEngine.hasDigit('123 ', undefined, undefined)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123 ', undefined, undefined)).to.equal(true);
             });
 
             it('Should return true when maximum count parameter is just small enough', () => {
-                expect(UtilityEngine.hasDigit('123 ', undefined, 3)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123 ', undefined, 3)).to.equal(true);
             });
 
             it('Should return true when maximum count parameter is big enough', () => {
-                expect(UtilityEngine.hasDigit('123 ', undefined, 4)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123 ', undefined, 4)).to.equal(true);
             });
 
             it('Should return true when maximum and minimum count parameters are zero', () => {
-                expect(UtilityEngine.hasDigit('zero', 0, 0)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('zero', 0, 0)).to.equal(true);
             });
 
             it('Should return true when maximum count parameter is positive infinity', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
+                expect(UtilityEngine.hasDigitCount('123', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
             });
 
 
             it('Should return false when maximum count parameter is too small', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, 2)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, 2)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is smaller than minimum count', () => {
-                expect(UtilityEngine.hasDigit('123', 3, 2)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', 3, 2)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is null', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, null)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, null)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is true', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, true)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, true)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is false', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, false)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, false)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is an object', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, {})).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, {})).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is a string', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, 'string')).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, 'string')).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is an array', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, [])).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, [])).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is a function', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, function() {})).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, function() {})).to.equal(false);
             });
 
             it('Should return false when maximum count parameter negative number', () => {
-                expect(UtilityEngine.hasDigit('123 ', undefined, -1)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123 ', undefined, -1)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is negative infinity', () => {
-                expect(UtilityEngine.hasDigit('123', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasDigitCount('123', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
     });
@@ -837,205 +837,205 @@ describe('String', function() {
     // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗
     // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
 
-    describe('#hasLetter(value, minimumCount, maximumCount)', function() {
-        describe('#hasLetter(VALUE, minimumCount, maximumCount)', function() {
+    describe('#hasLetterCount(value, minimumCount, maximumCount)', function() {
+        describe('#hasLetterCount(VALUE, minimumCount, maximumCount)', function() {
             it('Should return true when value has a letter character', () => {
-                expect(UtilityEngine.hasLetter('À')).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('À')).to.equal(true);
             });
 
             it('Should return true when value has many letter characters', () => {
-                expect(UtilityEngine.hasLetter('1AZ 2Aa z3ÀŽ 4àž 5Œœ  .:;×÷<>~`^!?(){}[]!@#$%^&*()_-+"/|\\\'')).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('1AZ 2Aa z3ÀŽ 4àž 5Œœ  .:;×÷<>~`^!?(){}[]!@#$%^&*()_-+"/|\\\'')).to.equal(true);
             });
 
             it('Should return true when value has a letter character', () => {
-                expect(UtilityEngine.hasLetter(' a à æ œ o 6 7 8 9')).to.equal(true);
+                expect(UtilityEngine.hasLetterCount(' a à æ œ o 6 7 8 9')).to.equal(true);
             });
 
 
             it('Should return false when value is an empty string', () => {
-                expect(UtilityEngine.hasLetter('')).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('')).to.equal(false);
             });
 
             it('Should return false when value is only whitespace character', () => {
-                expect(UtilityEngine.hasLetter(' ')).to.equal(false);
+                expect(UtilityEngine.hasLetterCount(' ')).to.equal(false);
             });
 
             it('Should return false when value has only special characters', () => {
-                expect(UtilityEngine.hasLetter(' .:;×÷<>~`^!?(){}[]!@#$%^&*()_-+"/|\\\'')).to.equal(false);
+                expect(UtilityEngine.hasLetterCount(' .:;×÷<>~`^!?(){}[]!@#$%^&*()_-+"/|\\\'')).to.equal(false);
             });
 
             it('Should return false when value is true', () => {
-                expect(UtilityEngine.hasLetter(true)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount(true)).to.equal(false);
             });
 
             it('Should return false when value is false', () => {
-                expect(UtilityEngine.hasLetter(false)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount(false)).to.equal(false);
             });
 
             it('Should return false when value is null', () => {
-                expect(UtilityEngine.hasLetter(null)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount(null)).to.equal(false);
             });
 
             it('Should return false when value is undefined', () => {
-                expect(UtilityEngine.hasLetter(undefined)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount(undefined)).to.equal(false);
             });
 
             it('Should return false when value is an object', () => {
-                expect(UtilityEngine.hasLetter({})).to.equal(false);
+                expect(UtilityEngine.hasLetterCount({})).to.equal(false);
             });
 
             it('Should return false when value is a number', () => {
-                expect(UtilityEngine.hasLetter(0)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount(0)).to.equal(false);
             });
 
             it('Should return false when value is an array', () => {
-                expect(UtilityEngine.hasLetter([])).to.equal(false);
+                expect(UtilityEngine.hasLetterCount([])).to.equal(false);
             });
 
             it('Should return false when value is a function', () => {
-                expect(UtilityEngine.hasLetter(function() {})).to.equal(false);
+                expect(UtilityEngine.hasLetterCount(function() {})).to.equal(false);
             });
         });
 
-        describe('#hasLetter(value, MINIMUMCOUNT, maximumCount)', function() {
+        describe('#hasLetterCount(value, MINIMUMCOUNT, maximumCount)', function() {
             it('Should return true when minimum count parameter is undefined', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is small enough', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', 1)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', 1)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is big enough', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', 2)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', 2)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is at minimum', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', 0)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', 0)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is at maximum', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', 3)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', 3)).to.equal(true);
             });
 
             it('Should return true when minimum count parameter is zero', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', 0)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', 0)).to.equal(true);
             });
 
 
             it('Should return false when minimum count parameter is too big', () => {
-                expect(UtilityEngine.hasLetter('1A2Z3A', 4)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('1A2Z3A', 4)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is bigger than maximum count', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', 4, 3)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', 4, 3)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is null', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', null)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', null)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is true', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', true)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', true)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is false', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', false)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', false)).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is an object', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', {})).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', {})).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is a string', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', 'string')).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', 'string')).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is an array', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', [])).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', [])).to.equal(false);
             });
 
             it('Should return false when minimum count parameter is a function', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', function() {})).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', function() {})).to.equal(false);
             });
 
             it('Should return false when minimum count parameter negative number', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', -1)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', -1)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is positive infinity', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', Number.POSITIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', Number.POSITIVE_INFINITY)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is negative infinity', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', Number.NEGATIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
 
-        describe('#hasLetter(value, minimumCount, MAXIMUMCOUNT)', function() {
+        describe('#hasLetterCount(value, minimumCount, MAXIMUMCOUNT)', function() {
             it('Should return true when maximum count parameter is undefined', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž ', undefined, undefined)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž ', undefined, undefined)).to.equal(true);
             });
 
             it('Should return true when maximum count parameter is just small enough', () => {
-                expect(UtilityEngine.hasLetter('1A2Z3A ', undefined, 3)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('1A2Z3A ', undefined, 3)).to.equal(true);
             });
 
             it('Should return true when maximum count parameter is big enough', () => {
-                expect(UtilityEngine.hasLetter('1A2Z3A ', undefined, 4)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('1A2Z3A ', undefined, 4)).to.equal(true);
             });
 
             it('Should return true when maximum and minimum count parameters are zero', () => {
-                expect(UtilityEngine.hasLetter('0', 0, 0)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('0', 0, 0)).to.equal(true);
             });
 
             it('Should return true when maximum count parameter is positive infinity', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
             });
 
 
             it('Should return false when maximum count parameter is too small', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, 2)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, 2)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is smaller than minimum count', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', 3, 2)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', 3, 2)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is null', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, null)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, null)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is true', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, true)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, true)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is false', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, false)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, false)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is an object', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, {})).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, {})).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is a string', () => {
-                expect(UtilityEngine.hasDigit('AZAazÀŽàž', undefined, 'string')).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, 'string')).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is an array', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, [])).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, [])).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is a function', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, function() {})).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, function() {})).to.equal(false);
             });
 
             it('Should return false when maximum count parameter negative number', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž ', undefined, -1)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž ', undefined, -1)).to.equal(false);
             });
 
             it('Should return false when maximum count parameter is negative infinity', () => {
-                expect(UtilityEngine.hasLetter('AZAazÀŽàž', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
+                expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
     });

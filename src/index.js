@@ -94,25 +94,25 @@ export function isEmptyString(value) {              // The provided value was fo
     return isString(value) && '' === value.trim();  // The provided value was found to be an empty string
 }
 
-export function hasWhitespace(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   // The value was found to be a string with whitespace
+export function hasWhitespaceCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  // The value was found to be a string with whitespace
+    return isNumber(minimumCount, 0, maximumCount) &&                                                   //
+        isNumber(maximumCount, minimumCount) &&                                                         //
+        isString(value, minimumCount) &&                                                                //
+        isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                                  //
+}
+
+export function hasDigitCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   //
     return isNumber(minimumCount, 0, maximumCount) &&                                               //
         isNumber(maximumCount, minimumCount) &&                                                     //
         isString(value, minimumCount) &&                                                            //
-        isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                              //
+        isArray(value.match(/\d/g) || [], minimumCount, maximumCount);                              //
 }
 
-export function hasDigit(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {    // The value was found to be a string with whitespace
-    return isNumber(minimumCount, 0, maximumCount) &&                                           //
-        isNumber(maximumCount, minimumCount) &&                                                 //
-        isString(value, minimumCount) &&                                                        //
-        isArray(value.match(/\d/g) || [], minimumCount, maximumCount);                          //
-}
-
-export function hasLetter(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   // The value was found to be a string with whitespace
-    return isNumber(minimumCount, 0, maximumCount) &&                                           //
-        isNumber(maximumCount, minimumCount) &&                                                 //
-        isString(value, minimumCount) &&                                                        //
-        isArray((value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []), minimumCount, maximumCount);         //
+export function hasLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
+    return isNumber(minimumCount, 0, maximumCount) &&                                               //
+        isNumber(maximumCount, minimumCount) &&                                                     //
+        isString(value, minimumCount) &&                                                            //
+        isArray((value.match(/[A-Za-zÀ-ÖØ-öø-ÿ]/g) || []), minimumCount, maximumCount);             //
 }
 
 export function isString(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {  // The submitted value was found to be a valid string
