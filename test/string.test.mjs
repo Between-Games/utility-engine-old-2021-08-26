@@ -611,4 +611,222 @@ describe('String', function() {
             });
         });
     });
+
+    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ╚╗ ╔══╗ ║╚══╗ ╔══╝║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝
+    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗ ║ ║  ║ ║   ║ ║   ║ ║ ╔═══╗   ║ ║      ║ ║
+    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝ ║ ║  ║ ║   ║ ║   ║ ║ ╚═╗ ║   ║ ║      ║ ║
+    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ╔╝ ╚══╝ ║╔══╝ ╚══╗║ ╚═══╝ ║╔══╝ ╚══╗   ║ ║
+    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═══════╝╚═══════╝╚═══════╝   ╚═╝
+
+    describe('#hasDigit(value, minimumCount, maximumCount)', function() {
+        describe('#hasDigit(VALUE, minimumCount, maximumCount)', function() {
+            it('Should return true when value has a digit character', () => {
+                expect(UtilityEngine.hasDigit('1')).to.equal(true);
+            });
+
+            it('Should return true when value has a digit character', () => {
+                expect(UtilityEngine.hasDigit('123')).to.equal(true);
+            });
+
+            it('Should return true when value has a digit character', () => {
+                expect(UtilityEngine.hasDigit('1string2')).to.equal(true);
+            });
+
+            it('Should return true when value has a digit character', () => {
+                expect(UtilityEngine.hasDigit('1string2string3')).to.equal(true);
+            });
+
+            it('Should return true when value has a digit character', () => {
+                expect(UtilityEngine.hasDigit('1 string 2 string 3')).to.equal(true);
+            });
+
+            it('Should return true when value has a digit character', () => {
+                expect(UtilityEngine.hasDigit('1 2 3 4 5 6 7 8 9')).to.equal(true);
+            });
+
+
+            it('Should return false when value is an empty string', () => {
+                expect(UtilityEngine.hasDigit('')).to.equal(false);
+            });
+
+            it('Should return false when value is a filled string', () => {
+                expect(UtilityEngine.hasDigit('string')).to.equal(false);
+            });
+
+            it('Should return false when value is true', () => {
+                expect(UtilityEngine.hasDigit(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false', () => {
+                expect(UtilityEngine.hasDigit(false)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.hasDigit(null)).to.equal(false);
+            });
+
+            it('Should return false when value is undefined', () => {
+                expect(UtilityEngine.hasDigit(undefined)).to.equal(false);
+            });
+
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.hasDigit({})).to.equal(false);
+            });
+
+            it('Should return false when value is a number', () => {
+                expect(UtilityEngine.hasDigit(0)).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.hasDigit([])).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.hasDigit(function() {})).to.equal(false);
+            });
+        });
+
+        describe('#hasDigit(value, MINIMUMCOUNT, maximumCount)', function() {
+            it('Should return true when minimum count parameter is undefined', () => {
+                expect(UtilityEngine.hasDigit('123', undefined)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is small enough', () => {
+                expect(UtilityEngine.hasDigit('123', 1)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is big enough', () => {
+                expect(UtilityEngine.hasDigit('123', 2)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is at minimum', () => {
+                expect(UtilityEngine.hasDigit('123', 0)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is at maximum', () => {
+                expect(UtilityEngine.hasDigit('123', 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is zero', () => {
+                expect(UtilityEngine.hasDigit('123', 0)).to.equal(true);
+            });
+
+
+            it('Should return false when minimum count parameter is too big', () => {
+                expect(UtilityEngine.hasDigit('123', 4)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is bigger than maximum count', () => {
+                expect(UtilityEngine.hasDigit('123', 4, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is null', () => {
+                expect(UtilityEngine.hasDigit('123', null)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is true', () => {
+                expect(UtilityEngine.hasDigit('123', true)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is false', () => {
+                expect(UtilityEngine.hasDigit('123', false)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is an object', () => {
+                expect(UtilityEngine.hasDigit('123', {})).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is a string', () => {
+                expect(UtilityEngine.hasDigit('123', 'string')).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is an array', () => {
+                expect(UtilityEngine.hasDigit('123', [])).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is a function', () => {
+                expect(UtilityEngine.hasDigit('123', function() {})).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter negative number', () => {
+                expect(UtilityEngine.hasDigit('123', -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is positive infinity', () => {
+                expect(UtilityEngine.hasDigit('123', Number.POSITIVE_INFINITY)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is negative infinity', () => {
+                expect(UtilityEngine.hasDigit('123', Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
+        });
+
+        describe('#hasDigit(value, minimumCount, MAXIMUMCOUNT)', function() {
+            it('Should return true when maximum count parameter is undefined', () => {
+                expect(UtilityEngine.hasDigit('123 ', undefined, undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is just small enough', () => {
+                expect(UtilityEngine.hasDigit('123 ', undefined, 3)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is big enough', () => {
+                expect(UtilityEngine.hasDigit('123 ', undefined, 4)).to.equal(true);
+            });
+
+            it('Should return true when maximum and minimum count parameters are zero', () => {
+                expect(UtilityEngine.hasDigit('zero', 0, 0)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is positive infinity', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
+            });
+
+
+            it('Should return false when maximum count parameter is too small', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is smaller than minimum count', () => {
+                expect(UtilityEngine.hasDigit('123', 3, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is null', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, null)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is true', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, true)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is false', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, false)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is an object', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, {})).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is a string', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, 'string')).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is an array', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, [])).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is a function', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, function() {})).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter negative number', () => {
+                expect(UtilityEngine.hasDigit('123 ', undefined, -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is negative infinity', () => {
+                expect(UtilityEngine.hasDigit('123', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
+        });
+    });
 });

@@ -101,6 +101,13 @@ export function hasWhitespace(value, minimumCount = 1, maximumCount = Number.POS
         isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                              //
 }
 
+export function hasDigit(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {    // The value was found to be a string with whitespace
+    return isNumber(minimumCount, 0, maximumCount) &&                                           //
+        isNumber(maximumCount, minimumCount) &&                                                 //
+        isString(value, minimumCount) &&                                                        //
+        isArray(value.match( /\d/g) || [], minimumCount, maximumCount);                         //
+}
+
 export function isString(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {  // The submitted value was found to be a valid string
     return isNumber(minimumLength, 0, maximumLength) &&                                         //
         isNumber(maximumLength, minimumLength) &&                                               //
