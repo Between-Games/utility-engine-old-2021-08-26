@@ -864,7 +864,7 @@ describe('String', function() {
             });
 
             it('Should return true when value is an upper case letter character', () => {
-                expect(UtilityEngine.hasLetterCount('À')).to.equal(true);
+                expect(UtilityEngine.hasLetterCount('A')).to.equal(true);
             });
 
             it('Should return true when value is an accented lower case letter character', () => {
@@ -1087,6 +1087,248 @@ describe('String', function() {
 
             it('Should return false when maximum count parameter is negative infinity', () => {
                 expect(UtilityEngine.hasLetterCount('AZAazÀŽàž', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
+        });
+    });
+
+    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═╗╔═╗╔═╗╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═╗   ╔═╗╔════╗╔═╗╔═══════╗
+    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ║      ║ ╔═══╗ ║║ ║║ ║║ ║║ ╔═════╝║ ╔═══╗ ║         ║ ╔═════╝║ ╔═══╗ ║║ ╔═════╝║ ╔═════╝         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║         ║ ╔═════╝║ ╔═══╗ ║║ ║   ║ ║║ ╔╗ ║║ ║╚══╗ ╔══╝
+    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ║      ║ ║   ║ ║║ ║║ ║║ ║║ ╚═════╗║ ╚═══╝ ║╔═══════╗║ ║      ║ ╚═══╝ ║║ ╚═════╗║ ╚═════╗╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║╔═══════╗║ ║      ║ ║   ║ ║║ ║   ║ ║║ ║║ ║║ ║   ║ ║
+    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝║ ║      ║ ║   ║ ║║ ║║ ║║ ║║ ╔═════╝║ ╔═╗ ╔═╝╚═══════╝║ ║      ║ ╔═══╗ ║╚═════╗ ║║ ╔═════╝╚═══════╝║ ║      ║ ╔═════╝   ║ ║      ║ ║   ║ ╔═════╝║ ╔═╗ ╔═╝╚═══════╝║ ║      ║ ║   ║ ║║ ║   ║ ║║ ║║ ║║ ║   ║ ║
+    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚═════╗║ ╚═══╝ ║║ ╚╝ ╚╝ ║║ ╚═════╗║ ║ ║ ╚═╗         ║ ╚═════╗║ ║   ║ ║╔═════╝ ║║ ╚═════╗         ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗         ║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║║ ╚╝ ║   ║ ║
+    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═╝ ╚═══╝         ╚═══════╝╚═╝   ╚═╝╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝         ╚═══════╝╚═══════╝╚═══════╝╚═╝╚════╝   ╚═╝
+
+    describe('#hasLowerCaseLetterCount(value, minimumCount, maximumCount)', function() {
+        describe('#hasLowerCaseLetterCount(VALUE, minimumCount, maximumCount)', function() {
+            it('Should return true when value is a lower case letter character', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('a')).to.equal(true);
+            });
+
+            it('Should return true when value is an accented lower case letter character', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('á')).to.equal(true);
+            });
+
+            it('Should return true when value is lower case letter characters', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('abcdefghijklmnopqrstuvwxyz')).to.equal(true);
+            });
+
+            it('Should return true when value is lower case accented letter characters', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('àáâäæãåāèéêëēėęôöòóœøōõ')).to.equal(true);
+            });
+
+            it('Should return true when value is a sentence', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('No more half-measures')).to.equal(true);
+            });
+
+            it('Should return true when value is mixed characters', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('123 ABC abc $#& .!?')).to.equal(true);
+            });
+
+
+            it('Should return false when value is an empty string', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('')).to.equal(false);
+            });
+
+            it('Should return false when value is a whitespace character', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount(' ')).to.equal(false);
+            });
+
+            it('Should return false when value is an upper case letter character', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('A')).to.equal(false);
+            });
+
+            it('Should return false when value is an accented upper case letter character', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('À')).to.equal(false);
+            });
+
+            it('Should return false when value is numerical characters', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('0123456789')).to.equal(false);
+            });
+
+            it('Should return false when value is upper case letter characters', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('ABCDEFGHIJKLMNOPQRSTUVWXYZ')).to.equal(false);
+            });
+
+            it('Should return false when value has upper case accented letter characters', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('ÀÁÂÄÆÃÅĀÈÉÊËĒĖĘÔÖÒÓŒØŌÕ')).to.equal(false);
+            });
+
+            it('Should return false when value is special characters', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('.:;•°×÷‰<>~`^!?(){}[]!@#$%$^&*()_шФ-+"/|\\\'')).to.equal(false);
+            });
+
+            it('Should return false when value is true', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount(false)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount(null)).to.equal(false);
+            });
+
+            it('Should return false when value is undefined', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount(undefined)).to.equal(false);
+            });
+
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount({})).to.equal(false);
+            });
+
+            it('Should return false when value is a number', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount(0)).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount([])).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount(function() {})).to.equal(false);
+            });
+        });
+
+        describe('#hasLowerCaseLetterCount(value, MINIMUMCOUNT, maximumCount)', function() {
+            it('Should return true when minimum count parameter is undefined', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is small enough', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 1)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is big enough', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 2)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is at minimum', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 0)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is at maximum', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is zero', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 0)).to.equal(true);
+            });
+
+
+            it('Should return false when minimum count parameter is too big', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 4)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is bigger than maximum count', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 4, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is null', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', null)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is true', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', true)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is false', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', false)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is an object', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', {})).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is a string', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 'string')).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is an array', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', [])).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is a function', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', function() {})).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter negative number', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is positive infinity', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', Number.POSITIVE_INFINITY)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is negative infinity', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
+        });
+
+        describe('#hasLowerCaseLetterCount(value, minimumCount, MAXIMUMCOUNT)', function() {
+            it('Should return true when maximum count parameter is undefined', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø ', undefined, undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is just small enough', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø ', undefined, 3)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is big enough', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø ', undefined, 4)).to.equal(true);
+            });
+
+            it('Should return true when maximum and minimum count parameters are zero', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('0', 0, 0)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is positive infinity', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
+            });
+
+
+            it('Should return false when maximum count parameter is too small', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is smaller than minimum count', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', 3, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is null', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, null)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is true', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, true)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is false', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, false)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is an object', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, {})).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is a string', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, 'string')).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is an array', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, [])).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is a function', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, function() {})).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter negative number', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø ', undefined, -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is negative infinity', () => {
+                expect(UtilityEngine.hasLowerCaseLetterCount('1à2æ3ø', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
     });

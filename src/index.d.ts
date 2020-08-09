@@ -1,10 +1,11 @@
 declare module 'utility-engine' {
+    export function isString(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isFilledString(value: any, maximumLength?: number): boolean;
     export function isEmptyString(value: any): boolean;
-    export function hasWhitespaceCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasDigitCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasLetterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
-    export function isString(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function hasLowerCaseLetterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
+    export function hasWhitespaceCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isNumber(value: any, minimum?: number, maximum?: number): boolean;
     export function isPositiveNumber(value: any, maximum?: number): boolean;
