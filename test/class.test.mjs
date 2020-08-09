@@ -14,7 +14,7 @@
 // ╔══╝ ╚══╗║ ║║ ║║ ║║ ║      ║ ╚═══╝ ║║ ║ ║ ╚═╗   ║ ║
 // ╚═══════╝╚═╝╚═╝╚═╝╚═╝      ╚═══════╝╚═╝ ╚═══╝   ╚═╝
 
-import UtilityEngine from '../build/index.js';
+import UtilityEngine from '../dist/index.js';
 
 import chai from 'chai';
 

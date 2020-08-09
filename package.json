@@ -1,12 +1,14 @@
 {
-  "name": "@s-a-r-c/utility-engine",
-  "version": "0.1.0",
+  "name": "@change/utility-engine",
+  "version": "0.2.0",
   "description": "A collection of JavaScript utility functionalities",
-  "main": "build/index.js",
-  "files": ["build"],
+  "main": "dist/index.js",
+  "files": ["dist"],
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "npx mocha",
-    "build": "npx webpack --watch"
+    "build": "webpack --watch",
+    "prepublishOnly": "webpack"
   },
   "repository": {
     "type": "git",

@@ -3,9 +3,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'production',
-    entry: './source/index.js',
+    entry: './src/index.js',
 
-    watch: true,
+    watch: (process.argv.includes('--watch')),
     watchOptions: {
         poll: 1000,
         aggregateTimeout: 200,
@@ -14,16 +14,17 @@ module.exports = {
 
     output: {
         filename: 'index.js',
-        library: 'utility-engine',
-        libraryTarget: 'commonjs2',
-        path: path.resolve(__dirname, 'build'),
+        library: 'UtilityEngine',
+        libraryTarget: 'umd',
+        globalObject: 'this',
+        path: path.resolve(__dirname, 'dist'),
     },
 
     plugins: [
         new CopyPlugin({
             patterns: [
                 {
-                    from: 'source/index.d.ts',
+                    from: 'src/index.d.ts',
                 },
             ],
         }),

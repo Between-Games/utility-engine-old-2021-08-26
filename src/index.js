@@ -94,10 +94,51 @@ export function isEmptyString(value) {              // The provided value was fo
     return isString(value) && '' === value.trim();  // The provided value was found to be an empty string
 }
 
+export function hasWhitespaceCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  // The value was found to be a string with whitespace
+    return isNumber(minimumCount, 0, maximumCount) &&                                                   //
+        isNumber(maximumCount, minimumCount) &&                                                         //
+        isString(value, minimumCount) &&                                                                //
+        isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                                  //
+}
+
+export function hasDigitCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   //
+    return isNumber(minimumCount, 0, maximumCount) &&                                               //
+        isNumber(maximumCount, minimumCount) &&                                                     //
+        isString(value, minimumCount) &&                                                            //
+        isArray(value.match(/\d/g) || [], minimumCount, maximumCount);                              //
+}
+
+export function hasLowerCaseLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
+    return isNumber(minimumCount, 0, maximumCount) &&                                                       //
+        isNumber(maximumCount, minimumCount) &&                                                             //
+        isString(value, minimumCount) &&                                                                    //
+        isArray((value.match(/[a-zß-öø-ÿ]/g) || []), minimumCount, maximumCount);                           //
+}
+
+export function hasUpperCaseLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
+    return isNumber(minimumCount, 0, maximumCount) &&                                                       //
+        isNumber(maximumCount, minimumCount) &&                                                             //
+        isString(value, minimumCount) &&                                                                    //
+        isArray((value.match(/[A-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);                           //
+}
+
+export function hasSpecialCharacterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {    //
+    return isNumber(minimumCount, 0, maximumCount) &&                                                           //
+        isNumber(maximumCount, minimumCount) &&                                                                 //
+        isString(value, minimumCount) &&                                                                        //
+        isArray((value.match(/[^a-zß-öø-ÿA-ZÀ-ÖØ-ÞĀ-ſƀ0-9\s]/g) || []), minimumCount, maximumCount);                   //
+}
+
+export function hasLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
+    return isNumber(minimumCount, 0, maximumCount) &&                                               //
+        isNumber(maximumCount, minimumCount) &&                                                     //
+        isString(value, minimumCount) &&                                                            //
+        isArray((value.match(/[a-zß-öø-ÿA-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);          //
+}
+
 export function isString(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {  // The submitted value was found to be a valid string
-    return isPositiveNumber(minimumLength) &&                                                   //
-        isPositiveNumber(maximumLength) &&                                                      //
-        maximumLength >= minimumLength &&                                                       //
+    return isNumber(minimumLength, 0, maximumLength) &&                                         //
+        isNumber(maximumLength, minimumLength) &&                                               //
         value != null &&                                                                        //
         value.constructor === String &&                                                         //
         value.length >= minimumLength &&                                                        //
