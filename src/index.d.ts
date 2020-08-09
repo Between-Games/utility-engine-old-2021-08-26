@@ -6,6 +6,7 @@ declare module 'utility-engine' {
     export function hasLetterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasLowerCaseLetterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasUpperCaseLetterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
+    export function hasSpecialCharacterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasWhitespaceCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isNumber(value: any, minimum?: number, maximum?: number): boolean;
