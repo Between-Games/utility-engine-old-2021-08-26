@@ -25,7 +25,6 @@ export function deflateObject(object, propertyKeyReference = '', deflatedObject 
         } else deflatedObject[`${propertyKeyReference}${propertyKey}`] = propertyValue;                         // Populate property of the submitted deflated object
     }
 
-
     return deflatedObject;                                                                                      // Return the newly deflated object that was provided
 }
 
@@ -126,7 +125,7 @@ export function hasSpecialCharacterCount(value, minimumCount = 1, maximumCount =
     return isNumber(minimumCount, 0, maximumCount) &&                                                           //
         isNumber(maximumCount, minimumCount) &&                                                                 //
         isString(value, minimumCount) &&                                                                        //
-        isArray((value.match(/[^a-zß-öø-ÿA-ZÀ-ÖØ-ÞĀ-ſƀ0-9\s]/g) || []), minimumCount, maximumCount);                   //
+        isArray((value.match(/[^a-zß-öø-ÿA-ZÀ-ÖØ-ÞĀ-ſƀ0-9\s]/g) || []), minimumCount, maximumCount);            //
 }
 
 export function hasLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
@@ -164,6 +163,10 @@ export function isPositiveNumber(value, maximum = Number.POSITIVE_INFINITY) {   
 
 export function isNegativeNumber(value, minimum = Number.NEGATIVE_INFINITY) {   // The given value was found to be a negative number
     return isNumber(minimum, undefined, 0) && isNumber(value, minimum, 0);      // The given value was found to be a negative number
+}
+
+export function isBit(value) {          // The value was found to be a lone single bit number
+    return value === 0 || value === 1;  // The value was found to be a lone single bit number
 }
 
 // ╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
@@ -214,7 +217,7 @@ export function isFalsy(value) {    //
         value === 0n ||             //
         value === null ||           //
         value === undefined ||      //
-        Number.isNaN(value) ||        //
+        Number.isNaN(value) ||      //
         value === false ||          //
         value === '';               //
 }
@@ -283,6 +286,7 @@ export default {
     isInteger,
     isPositiveInteger,
     isNegativeInteger,
+    isBit,
 
     isObject,
     isEmptyObject,

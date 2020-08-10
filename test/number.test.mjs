@@ -199,6 +199,88 @@ describe('Number', function() {
         });
     });
 
+    // ╔═══════╗╔═══════╗         ╔══════╗ ╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔══╗ ║ ╚══╗ ╔══╝╚══╗ ╔══╝
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚══╝ ╚╗   ║ ║      ║ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═══╗ ║   ║ ║      ║ ║
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ╚═══╝ ║╔══╝ ╚══╗   ║ ║
+    // ╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝
+
+    describe('#isBit(value)', function() {
+        it('Should return true when value is a zero bit', () => {
+            expect(UtilityEngine.isBit(0)).to.equal(true);
+        });
+
+        it('Should return true when value is a one bit', () => {
+            expect(UtilityEngine.isBit(1)).to.equal(true);
+        });
+
+        it('Should return true when value is a positive zero', () => {
+            expect(UtilityEngine.isBit(+0)).to.equal(true);
+        });
+
+        it('Should return true when value is a negative zero', () => {
+            expect(UtilityEngine.isBit(-0)).to.equal(true);
+        });
+
+        it('Should return true when value is a positive number', () => {
+            expect(UtilityEngine.isBit(+1)).to.equal(true);
+        });
+
+
+        it('Should return false when value is a negative number', () => {
+            expect(UtilityEngine.isBit(-1)).to.equal(false);
+        });
+
+        it('Should return false when value is a positive decimal', () => {
+            expect(UtilityEngine.isBit(+1.1)).to.equal(false);
+        });
+
+        it('Should return false when value is a negative decimal', () => {
+            expect(UtilityEngine.isBit(-1.1)).to.equal(false);
+        });
+
+        it('Should return false when value is positive infinity', () => {
+            expect(UtilityEngine.isBit(Number.POSITIVE_INFINITY)).to.equal(false);
+        });
+
+        it('Should return false when value is negative infinity', () => {
+            expect(UtilityEngine.isBit(Number.NEGATIVE_INFINITY)).to.equal(false);
+        });
+
+        it('Should return false when value is null', () => {
+            expect(UtilityEngine.isBit(null)).to.equal(false);
+        });
+
+        it('Should return false when value is undefined', () => {
+            expect(UtilityEngine.isBit(undefined)).to.equal(false);
+        });
+
+        it('Should return false when value is an array', () => {
+            expect(UtilityEngine.isBit([])).to.equal(false);
+        });
+
+        it('Should return false when value is an object', () => {
+            expect(UtilityEngine.isBit({})).to.equal(false);
+        });
+
+        it('Should return false when value is a function', () => {
+            expect(UtilityEngine.isBit(function() {})).to.equal(false);
+        });
+
+        it('Should return false when value is a true boolean', () => {
+            expect(UtilityEngine.isBit(true)).to.equal(false);
+        });
+
+        it('Should return false when value is a false boolean', () => {
+            expect(UtilityEngine.isBit(false)).to.equal(false);
+        });
+
+        it('Should return false when value is a string number', () => {
+            expect(UtilityEngine.isBit('1')).to.equal(false);
+        });
+    });
+
     // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗╔═══════╗         ╔════╗╔═╗╔═╗   ╔═╗╔═══════╗╔══════╗ ╔═══════╗╔═══════╗
     // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝╚══╗ ╔══╝║ ║   ║ ║║ ╔═════╝         ║ ╔╗ ║║ ║║ ║   ║ ║║ ╔╗ ╔╗ ║║ ╔══╗ ║ ║ ╔═════╝║ ╔═══╗ ║
     //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═══╝ ║║ ║   ║ ║║ ╚═════╗   ║ ║      ║ ║      ║ ║   ║ ╚╗ ╔╝ ║║ ╚═════╗╔═══════╗║ ║║ ║║ ║║ ║   ║ ║║ ║║ ║║ ║║ ╚══╝ ╚╗║ ╚═════╗║ ╚═══╝ ║
