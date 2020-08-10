@@ -257,3 +257,53 @@ export function isArray(value, minimumLength = 0, maximumLength = Number.POSITIV
 export function isFilledArray(value, maximumLength = Number.POSITIVE_INFINITY) {    //
     return isArray(value, 1, maximumLength);                                        //
 }
+
+// ╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+// ║ ╔═════╝╚══╗ ║║ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║╚══╗ ╔══╝
+// ║ ╚═════╗╔══╝ ╚╝ ║║ ╚═══╝ ║║ ║   ║ ║║ ╚═══╝ ║   ║ ║
+// ║ ╔═════╝║ ╔╗ ╔══╝║ ╔═════╝║ ║   ║ ║║ ╔═╗ ╔═╝   ║ ║
+// ║ ╚═════╗║ ║║ ╚══╗║ ║      ║ ╚═══╝ ║║ ║ ║ ╚═╗   ║ ║
+// ╚═══════╝╚═╝╚════╝╚═╝      ╚═══════╝╚═╝ ╚═══╝   ╚═╝
+
+export default {
+    isString,
+    isFilledString,
+    isEmptyString,
+    hasDigitCount,
+    hasLetterCount,
+    hasLowerCaseLetterCount,
+    hasUpperCaseLetterCount,
+    hasSpecialCharacterCount,
+    hasWhitespaceCount,
+
+    isNumber,
+    isPositiveNumber,
+    isNegativeNumber,
+
+    isInteger,
+    isPositiveInteger,
+    isNegativeInteger,
+
+    isObject,
+    isEmptyObject,
+    isFilledObject,
+    isObjectLiteral,
+    deflateObject,
+
+    isClass,
+    isClassInstance,
+    isSubclassOfSuperclass,
+    isSuperclassOfSubclass,
+
+    isFunction,
+
+    isBoolean,
+    isFalsy,
+
+    isNull,
+    isNullish,
+    isUndefined,
+
+    isArray,
+    isFilledArray,
+};
