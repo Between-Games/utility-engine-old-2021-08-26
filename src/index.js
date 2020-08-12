@@ -85,6 +85,15 @@ export function isSubclassOfSuperclass(subclassValue, superclassValue) {    //
 // ╔═════╝ ║   ║ ║   ║ ║ ║ ╚═╗╔══╝ ╚══╗║ ║║ ╚╝ ║║ ╚═══╝ ║
 // ╚═══════╝   ╚═╝   ╚═╝ ╚═══╝╚═══════╝╚═╝╚════╝╚═══════╝
 
+export function isString(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {  // The submitted value was found to be a valid string
+    return isNumber(minimumLength, 0, maximumLength) &&                                         //
+        isNumber(maximumLength, minimumLength) &&                                               //
+        value != null &&                                                                        //
+        value.constructor === String &&                                                         //
+        value.length >= minimumLength &&                                                        //
+        value.length <= maximumLength;                                                          //
+}
+
 export function isFilledString(value, maximumLength = Number.POSITIVE_INFINITY) {   // The provided value was found to be a filled string
     return isString(value, 1, maximumLength) && '' !== value.trim();                // The provided value was found to be a filled string
 }
@@ -107,6 +116,28 @@ export function hasDigitCount(value, minimumCount = 1, maximumCount = Number.POS
         isArray(value.match(/\d/g) || [], minimumCount, maximumCount);                              //
 }
 
+
+export function hasSpecialCharacterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {    //
+    return isNumber(minimumCount, 0, maximumCount) &&                                                           //
+        isNumber(maximumCount, minimumCount) &&                                                                 //
+        isString(value, minimumCount) &&                                                                        //
+        isArray((value.match(/[^a-zß-öø-ÿA-ZÀ-ÖØ-ÞĀ-ſƀ0-9\s]/g) || []), minimumCount, maximumCount);            //
+}
+
+// ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+// ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
+// ║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║
+// ║ ║      ║ ╔═════╝   ║ ║      ║ ║   ║ ╔═════╝║ ╔═╗ ╔═╝
+// ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗
+// ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
+
+export function hasLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
+    return isNumber(minimumCount, 0, maximumCount) &&                                               //
+        isNumber(maximumCount, minimumCount) &&                                                     //
+        isString(value, minimumCount) &&                                                            //
+        isArray((value.match(/[a-zß-öø-ÿA-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);          //
+}
+
 export function hasLowerCaseLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
     return isNumber(minimumCount, 0, maximumCount) &&                                                       //
         isNumber(maximumCount, minimumCount) &&                                                             //
@@ -120,30 +151,6 @@ export function hasUpperCaseLetterCount(value, minimumCount = 1, maximumCount = 
         isString(value, minimumCount) &&                                                                    //
         isArray((value.match(/[A-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);                           //
 }
-
-export function hasSpecialCharacterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {    //
-    return isNumber(minimumCount, 0, maximumCount) &&                                                           //
-        isNumber(maximumCount, minimumCount) &&                                                                 //
-        isString(value, minimumCount) &&                                                                        //
-        isArray((value.match(/[^a-zß-öø-ÿA-ZÀ-ÖØ-ÞĀ-ſƀ0-9\s]/g) || []), minimumCount, maximumCount);            //
-}
-
-export function hasLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
-    return isNumber(minimumCount, 0, maximumCount) &&                                               //
-        isNumber(maximumCount, minimumCount) &&                                                     //
-        isString(value, minimumCount) &&                                                            //
-        isArray((value.match(/[a-zß-öø-ÿA-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);          //
-}
-
-export function isString(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {  // The submitted value was found to be a valid string
-    return isNumber(minimumLength, 0, maximumLength) &&                                         //
-        isNumber(maximumLength, minimumLength) &&                                               //
-        value != null &&                                                                        //
-        value.constructor === String &&                                                         //
-        value.length >= minimumLength &&                                                        //
-        value.length <= maximumLength;                                                          //
-}
-
 // ╔════╗╔═╗╔═╗   ╔═╗╔═══════╗╔══════╗ ╔═══════╗╔═══════╗
 // ║ ╔╗ ║║ ║║ ║   ║ ║║ ╔╗ ╔╗ ║║ ╔══╗ ║ ║ ╔═════╝║ ╔═══╗ ║
 // ║ ║║ ║║ ║║ ║   ║ ║║ ║║ ║║ ║║ ╚══╝ ╚╗║ ╚═════╗║ ╚═══╝ ║
