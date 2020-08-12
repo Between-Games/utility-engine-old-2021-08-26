@@ -131,25 +131,25 @@ export function hasSpecialCharacterCount(value, minimumCount = 1, maximumCount =
 // ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗
 // ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
 
-export function hasLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
-    return isNumber(minimumCount, 0, maximumCount) &&                                               //
-        isNumber(maximumCount, minimumCount) &&                                                     //
-        isString(value, minimumCount) &&                                                            //
-        isArray((value.match(/[a-zß-öø-ÿA-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);          //
+export function hasLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
+    return isNumber(minimumCount, 0, maximumCount) &&                                           //
+        isNumber(maximumCount, minimumCount) &&                                                 //
+        isString(value, minimumCount) &&                                                        //
+        isArray((value.match(/[a-zß-öø-ÿA-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);      //
 }
 
-export function hasLowerCaseLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
-    return isNumber(minimumCount, 0, maximumCount) &&                                                       //
-        isNumber(maximumCount, minimumCount) &&                                                             //
-        isString(value, minimumCount) &&                                                                    //
-        isArray((value.match(/[a-zß-öø-ÿ]/g) || []), minimumCount, maximumCount);                           //
+export function hasLowercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
+    return isNumber(minimumCount, 0, maximumCount) &&                                                   //
+        isNumber(maximumCount, minimumCount) &&                                                         //
+        isString(value, minimumCount) &&                                                                //
+        isArray((value.match(/[a-zß-öø-ÿ]/g) || []), minimumCount, maximumCount);                       //
 }
 
-export function hasUpperCaseLetterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
-    return isNumber(minimumCount, 0, maximumCount) &&                                                       //
-        isNumber(maximumCount, minimumCount) &&                                                             //
-        isString(value, minimumCount) &&                                                                    //
-        isArray((value.match(/[A-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);                           //
+export function hasUppercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
+    return isNumber(minimumCount, 0, maximumCount) &&                                                   //
+        isNumber(maximumCount, minimumCount) &&                                                         //
+        isString(value, minimumCount) &&                                                                //
+        isArray((value.match(/[A-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);                       //
 }
 // ╔════╗╔═╗╔═╗   ╔═╗╔═══════╗╔══════╗ ╔═══════╗╔═══════╗
 // ║ ╔╗ ║║ ║║ ║   ║ ║║ ╔╗ ╔╗ ║║ ╔══╗ ║ ║ ╔═════╝║ ╔═══╗ ║
@@ -280,11 +280,12 @@ export default {
     isFilledString,
     isEmptyString,
     hasDigitCount,
-    hasLetterCount,
-    hasLowerCaseLetterCount,
-    hasUpperCaseLetterCount,
     hasSpecialCharacterCount,
     hasWhitespaceCount,
+
+    hasLetters,
+    hasLowercaseLetters,
+    hasUppercaseLetters,
 
     isNumber,
     isPositiveNumber,
