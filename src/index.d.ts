@@ -40,6 +40,7 @@ export function isUndefined(value: any): boolean;
 
 export function isArray(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function isFilledArray(value: any, maximumLength?: number): boolean;
+export function isEmptyArray(value: any): boolean;
 
 declare module 'UtilityEngine' {
     export function isString(value: any, minimumLength?: number, maximumLength?: number): boolean;
@@ -84,4 +85,5 @@ declare module 'UtilityEngine' {
 
     export function isArray(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isFilledArray(value: any, maximumLength?: number): boolean;
+    export function isEmptyArray(value: any): boolean;
 }

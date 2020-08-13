@@ -268,6 +268,10 @@ export function isFilledArray(value, maximumLength = Number.POSITIVE_INFINITY) {
     return isArray(value, 1, maximumLength);                                        //
 }
 
+export function isEmptyArray(value) {   //
+    return isArray(value, 0, 0);        //
+}
+
 // ╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
 // ║ ╔═════╝╚══╗ ║║ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║╚══╗ ╔══╝
 // ║ ╚═════╗╔══╝ ╚╝ ║║ ╚═══╝ ║║ ║   ║ ║║ ╚═══╝ ║   ║ ║
@@ -280,8 +284,8 @@ export default {
     isFilledString,
     isEmptyString,
     hasDigitCount,
-    hasSpecialCharacterCount,
     hasWhitespaceCount,
+    hasSpecialCharacterCount,
 
     hasLetters,
     hasLowercaseLetters,
@@ -317,5 +321,6 @@ export default {
     isUndefined,
 
     isArray,
+    isEmptyArray,
     isFilledArray,
 };
