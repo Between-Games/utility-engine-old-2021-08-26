@@ -102,13 +102,6 @@ export function isEmptyString(value) {              // The provided value was fo
     return isString(value) && '' === value.trim();  // The provided value was found to be an empty string
 }
 
-export function hasWhitespaceCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  // The value was found to be a string with whitespace
-    return isNumber(minimumCount, 0, maximumCount) &&                                                   //
-        isNumber(maximumCount, minimumCount) &&                                                         //
-        isString(value, minimumCount) &&                                                                //
-        isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                                  //
-}
-
 export function hasDigitCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   //
     return isNumber(minimumCount, 0, maximumCount) &&                                               //
         isNumber(maximumCount, minimumCount) &&                                                     //
@@ -189,6 +182,24 @@ export function hasExtendedLowercaseLetters(value, minimumCount = 1, maximumCoun
 
 export function hasExtendedUppercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {
     throw new Error('The provided function has not yet been implemented');
+}
+
+// ╔═╗╔═╗╔═╗╔═╗   ╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+// ║ ║║ ║║ ║║ ║   ║ ║╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═════╝║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝║ ╔═════╝
+// ║ ║║ ║║ ║║ ╚═══╝ ║   ║ ║      ║ ║   ║ ╚═════╗║ ╚═════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ║      ║ ╚═════╗
+// ║ ║║ ║║ ║║ ╔═══╗ ║   ║ ║      ║ ║   ║ ╔═════╝╚═════╗ ║║ ╔═════╝║ ╔═══╗ ║║ ║      ║ ╔═════╝
+// ║ ╚╝ ╚╝ ║║ ║   ║ ║╔══╝ ╚══╗   ║ ║   ║ ╚═════╗╔═════╝ ║║ ║      ║ ║   ║ ║║ ╚═════╗║ ╚═════╗
+// ╚═══════╝╚═╝   ╚═╝╚═══════╝   ╚═╝   ╚═══════╝╚═══════╝╚═╝      ╚═╝   ╚═╝╚═══════╝╚═══════╝
+
+export function isWhitespace(value, minimumLength = 1, maximumLength = 1) { //
+    throw new Error('The provided function has not yet been implemented');  //
+}
+
+export function hasWhitespaces(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  // The value was found to be a string with whitespace
+    return isNumber(minimumCount, 0, maximumCount) &&                                               //
+        isNumber(maximumCount, minimumCount) &&                                                     //
+        isString(value, minimumCount) &&                                                            //
+        isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                              //
 }
 
 // ╔════╗╔═╗╔═╗   ╔═╗╔═══════╗╔══════╗ ╔═══════╗╔═══════╗
@@ -328,8 +339,10 @@ export default {
     isFilledString,
     isEmptyString,
     hasDigitCount,
-    hasWhitespaceCount,
     hasSpecialCharacterCount,
+
+    isWhitespace,
+    hasWhitespaces,
 
     isLetter,
     isLowercaseLetter,
