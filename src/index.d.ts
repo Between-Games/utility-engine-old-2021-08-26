@@ -6,9 +6,17 @@ export function hasSpecialCharacterCount(value: any, minimumCount?: number, maxi
 export function hasWhitespaceCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
 export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function isLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function isUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function isExtendedLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function isExtendedLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function isExtendedUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function hasLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
+export function hasExtendedLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
+export function hasExtendedLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
+export function hasExtendedUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
 export function isNumber(value: any, minimum?: number, maximum?: number): boolean;
 export function isPositiveNumber(value: any, maximum?: number): boolean;
@@ -33,6 +41,7 @@ export function isSuperclassOfSubclass(superclassValue: any, subclassValue: any)
 export function isFunction(value: any): boolean;
 
 export function isBoolean(value: any): boolean;
+export function isTruthy(value: any): boolean;
 export function isFalsy(value: any): boolean;
 
 export function isNull(value: any): boolean;
@@ -52,9 +61,17 @@ declare module 'UtilityEngine' {
     export function hasWhitespaceCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function isLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function isUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function isExtendedLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function isExtendedLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function isExtendedUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function hasLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
+    export function hasExtendedLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
+    export function hasExtendedLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
+    export function hasExtendedUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isNumber(value: any, minimum?: number, maximum?: number): boolean;
     export function isPositiveNumber(value: any, maximum?: number): boolean;
@@ -79,6 +96,7 @@ declare module 'UtilityEngine' {
     export function isFunction(value: any): boolean;
 
     export function isBoolean(value: any): boolean;
+    export function isTruthy(value: any): boolean;
     export function isFalsy(value: any): boolean;
 
     export function isNull(value: any): boolean;

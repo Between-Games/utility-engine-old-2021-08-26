@@ -135,21 +135,41 @@ export function isLetter(value, minimumLength = 1, maximumLength = 1) { //
     return isNumber(minimumLength, 1, maximumLength) &&                 //
         isNumber(maximumLength, minimumLength) &&                       //
         isString(value, minimumLength, maximumLength) &&                //
-        isEmptyArray((value.match(/[^a-zA-Z]/g) || []));    //
+        isEmptyArray((value.match(/[^a-zA-Z]/g) || []));                //
+}
+
+export function isLowercaseLetter(value, minimumLength = 1, maximumLength = 1) {
+    throw new Error('The provided function has not yet been implemented');
+}
+
+export function isUppercaseLetter(value, minimumLength = 1, maximumLength = 1) {
+    throw new Error('The provided function has not yet been implemented');
+}
+
+export function isExtendedLetter(value, minimumLength = 1, maximumLength = 1) {
+    throw new Error('The provided function has not yet been implemented');
+}
+
+export function isExtendedLowercaseLetter(value, minimumLength = 1, maximumLength = 1) {
+    throw new Error('The provided function has not yet been implemented');
+}
+
+export function isExtendedUppercaseLetter(value, minimumLength = 1, maximumLength = 1) {
+    throw new Error('The provided function has not yet been implemented');
 }
 
 export function hasLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
     return isNumber(minimumCount, 0, maximumCount) &&                                           //
         isNumber(maximumCount, minimumCount) &&                                                 //
         isString(value, minimumCount) &&                                                        //
-        isArray((value.match(/[a-zA-Z]/g) || []), minimumCount, maximumCount);      //
+        isArray((value.match(/[a-zA-Z]/g) || []), minimumCount, maximumCount);                  //
 }
 
 export function hasLowercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
     return isNumber(minimumCount, 0, maximumCount) &&                                                   //
         isNumber(maximumCount, minimumCount) &&                                                         //
         isString(value, minimumCount) &&                                                                //
-        isArray((value.match(/[a-z]/g) || []), minimumCount, maximumCount);                       //
+        isArray((value.match(/[a-z]/g) || []), minimumCount, maximumCount);                             //
 }
 
 export function hasUppercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
@@ -158,6 +178,19 @@ export function hasUppercaseLetters(value, minimumCount = 1, maximumCount = Numb
         isString(value, minimumCount) &&                                                                //
         isArray((value.match(/[A-Z]/g) || []), minimumCount, maximumCount);                             //
 }
+
+export function hasExtendedLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {
+    throw new Error('The provided function has not yet been implemented');
+}
+
+export function hasExtendedLowercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {
+    throw new Error('The provided function has not yet been implemented');
+}
+
+export function hasExtendedUppercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {
+    throw new Error('The provided function has not yet been implemented');
+}
+
 // ╔════╗╔═╗╔═╗   ╔═╗╔═══════╗╔══════╗ ╔═══════╗╔═══════╗
 // ║ ╔╗ ║║ ║║ ║   ║ ║║ ╔╗ ╔╗ ║║ ╔══╗ ║ ║ ╔═════╝║ ╔═══╗ ║
 // ║ ║║ ║║ ║║ ║   ║ ║║ ║║ ║║ ║║ ╚══╝ ╚╗║ ╚═════╗║ ╚═══╝ ║
@@ -236,6 +269,10 @@ export function isFalsy(value) {    //
         value === '';               //
 }
 
+export function isTruthy() {                                                //
+    throw new Error('The provided function has not yet been implemented');  //
+}
+
 // ╔════╗╔═╗╔═╗   ╔═╗╔═╗      ╔═╗      ╔═══════╗╔═══════╗╔═╗   ╔═╗
 // ║ ╔╗ ║║ ║║ ║   ║ ║║ ║      ║ ║      ╚══╗ ╔══╝║ ╔═════╝║ ║   ║ ║
 // ║ ║║ ║║ ║║ ║   ║ ║║ ║      ║ ║         ║ ║   ║ ╚═════╗║ ╚═══╝ ║
@@ -294,9 +331,18 @@ export default {
     hasWhitespaceCount,
     hasSpecialCharacterCount,
 
+    isLetter,
+    isLowercaseLetter,
+    isUppercaseLetter,
+    isExtendedLetter,
+    isExtendedLowercaseLetter,
+    isExtendedUppercaseLetter,
     hasLetters,
     hasLowercaseLetters,
     hasUppercaseLetters,
+    hasExtendedLetters,
+    hasExtendedLowercaseLetters,
+    hasExtendedUppercaseLetters,
 
     isNumber,
     isPositiveNumber,
@@ -321,6 +367,7 @@ export default {
     isFunction,
 
     isBoolean,
+    isTruthy,
     isFalsy,
 
     isNull,
