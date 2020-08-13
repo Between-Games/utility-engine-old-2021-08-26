@@ -265,6 +265,481 @@ describe('Letter', function() {
         });
     });
 
+    // ╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═╗╔═╗╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ║      ║ ╔═══╗ ║║ ║║ ║║ ║║ ╔═════╝║ ╔═══╗ ║║ ╔═════╝║ ╔═══╗ ║║ ╔═════╝║ ╔═════╝         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ║      ║ ║   ║ ║║ ║║ ║║ ║║ ╚═════╗║ ╚═══╝ ║║ ║      ║ ╚═══╝ ║║ ╚═════╗║ ╚═════╗╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ║      ║ ║   ║ ║║ ║║ ║║ ║║ ╔═════╝║ ╔═╗ ╔═╝║ ║      ║ ╔═══╗ ║╚═════╗ ║║ ╔═════╝╚═══════╝║ ║      ║ ╔═════╝   ║ ║      ║ ║   ║ ╔═════╝║ ╔═╗ ╔═╝
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ╚═════╗║ ╚═══╝ ║║ ╚╝ ╚╝ ║║ ╚═════╗║ ║ ║ ╚═╗║ ╚═════╗║ ║   ║ ║╔═════╝ ║║ ╚═════╗         ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗
+    // ╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═╝ ╚═══╝╚═══════╝╚═╝   ╚═╝╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
+
+    describe('#isLowercaseLetter(value, minimumLength, maximumLength)', function() {
+        describe('#isLetter(VALUE, minimumLength, maximumLength)', function() {
+            it('Should return true when value is a lowercase letter', () => {
+                expect(UtilityEngine.isLowercaseLetter('a')).to.equal(true);
+            });
+
+            it('Should return true when value is lower case letter characters', () => {
+                expect(UtilityEngine.isLowercaseLetter('abcdefghijklmnopqrstuvwxyz', 1, 100)).to.equal(true);
+            });
+
+
+            it('Should return false when value is an uppercase letter', () => {
+                expect(UtilityEngine.isLowercaseLetter('A')).to.equal(false);
+            });
+
+            it('Should return false when value is a lowercase accented letter', () => {
+                expect(UtilityEngine.isLowercaseLetter('à')).to.equal(false);
+            });
+
+            it('Should return false when value is a uppercase accented letter', () => {
+                expect(UtilityEngine.isLowercaseLetter('À')).to.equal(false);
+            });
+
+            it('Should return false when value is mixed letters', () => {
+                expect(UtilityEngine.isLowercaseLetter('aBzZ', 1, 4)).to.equal(false);
+            });
+
+            it('Should return false when value is upper case letter characters', () => {
+                expect(UtilityEngine.isLowercaseLetter('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is a whitespace character', () => {
+                expect(UtilityEngine.isLowercaseLetter(' ', 1, 10)).to.equal(false);
+            });
+
+            it('Should return false when value contains only non-letters', () => {
+                expect(UtilityEngine.isLowercaseLetter('123!@#AàÀ', 1, 10)).to.equal(false);
+            });
+
+            it('Should return false when value contains some non-letters', () => {
+                expect(UtilityEngine.isLowercaseLetter('aA123', 1, 10)).to.equal(false);
+            });
+
+            it('Should return false when value is numerical characters', () => {
+                expect(UtilityEngine.isLowercaseLetter('0123456789', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is lower case accented letter characters', () => {
+                expect(UtilityEngine.isLowercaseLetter('àáâäæãåāèéêëēėęôöòóœøōõ', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value has upper case accented letter characters', () => {
+                expect(UtilityEngine.isLowercaseLetter('ÀÁÂÄÆÃÅĀÈÉÊËĒĖĘÔÖÒÓŒØŌÕ', 1, 100)).to.equal(false);
+            });
+
+
+            it('Should return false when value is special characters', () => {
+                expect(UtilityEngine.isLowercaseLetter('.:;•°×÷‰<>~`^!?(){}[]!@#$%$^&*()_шФ-+"/|\\\'', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is zero', () => {
+                expect(UtilityEngine.isLowercaseLetter(0)).to.equal(false);
+            });
+
+            it('Should return false when value is a positive number', () => {
+                expect(UtilityEngine.isLowercaseLetter(1)).to.equal(false);
+            });
+
+            it('Should return false when value is a negative number', () => {
+                expect(UtilityEngine.isLowercaseLetter(-1)).to.equal(false);
+            });
+
+            it('Should return false when value is true', () => {
+                expect(UtilityEngine.isLowercaseLetter(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false', () => {
+                expect(UtilityEngine.isLowercaseLetter(false)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isLowercaseLetter(null)).to.equal(false);
+            });
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.isLowercaseLetter({})).to.equal(false);
+            });
+
+            it('Should return false when value is a empty string', () => {
+                expect(UtilityEngine.isLowercaseLetter('')).to.equal(false);
+            });
+
+            it('Should return false when value is a filled string', () => {
+                expect(UtilityEngine.isLowercaseLetter('string')).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.isLowercaseLetter([])).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isLowercaseLetter(function() {})).to.equal(false);
+            });
+        });
+
+        describe('#isLetter(value, MINIMUMLENGTH, maximumLength)', function() {
+            it('Should return true when minimum length parameter is empty', () => {
+                expect(UtilityEngine.isLowercaseLetter('a')).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is undefined', () => {
+                expect(UtilityEngine.isLowercaseLetter('a', undefined)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is small enough', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', 2, 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is big enough', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', 3, 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is minimum range', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', 1, 3)).to.equal(true);
+            });
+
+
+            it('Should return false when minimum length parameter is smaller than minimum range', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', 0, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is null', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', null, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is true', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', true, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is false', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', false, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is an object', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', {}, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is a string', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', 'string', 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is an array', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', [], 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is a function', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', function() {}, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter negative number', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', -1, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is too big', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', 4, 3)).to.equal(false);
+            });
+        });
+
+        describe('#isLetter(value, minimumLength, MAXIMUMLENGTH)', function() {
+            it('Should return true when maximum length parameter is empty', () => {
+                expect(UtilityEngine.isLowercaseLetter('a', undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is undefined', () => {
+                expect(UtilityEngine.isLowercaseLetter('a', undefined, undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is small enough', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, 12)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is big enough', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, 3)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is minimum range', () => {
+                expect(UtilityEngine.isLowercaseLetter('a', undefined, 1)).to.equal(true);
+            });
+
+
+            it('Should return false when maximum length parameter is too small', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter negative number', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is smaller than minimum range', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, 0)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is true', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, true)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is false', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, false)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is null', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, null)).to.equal(false);
+            });
+            it('Should return false when maximum length parameter is an object', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, {})).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is a string', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, 'string')).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is an array', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, [])).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is a function', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', undefined, function() {})).to.equal(false);
+            });
+        });
+    });
+
+    // ╔═══════╗╔═══════╗         ╔═╗   ╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ║   ║ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝║ ╔═══╗ ║║ ╔═════╝║ ╔═══╗ ║║ ╔═════╝║ ╔═════╝         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ║   ║ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗║ ╚═══╝ ║║ ║      ║ ╚═══╝ ║║ ╚═════╗║ ╚═════╗╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ║   ║ ║║ ╔═════╝║ ╔═════╝║ ╔═════╝║ ╔═╗ ╔═╝║ ║      ║ ╔═══╗ ║╚═════╗ ║║ ╔═════╝╚═══════╝║ ║      ║ ╔═════╝   ║ ║      ║ ║   ║ ╔═════╝║ ╔═╗ ╔═╝
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ╚═══╝ ║║ ║      ║ ║      ║ ╚═════╗║ ║ ║ ╚═╗║ ╚═════╗║ ║   ║ ║╔═════╝ ║║ ╚═════╗         ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗
+    // ╚═══════╝╚═══════╝         ╚═══════╝╚═╝      ╚═╝      ╚═══════╝╚═╝ ╚═══╝╚═══════╝╚═╝   ╚═╝╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
+
+    describe('#isUppercaseLetter(value, minimumLength, maximumLength)', function() {
+        describe('#isUppercaseLetter(VALUE, minimumLength, maximumLength)', function() {
+            it('Should return true when value is an uppercase letter', () => {
+                expect(UtilityEngine.isUppercaseLetter('A')).to.equal(true);
+            });
+
+            it('Should return true when value is upper case letter characters', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABCDEFGHIJKLMNOPQRSTUVWXYZ', 1, 100)).to.equal(true);
+            });
+
+
+            it('Should return false when value is a lowercase letter', () => {
+                expect(UtilityEngine.isUppercaseLetter('a')).to.equal(false);
+            });
+
+            it('Should return false when value is mixed letters', () => {
+                expect(UtilityEngine.isUppercaseLetter('aBzZ', 1, 4)).to.equal(false);
+            });
+
+
+            it('Should return false when value is a lowercase accented letter', () => {
+                expect(UtilityEngine.isUppercaseLetter('à')).to.equal(false);
+            });
+
+            it('Should return false when value is a uppercase accented letter', () => {
+                expect(UtilityEngine.isUppercaseLetter('À')).to.equal(false);
+            });
+
+            it('Should return false when value is lower case letter characters', () => {
+                expect(UtilityEngine.isUppercaseLetter('abcdefghijklmnopqrstuvwxyz', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is a whitespace character', () => {
+                expect(UtilityEngine.isUppercaseLetter(' ', 1, 10)).to.equal(false);
+            });
+
+            it('Should return false when value contains only non-letters', () => {
+                expect(UtilityEngine.isUppercaseLetter('123!@#AàÀ', 1, 10)).to.equal(false);
+            });
+
+            it('Should return false when value contains some non-letters', () => {
+                expect(UtilityEngine.isUppercaseLetter('aA123', 1, 10)).to.equal(false);
+            });
+
+            it('Should return false when value is numerical characters', () => {
+                expect(UtilityEngine.isUppercaseLetter('0123456789', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is lower case accented letter characters', () => {
+                expect(UtilityEngine.isUppercaseLetter('àáâäæãåāèéêëēėęôöòóœøōõ', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value has upper case accented letter characters', () => {
+                expect(UtilityEngine.isUppercaseLetter('ÀÁÂÄÆÃÅĀÈÉÊËĒĖĘÔÖÒÓŒØŌÕ', 1, 100)).to.equal(false);
+            });
+
+
+            it('Should return false when value is special characters', () => {
+                expect(UtilityEngine.isUppercaseLetter('.:;•°×÷‰<>~`^!?(){}[]!@#$%$^&*()_шФ-+"/|\\\'', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is zero', () => {
+                expect(UtilityEngine.isUppercaseLetter(0)).to.equal(false);
+            });
+
+            it('Should return false when value is a positive number', () => {
+                expect(UtilityEngine.isUppercaseLetter(1)).to.equal(false);
+            });
+
+            it('Should return false when value is a negative number', () => {
+                expect(UtilityEngine.isUppercaseLetter(-1)).to.equal(false);
+            });
+
+            it('Should return false when value is true', () => {
+                expect(UtilityEngine.isUppercaseLetter(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false', () => {
+                expect(UtilityEngine.isUppercaseLetter(false)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isUppercaseLetter(null)).to.equal(false);
+            });
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.isUppercaseLetter({})).to.equal(false);
+            });
+
+            it('Should return false when value is a empty string', () => {
+                expect(UtilityEngine.isUppercaseLetter('')).to.equal(false);
+            });
+
+            it('Should return false when value is a filled string', () => {
+                expect(UtilityEngine.isUppercaseLetter('string')).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.isUppercaseLetter([])).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isUppercaseLetter(function() {})).to.equal(false);
+            });
+        });
+
+        describe('#isUppercaseLetter(value, MINIMUMLENGTH, maximumLength)', function() {
+            it('Should return true when minimum length parameter is empty', () => {
+                expect(UtilityEngine.isUppercaseLetter('A')).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is undefined', () => {
+                expect(UtilityEngine.isUppercaseLetter('A', undefined)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is small enough', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', 2, 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is big enough', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', 3, 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is minimum range', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', 1, 3)).to.equal(true);
+            });
+
+
+            it('Should return false when minimum length parameter is smaller than minimum range', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', 0, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is null', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', null, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is true', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', true, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is false', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', false, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is an object', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', {}, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is a string', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', 'string', 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is an array', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', [], 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is a function', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', function() {}, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter negative number', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', -1, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is too big', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', 4, 3)).to.equal(false);
+            });
+        });
+
+        describe('#isUppercaseLetter(value, minimumLength, MAXIMUMLENGTH)', function() {
+            it('Should return true when maximum length parameter is empty', () => {
+                expect(UtilityEngine.isUppercaseLetter('A', undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is undefined', () => {
+                expect(UtilityEngine.isUppercaseLetter('A', undefined, undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is small enough', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, 12)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is big enough', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, 3)).to.equal(true);
+            });
+
+            it('Should return true when maximum length parameter is minimum range', () => {
+                expect(UtilityEngine.isUppercaseLetter('A', undefined, 1)).to.equal(true);
+            });
+
+
+            it('Should return false when maximum length parameter is too small', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter negative number', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is smaller than minimum range', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, 0)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is true', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, true)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is false', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, false)).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is null', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, null)).to.equal(false);
+            });
+            it('Should return false when maximum length parameter is an object', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, {})).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is a string', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, 'string')).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is an array', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, [])).to.equal(false);
+            });
+
+            it('Should return false when maximum length parameter is a function', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', undefined, function() {})).to.equal(false);
+            });
+        });
+    });
+
     // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
     // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║║ ╔═════╝
     // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║║ ╚═════╗

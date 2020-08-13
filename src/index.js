@@ -131,12 +131,18 @@ export function isLetter(value, minimumLength = 1, maximumLength = 1) { //
         isEmptyArray((value.match(/[^a-zA-Z]/g) || []));                //
 }
 
-export function isLowercaseLetter(value, minimumLength = 1, maximumLength = 1) {
-    throw new Error('The provided function has not yet been implemented');
+export function isLowercaseLetter(value, minimumLength = 1, maximumLength = 1) {    //
+    return isNumber(minimumLength, 1, maximumLength) &&                             //
+        isNumber(maximumLength, minimumLength) &&                                   //
+        isString(value, minimumLength, maximumLength) &&                            //
+        isEmptyArray((value.match(/[^a-z]/g) || []));                               //
 }
 
-export function isUppercaseLetter(value, minimumLength = 1, maximumLength = 1) {
-    throw new Error('The provided function has not yet been implemented');
+export function isUppercaseLetter(value, minimumLength = 1, maximumLength = 1) {    //
+    return isNumber(minimumLength, 1, maximumLength) &&                             //
+        isNumber(maximumLength, minimumLength) &&                                   //
+        isString(value, minimumLength, maximumLength) &&                            //
+        isEmptyArray((value.match(/[^A-Z]/g) || []));                               //
 }
 
 export function isExtendedLetter(value, minimumLength = 1, maximumLength = 1) {
