@@ -5,6 +5,7 @@ export function hasDigitCount(value: any, minimumCount?: number, maximumCount?: 
 export function hasSpecialCharacterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasWhitespaceCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
+export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function hasLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
@@ -50,6 +51,7 @@ declare module 'UtilityEngine' {
     export function hasSpecialCharacterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasWhitespaceCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
+    export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function hasLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;

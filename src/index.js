@@ -131,25 +131,32 @@ export function hasSpecialCharacterCount(value, minimumCount = 1, maximumCount =
 // ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗
 // ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
 
+export function isLetter(value, minimumLength = 1, maximumLength = 1) { //
+    return isNumber(minimumLength, 1, maximumLength) &&                 //
+        isNumber(maximumLength, minimumLength) &&                       //
+        isString(value, minimumLength, maximumLength) &&                //
+        isEmptyArray((value.match(/[^a-zA-Z]/g) || []));    //
+}
+
 export function hasLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
     return isNumber(minimumCount, 0, maximumCount) &&                                           //
         isNumber(maximumCount, minimumCount) &&                                                 //
         isString(value, minimumCount) &&                                                        //
-        isArray((value.match(/[a-zß-öø-ÿA-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);      //
+        isArray((value.match(/[a-zA-Z]/g) || []), minimumCount, maximumCount);      //
 }
 
 export function hasLowercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
     return isNumber(minimumCount, 0, maximumCount) &&                                                   //
         isNumber(maximumCount, minimumCount) &&                                                         //
         isString(value, minimumCount) &&                                                                //
-        isArray((value.match(/[a-zß-öø-ÿ]/g) || []), minimumCount, maximumCount);                       //
+        isArray((value.match(/[a-z]/g) || []), minimumCount, maximumCount);                       //
 }
 
 export function hasUppercaseLetters(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) { //
     return isNumber(minimumCount, 0, maximumCount) &&                                                   //
         isNumber(maximumCount, minimumCount) &&                                                         //
         isString(value, minimumCount) &&                                                                //
-        isArray((value.match(/[A-ZÀ-ÖØ-Þ]/g) || []), minimumCount, maximumCount);                       //
+        isArray((value.match(/[A-Z]/g) || []), minimumCount, maximumCount);                             //
 }
 // ╔════╗╔═╗╔═╗   ╔═╗╔═══════╗╔══════╗ ╔═══════╗╔═══════╗
 // ║ ╔╗ ║║ ║║ ║   ║ ║║ ╔╗ ╔╗ ║║ ╔══╗ ║ ║ ╔═════╝║ ╔═══╗ ║
