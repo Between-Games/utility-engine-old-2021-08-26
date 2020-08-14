@@ -20,6 +20,30 @@ import chai from 'chai';
 
 const expect = chai.expect;
 
+// ╔═══════╗╔═══════╗╔═══════╗╔═╗      ╔═══════╗╔═══════╗╔═══════╗
+// ╚╗ ╔══╗ ║║ ╔═════╝║ ╔═════╝║ ║      ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝
+//  ║ ║  ║ ║║ ╚═════╗║ ║      ║ ║      ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗
+//  ║ ║  ║ ║║ ╔═════╝║ ║      ║ ║      ║ ╔═══╗ ║║ ╔═╗ ╔═╝║ ╔═════╝
+// ╔╝ ╚══╝ ║║ ╚═════╗║ ╚═════╗║ ╚═════╗║ ║   ║ ║║ ║ ║ ╚═╗║ ╚═════╗
+// ╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═╝   ╚═╝╚═╝ ╚═══╝╚═══════╝
+
+// Excluded letters: Ʀƪƻƾƿǀǁǂǃǅǈǋǲ
+
+const _basicLatinDigits = '0123456789';
+const _basicLatinLowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
+const _basicLatinUppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const _basicLatinSymbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
+
+const _latin1Symbols = '¡¢£¤¥¦§¨©ª«¬®¯°±²³´¶·¸¹º»¼½¾¿×÷';
+const _latin1LowercaseLetters = 'ßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ';
+const _latin1UppercaseLetters = 'ÁÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ';
+
+const _latinALowercaseLetters = 'āăąćĉċčďđēĕėęěĝğġģĥħĩīĭįıĳĵķĸĺļľŀłńņňŉŋōŏőœŕŗřśŝşšţťŧũūŭůűųŵŷźżžſ';
+const _LatinAUppercaseLetters = 'ĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŸŹŻŽ';
+
+const _latinBLowercaseLetters = 'ƀƃƅƈƌƍƒƕƙƚƛƞơƣƥƨƫƭưƴƶƹƺƽǆǉǌǎǐǒǔǖǘǚǜǝǟǡǣǥǧǩǫǭǯǰǳǵǹǻǽǿȁȃȅȇȉȋȍȏȑȓȕȗșțȝȟȡȣȥȧȩȫȭȯȱȳȴȵȶȷȸȹȼȿɀɂɇɉɋɍɏ';
+const _LatinBUppercaseLetters = 'ƁƂƄƆƇƉƊƋƎƏƐƑƓƔƖƗƘƜƝƟƠƢƤƧƩƬƮƯƱƲƳƵƷƸƼǄǇǊǍǏǑǓǕǗǙǛǞǠǢǤǦǨǪǬǮǱǴǶǷǸǺǼǾȀȂȄȆȈȊȌȎȐȒȔȖȘȚȜȞȠȢȤȦȨȪȬȮȰȲȺȻȽȾɁɃɄɅɆɈɊɌɎ';
+
 // ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
 // ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
 // ║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║
@@ -740,6 +764,140 @@ describe('Letter', function() {
         });
     });
 
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═════╝╚══╗ ║║ ║╚══╗ ╔══╝║ ╔═════╝║ ╔╗ ║║ ║╚╗ ╔══╗ ║║ ╔═════╝╚╗ ╔══╗ ║         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═════╗╔══╝ ╚╝ ║   ║ ║   ║ ╚═════╗║ ║║ ║║ ║ ║ ║  ║ ║║ ╚═════╗ ║ ║  ║ ║╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═════╝║ ╔╗ ╔══╝   ║ ║   ║ ╔═════╝║ ║║ ║║ ║ ║ ║  ║ ║║ ╔═════╝ ║ ║  ║ ║╚═══════╝║ ║      ║ ╔═════╝   ║ ║      ║ ║   ║ ╔═════╝║ ╔═╗ ╔═╝
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ╚═════╗║ ║║ ╚══╗   ║ ║   ║ ╚═════╗║ ║║ ╚╝ ║╔╝ ╚══╝ ║║ ╚═════╗╔╝ ╚══╝ ║         ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗
+    // ╚═══════╝╚═══════╝         ╚═══════╝╚═╝╚════╝   ╚═╝   ╚═══════╝╚═╝╚════╝╚═══════╝╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
+
+    describe('#isExtendedLetter(value, minimumLength, maximumLength)', function() {
+        describe('#isExtendedLetter(VALUE, minimumLength, maximumLength)', function() {
+            it('Should return true when value is a basic latin lowercase letter', () => {
+                expect(UtilityEngine.isExtendedLetter('a', 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is a basic uppercase letter', () => {
+                expect(UtilityEngine.isExtendedLetter('A', 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is a latin-1 lowercase letter', () => {
+                expect(UtilityEngine.isExtendedLetter('à', 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is a latin-1 uppercase letter', () => {
+                expect(UtilityEngine.isExtendedLetter('Á', 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is a latin-A lowercase letter', () => {
+                expect(UtilityEngine.isExtendedLetter('ā', 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value is a latin-A uppercase letter', () => {
+                expect(UtilityEngine.isExtendedLetter('Ā', 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value contains only basic latin lowercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_basicLatinLowercaseLetters, 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value contains only basic latin uppercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_basicLatinUppercaseLetters, 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-1 lowercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_latin1LowercaseLetters, 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-1 uppercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_latin1UppercaseLetters, 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-A lowercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_latinALowercaseLetters, 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-A uppercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_LatinAUppercaseLetters, 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-B lowercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_latinBLowercaseLetters, 1, 100)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-B uppercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_LatinBUppercaseLetters, 1, 200)).to.equal(true);
+            });
+
+
+            it('Should return false when value is a whitespace', () => {
+                expect(UtilityEngine.isExtendedLetter(' ', 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value contains only basic latin digits', () => {
+                expect(UtilityEngine.isExtendedLetter(_basicLatinDigits, 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value contains only basic latin symbols', () => {
+                expect(UtilityEngine.isExtendedLetter(_basicLatinSymbols, 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value contains only latin-1 symbols', () => {
+                expect(UtilityEngine.isExtendedLetter(_latin1Symbols, 1, 100)).to.equal(false);
+            });
+
+            it('Should return false when value is zero', () => {
+                expect(UtilityEngine.isExtendedLetter(0)).to.equal(false);
+            });
+
+            it('Should return false when value is a positive number', () => {
+                expect(UtilityEngine.isExtendedLetter(1)).to.equal(false);
+            });
+
+            it('Should return false when value is a negative number', () => {
+                expect(UtilityEngine.isExtendedLetter(-1)).to.equal(false);
+            });
+
+            it('Should return false when value is true', () => {
+                expect(UtilityEngine.isExtendedLetter(true)).to.equal(false);
+            });
+
+            it('Should return false when value is false', () => {
+                expect(UtilityEngine.isExtendedLetter(false)).to.equal(false);
+            });
+
+            it('Should return false when value is null', () => {
+                expect(UtilityEngine.isExtendedLetter(null)).to.equal(false);
+            });
+            it('Should return false when value is an object', () => {
+                expect(UtilityEngine.isExtendedLetter({})).to.equal(false);
+            });
+
+            it('Should return false when value is a empty string', () => {
+                expect(UtilityEngine.isExtendedLetter('')).to.equal(false);
+            });
+
+            it('Should return false when value is a filled string', () => {
+                expect(UtilityEngine.isExtendedLetter('string')).to.equal(false);
+            });
+
+            it('Should return false when value is an array', () => {
+                expect(UtilityEngine.isExtendedLetter([])).to.equal(false);
+            });
+
+            it('Should return false when value is a function', () => {
+                expect(UtilityEngine.isExtendedLetter(function() {})).to.equal(false);
+            });
+        });
+
+        describe('#isExtendedLetter(value, MINIMUMLENGTH, maximumLength)', function() {
+
+        });
+
+        describe('#isExtendedLetter(value, minimumLength, MAXIMUMLENGTH)', function() {
+
+        });
+    });
     // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
     // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║║ ╔═════╝
     // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║║ ╚═════╗
