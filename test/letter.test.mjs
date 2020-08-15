@@ -39,10 +39,23 @@ const _latin1LowercaseLetters = 'ßàáâãäåæçèéêëìíîïðñòóôõ�
 const _latin1UppercaseLetters = 'ÁÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ';
 
 const _latinALowercaseLetters = 'āăąćĉċčďđēĕėęěĝğġģĥħĩīĭįıĳĵķĸĺļľŀłńņňŉŋōŏőœŕŗřśŝşšţťŧũūŭůűųŵŷźżžſ';
-const _LatinAUppercaseLetters = 'ĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŸŹŻŽ';
+const _latinAUppercaseLetters = 'ĀĂĄĆĈĊČĎĐĒĔĖĘĚĜĞĠĢĤĦĨĪĬĮİĲĴĶĹĻĽĿŁŃŅŇŊŌŎŐŒŔŖŘŚŜŞŠŢŤŦŨŪŬŮŰŲŴŶŸŹŻŽ';
 
 const _latinBLowercaseLetters = 'ƀƃƅƈƌƍƒƕƙƚƛƞơƣƥƨƫƭưƴƶƹƺƽǆǉǌǎǐǒǔǖǘǚǜǝǟǡǣǥǧǩǫǭǯǰǳǵǹǻǽǿȁȃȅȇȉȋȍȏȑȓȕȗșțȝȟȡȣȥȧȩȫȭȯȱȳȴȵȶȷȸȹȼȿɀɂɇɉɋɍɏ';
-const _LatinBUppercaseLetters = 'ƁƂƄƆƇƉƊƋƎƏƐƑƓƔƖƗƘƜƝƟƠƢƤƧƩƬƮƯƱƲƳƵƷƸƼǄǇǊǍǏǑǓǕǗǙǛǞǠǢǤǦǨǪǬǮǱǴǶǷǸǺǼǾȀȂȄȆȈȊȌȎȐȒȔȖȘȚȜȞȠȢȤȦȨȪȬȮȰȲȺȻȽȾɁɃɄɅɆɈɊɌɎ';
+const _latinBUppercaseLetters = 'ƁƂƄƆƇƉƊƋƎƏƐƑƓƔƖƗƘƜƝƟƠƢƤƧƩƬƮƯƱƲƳƵƷƸƼǄǇǊǍǏǑǓǕǗǙǛǞǠǢǤǦǨǪǬǮǱǴǶǷǸǺǼǾȀȂȄȆȈȊȌȎȐȒȔȖȘȚȜȞȠȢȤȦȨȪȬȮȰȲȺȻȽȾɁɃɄɅɆɈɊɌɎ';
+
+const _greekLowercaseLetters = 'αβγδεζηθικλμνξοπρστυφχψω';
+const _greekUppercaseLetters = 'ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ';
+
+const _basicLatinLetters = `${_basicLatinLowercaseLetters}${_basicLatinUppercaseLetters}`;
+const _latin1Letters = `${_latin1LowercaseLetters}${_latin1UppercaseLetters}`;
+const _latinALetters = `${_latinALowercaseLetters}${_latinAUppercaseLetters}`;
+const _latinBLetters = `${_latinBLowercaseLetters}${_latinBUppercaseLetters}`;
+
+const _latinLetters = `${_basicLatinLetters}${_latin1Letters}${_latinALetters}${_latinBLetters}`;
+const _greekLetters = `${_greekLowercaseLetters}${_greekUppercaseLetters}`;
+
+const _latinCharacters = `${_latinLetters}${_basicLatinSymbols}${_latin1Symbols}`;
 
 // ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
 // ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
@@ -774,76 +787,112 @@ describe('Letter', function() {
     describe('#isExtendedLetter(value, minimumLength, maximumLength)', function() {
         describe('#isExtendedLetter(VALUE, minimumLength, maximumLength)', function() {
             it('Should return true when value is a basic latin lowercase letter', () => {
-                expect(UtilityEngine.isExtendedLetter('a', 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter('a', 1, 200)).to.equal(true);
             });
 
             it('Should return true when value is a basic uppercase letter', () => {
-                expect(UtilityEngine.isExtendedLetter('A', 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter('A', 1, 200)).to.equal(true);
             });
 
             it('Should return true when value is a latin-1 lowercase letter', () => {
-                expect(UtilityEngine.isExtendedLetter('à', 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter('à', 1, 200)).to.equal(true);
             });
 
             it('Should return true when value is a latin-1 uppercase letter', () => {
-                expect(UtilityEngine.isExtendedLetter('Á', 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter('Á', 1, 200)).to.equal(true);
             });
 
             it('Should return true when value is a latin-A lowercase letter', () => {
-                expect(UtilityEngine.isExtendedLetter('ā', 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter('ā', 1, 200)).to.equal(true);
             });
 
             it('Should return true when value is a latin-A uppercase letter', () => {
-                expect(UtilityEngine.isExtendedLetter('Ā', 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter('Ā', 1, 200)).to.equal(true);
+            });
+
+            it('Should return true when value contains only basic latin letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_basicLatinLetters, 1, 200)).to.equal(true);
             });
 
             it('Should return true when value contains only basic latin lowercase letters', () => {
-                expect(UtilityEngine.isExtendedLetter(_basicLatinLowercaseLetters, 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter(_basicLatinLowercaseLetters, 1, 200)).to.equal(true);
             });
 
             it('Should return true when value contains only basic latin uppercase letters', () => {
-                expect(UtilityEngine.isExtendedLetter(_basicLatinUppercaseLetters, 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter(_basicLatinUppercaseLetters, 1, 200)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-1 letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_latin1Letters, 1, 200)).to.equal(true);
             });
 
             it('Should return true when value contains only latin-1 lowercase letters', () => {
-                expect(UtilityEngine.isExtendedLetter(_latin1LowercaseLetters, 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter(_latin1LowercaseLetters, 1, 200)).to.equal(true);
             });
 
             it('Should return true when value contains only latin-1 uppercase letters', () => {
-                expect(UtilityEngine.isExtendedLetter(_latin1UppercaseLetters, 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter(_latin1UppercaseLetters, 1, 200)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-A letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_latinALetters, 1, 200)).to.equal(true);
             });
 
             it('Should return true when value contains only latin-A lowercase letters', () => {
-                expect(UtilityEngine.isExtendedLetter(_latinALowercaseLetters, 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter(_latinALowercaseLetters, 1, 200)).to.equal(true);
             });
 
             it('Should return true when value contains only latin-A uppercase letters', () => {
-                expect(UtilityEngine.isExtendedLetter(_LatinAUppercaseLetters, 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter(_latinAUppercaseLetters, 1, 200)).to.equal(true);
+            });
+
+            it('Should return true when value contains only latin-B letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_latinBLetters, 1, 200)).to.equal(true);
             });
 
             it('Should return true when value contains only latin-B lowercase letters', () => {
-                expect(UtilityEngine.isExtendedLetter(_latinBLowercaseLetters, 1, 100)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter(_latinBLowercaseLetters, 1, 200)).to.equal(true);
             });
 
             it('Should return true when value contains only latin-B uppercase letters', () => {
-                expect(UtilityEngine.isExtendedLetter(_LatinBUppercaseLetters, 1, 200)).to.equal(true);
+                expect(UtilityEngine.isExtendedLetter(_latinBUppercaseLetters, 1, 200)).to.equal(true);
+            });
+
+            it('Should return true when value contains only greek letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_greekLetters, 1, 200)).to.equal(true);
+            });
+
+            it('Should return true when value contains only greek lowercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_greekLowercaseLetters, 1, 200)).to.equal(true);
+            });
+
+            it('Should return true when value contains only greek uppercase letters', () => {
+                expect(UtilityEngine.isExtendedLetter(_greekUppercaseLetters, 1, 200)).to.equal(true);
             });
 
 
+            it('Should return false when value is an empty string', () => {
+                expect(UtilityEngine.isExtendedLetter('', 1, 200)).to.equal(false);
+            });
+
             it('Should return false when value is a whitespace', () => {
-                expect(UtilityEngine.isExtendedLetter(' ', 1, 100)).to.equal(false);
+                expect(UtilityEngine.isExtendedLetter(' ', 1, 200)).to.equal(false);
             });
 
             it('Should return false when value contains only basic latin digits', () => {
-                expect(UtilityEngine.isExtendedLetter(_basicLatinDigits, 1, 100)).to.equal(false);
+                expect(UtilityEngine.isExtendedLetter(_basicLatinDigits, 1, 200)).to.equal(false);
             });
 
             it('Should return false when value contains only basic latin symbols', () => {
-                expect(UtilityEngine.isExtendedLetter(_basicLatinSymbols, 1, 100)).to.equal(false);
+                expect(UtilityEngine.isExtendedLetter(_basicLatinSymbols, 1, 200)).to.equal(false);
             });
 
             it('Should return false when value contains only latin-1 symbols', () => {
-                expect(UtilityEngine.isExtendedLetter(_latin1Symbols, 1, 100)).to.equal(false);
+                expect(UtilityEngine.isExtendedLetter(_latin1Symbols, 1, 200)).to.equal(false);
+            });
+
+            it('Should return false when value contains only latin characters', () => {
+                expect(UtilityEngine.isExtendedLetter(_latinCharacters, 1, 200)).to.equal(false);
             });
 
             it('Should return false when value is zero', () => {
@@ -924,7 +973,7 @@ describe('Letter', function() {
             });
 
             it('Should return true when value is a sentence', () => {
-                expect(UtilityEngine.hasLetters('No more half-measures')).to.equal(true);
+                expect(UtilityEngine.hasLetters('No more half-measures.')).to.equal(true);
             });
 
             it('Should return true when value is mixed characters', () => {
@@ -1621,6 +1670,309 @@ describe('Letter', function() {
 
             it('Should return false when maximum count parameter is negative infinity', () => {
                 expect(UtilityEngine.hasUppercaseLetters('1A2B3C', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
+        });
+    });
+
+    // ╔═╗   ╔═╗╔═══════╗╔═══════╗         ╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔════╗╔═╗╔═══════╗╔═══════╗╔═══════╗         ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+    // ║ ║   ║ ║║ ╔═══╗ ║║ ╔═════╝         ║ ╔═════╝╚══╗ ║║ ║╚══╗ ╔══╝║ ╔═════╝║ ╔╗ ║║ ║╚╗ ╔══╗ ║║ ╔═════╝╚╗ ╔══╗ ║         ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║║ ╔═════╝
+    // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗╔═══════╗║ ╚═════╗╔══╝ ╚╝ ║   ║ ║   ║ ╚═════╗║ ║║ ║║ ║ ║ ║  ║ ║║ ╚═════╗ ║ ║  ║ ║╔═══════╗║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║║ ╚═════╗
+    // ║ ╔═══╗ ║║ ╔═══╗ ║╚═════╗ ║╚═══════╝║ ╔═════╝║ ╔╗ ╔══╝   ║ ║   ║ ╔═════╝║ ║║ ║║ ║ ║ ║  ║ ║║ ╔═════╝ ║ ║  ║ ║╚═══════╝║ ║      ║ ╔═════╝   ║ ║      ║ ║   ║ ╔═════╝║ ╔═╗ ╔═╝╚═════╗ ║
+    // ║ ║   ║ ║║ ║   ║ ║╔═════╝ ║         ║ ╚═════╗║ ║║ ╚══╗   ║ ║   ║ ╚═════╗║ ║║ ╚╝ ║╔╝ ╚══╝ ║║ ╚═════╗╔╝ ╚══╝ ║         ║ ╚═════╗║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ║ ║ ╚═╗╔═════╝ ║
+    // ╚═╝   ╚═╝╚═╝   ╚═╝╚═══════╝         ╚═══════╝╚═╝╚════╝   ╚═╝   ╚═══════╝╚═╝╚════╝╚═══════╝╚═══════╝╚═══════╝         ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝╚═══════╝
+
+    describe('#hasExtendedLetters(value, minimumCount, maximumCount)', function() {
+        describe('#hasExtendedLetters(VALUE, minimumCount, maximumCount)', function() {
+            describe('#hasExtendedLetters(VALUE, minimumLength, maximumLength)', function() {
+                it('Should return true when value is a basic latin lowercase letter', () => {
+                    expect(UtilityEngine.hasExtendedLetters('a', 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value is a basic uppercase letter', () => {
+                    expect(UtilityEngine.hasExtendedLetters('A', 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value is a latin-1 lowercase letter', () => {
+                    expect(UtilityEngine.hasExtendedLetters('à', 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value is a latin-1 uppercase letter', () => {
+                    expect(UtilityEngine.hasExtendedLetters('Á', 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value is a latin-A lowercase letter', () => {
+                    expect(UtilityEngine.hasExtendedLetters('ā', 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value is a latin-A uppercase letter', () => {
+                    expect(UtilityEngine.hasExtendedLetters('Ā', 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only basic latin letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_basicLatinLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only basic latin lowercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_basicLatinLowercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only basic latin uppercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_basicLatinUppercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-1 letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latin1Letters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-1 lowercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latin1LowercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-1 uppercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latin1UppercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-A letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latinALetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-A lowercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latinALowercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-A uppercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latinAUppercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-B letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latinBLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-B lowercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latinBLowercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only latin-B uppercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latinBUppercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return false when value contains only latin characters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latinCharacters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only greek letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_greekLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only greek lowercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_greekLowercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value contains only greek uppercase letters', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_greekUppercaseLetters, 1, 500)).to.equal(true);
+                });
+
+                it('Should return true when value is a sentence', () => {
+                    expect(UtilityEngine.hasExtendedLetters('No more half-measures.')).to.equal(true);
+                });
+
+
+                it('Should return false when value is an empty string', () => {
+                    expect(UtilityEngine.hasExtendedLetters('', 1, 500)).to.equal(false);
+                });
+
+                it('Should return false when value is a whitespace', () => {
+                    expect(UtilityEngine.hasExtendedLetters(' ', 1, 500)).to.equal(false);
+                });
+
+                it('Should return false when value contains only basic latin digits', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_basicLatinDigits, 1, 500)).to.equal(false);
+                });
+
+                it('Should return false when value contains only basic latin symbols', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_basicLatinSymbols, 1, 500)).to.equal(false);
+                });
+
+                it('Should return false when value contains only latin-1 symbols', () => {
+                    expect(UtilityEngine.hasExtendedLetters(_latin1Symbols, 1, 500)).to.equal(false);
+                });
+
+                it('Should return false when value is zero', () => {
+                    expect(UtilityEngine.hasExtendedLetters(0)).to.equal(false);
+                });
+
+                it('Should return false when value is a positive number', () => {
+                    expect(UtilityEngine.hasExtendedLetters(1)).to.equal(false);
+                });
+
+                it('Should return false when value is a negative number', () => {
+                    expect(UtilityEngine.hasExtendedLetters(-1)).to.equal(false);
+                });
+
+                it('Should return false when value is true', () => {
+                    expect(UtilityEngine.hasExtendedLetters(true)).to.equal(false);
+                });
+
+                it('Should return false when value is false', () => {
+                    expect(UtilityEngine.hasExtendedLetters(false)).to.equal(false);
+                });
+
+                it('Should return false when value is null', () => {
+                    expect(UtilityEngine.hasExtendedLetters(null)).to.equal(false);
+                });
+                it('Should return false when value is an object', () => {
+                    expect(UtilityEngine.hasExtendedLetters({})).to.equal(false);
+                });
+
+                it('Should return false when value is a empty string', () => {
+                    expect(UtilityEngine.hasExtendedLetters('')).to.equal(false);
+                });
+
+                it('Should return false when value is an array', () => {
+                    expect(UtilityEngine.hasExtendedLetters([])).to.equal(false);
+                });
+
+                it('Should return false when value is a function', () => {
+                    expect(UtilityEngine.hasExtendedLetters(function() {})).to.equal(false);
+                });
+            });
+        });
+
+        describe('#hasExtendedLetters(value, MINIMUMCOUNT, maximumCount)', function() {
+            it('Should return true when minimum count parameter is undefined', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is small enough', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 1)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is big enough', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is at minimum range', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 0)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is at maximum range', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum count parameter is zero', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 0)).to.equal(true);
+            });
+
+
+            it('Should return false when minimum count parameter is too big', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 4)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is bigger than maximum count', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 4, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is null', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', null)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is true', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', true)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is false', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', false)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is an object', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', {})).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is a string', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 'string')).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is an array', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', [])).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is a function', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', function() {})).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter negative number', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', -1)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is positive infinity', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', Number.POSITIVE_INFINITY)).to.equal(false);
+            });
+
+            it('Should return false when minimum count parameter is negative infinity', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
+        });
+
+        describe('#hasExtendedLetters(value, minimumCount, MAXIMUMCOUNT)', function() {
+            it('Should return true when maximum count parameter is undefined', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, undefined)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is small enough', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, 3)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is big enough', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, 5)).to.equal(true);
+            });
+
+            it('Should return true when maximum count parameter is at maximum range', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
+            });
+
+
+            it('Should return false when maximum count parameter is too small', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is smaller than minimum count', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', 3, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is null', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, null)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is true', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, true)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is false', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, false)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is an object', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, {})).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is a string', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, 'string')).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is an array', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, [])).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is a function', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, function() {})).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter negative number', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum count parameter is negative infinity', () => {
+                expect(UtilityEngine.hasExtendedLetters('1A2Z3A', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
     });
