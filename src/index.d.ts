@@ -2,10 +2,12 @@ export function isString(value: any, minimumLength?: number, maximumLength?: num
 export function isFilledString(value: any, maximumLength?: number): boolean;
 export function isEmptyString(value: any): boolean;
 export function hasDigitCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
-export function hasSpecialCharacterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
 export function isWhitespace(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function hasWhitespaces(value: any, minimumCount?: number, maximumCount?: number): boolean;
+
+export function isSymbol(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function hasSymbol(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
 export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function isLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
@@ -59,10 +61,12 @@ declare module 'UtilityEngine' {
     export function isFilledString(value: any, maximumLength?: number): boolean;
     export function isEmptyString(value: any): boolean;
     export function hasDigitCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
-    export function hasSpecialCharacterCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isWhitespace(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function hasWhitespaces(value: any, minimumCount?: number, maximumCount?: number): boolean;
+
+    export function isSymbol(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function hasSymbol(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
