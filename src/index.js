@@ -158,7 +158,7 @@ export function isUppercaseLetter(value, minimumLength = 1, maximumLength = 1) {
 }
 
 export function isExtendedLetter(value, minimumLength = 1, maximumLength = 1) { //
-    return isNumber(minimumLength, 1, maximumLength) &&                         //
+    return isNumber(minimumLength, 0, maximumLength) &&                         //
         isNumber(maximumLength, minimumLength) &&                               //
         isString(value, minimumLength, maximumLength) &&                        //
         value.toLowerCase() !== value.toUpperCase();                            //

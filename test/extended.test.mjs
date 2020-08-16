@@ -226,11 +226,141 @@ describe('Extended', function() {
         });
 
         describe('#isExtendedLetter(value, MINIMUMLENGTH, maximumLength)', function() {
+            it('Should return true when minimum length parameter is undefined', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', undefined, 3)).to.equal(true);
+            });
 
+            it('Should return true when minimum length parameter is small enough', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', 1, 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is big enough', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', 3, 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is at minimum range', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', 0, 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is at maximum range', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', 3, 3)).to.equal(true);
+            });
+
+            it('Should return true when minimum length parameter is zero', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', 0, 3)).to.equal(true);
+            });
+
+
+            it('Should return false when minimum length parameter is too big', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', 4, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is bigger than maximum count', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', 4, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is null', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', null, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is true', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', true, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is false', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', false, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is an object', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', {}, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is a string', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', 'string', 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is an array', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', [], 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is a function', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', function() {}, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter negative number', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', -1, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is positive infinity', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', Number.POSITIVE_INFINITY, 3)).to.equal(false);
+            });
+
+            it('Should return false when minimum length parameter is negative infinity', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', Number.NEGATIVE_INFINITY, 3)).to.equal(false);
+            });
         });
 
         describe('#isExtendedLetter(value, minimumLength, MAXIMUMLENGTH)', function() {
+            it('Should return true when maximum count length is undefined', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, undefined)).to.equal(true);
+            });
 
+            it('Should return true when maximum count length is small enough', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', undefined, 3)).to.equal(true);
+            });
+
+            it('Should return true when maximum count length is big enough', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', undefined, 5)).to.equal(true);
+            });
+
+            it('Should return true when maximum count length is at maximum range', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
+            });
+
+
+            it('Should return false when maximum count length is too small', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', undefined, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is smaller than minimum count', () => {
+                expect(UtilityEngine.isExtendedLetter('aZÆ', 3, 2)).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is null', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, null)).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is true', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, true)).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is false', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, false)).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is an object', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, {})).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is a string', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, 'string')).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is an array', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, [])).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is a function', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, function() {})).to.equal(false);
+            });
+
+            it('Should return false when maximum count length negative number', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, -1)).to.equal(false);
+            });
+
+            it('Should return false when maximum count length is negative infinity', () => {
+                expect(UtilityEngine.isExtendedLetter('Æ', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
+            });
         });
     });
 
