@@ -32,7 +32,7 @@ const _basicLatinLowercaseLetters = 'abcdefghijklmnopqrstuvwxyz';
 const _basicLatinUppercaseLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const _basicLatinSymbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
 
-const _latin1Symbols = '¡¢£¤¥¦§¨©ª«¬®¯°±²³´¶·¸¹º»¼½¾¿×÷';
+const _latin1Symbols = '¡¢£¤¥¦§¨©«¬®¯°±´¶·¸»¿×÷';
 const _latin1LowercaseLetters = 'ßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ';
 const _latin1UppercaseLetters = 'ÁÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ';
 

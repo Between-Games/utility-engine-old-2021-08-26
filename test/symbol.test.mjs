@@ -341,140 +341,140 @@ describe('Symbol', function() {
             });
         });
 
-        describe('#isSymbol(value, MINIMUMCOUNT, maximumCount)', function() {
-            it('Should return true when minimum count parameter is undefined', () => {
+        describe('#isSymbol(value, MINIMUMLENGTH, maximumLength)', function() {
+            it('Should return true when minimum length parameter is undefined', () => {
                 expect(UtilityEngine.isSymbol('!!!', undefined, 3)).to.equal(true);
             });
 
-            it('Should return true when minimum count parameter is small enough', () => {
+            it('Should return true when minimum length parameter is small enough', () => {
                 expect(UtilityEngine.isSymbol('!!!', 1, 3)).to.equal(true);
             });
 
-            it('Should return true when minimum count parameter is big enough', () => {
+            it('Should return true when minimum length parameter is big enough', () => {
                 expect(UtilityEngine.isSymbol('!!!', 3, 3)).to.equal(true);
             });
 
-            it('Should return true when minimum count parameter is at minimum range', () => {
+            it('Should return true when minimum length parameter is at minimum range', () => {
                 expect(UtilityEngine.isSymbol('!!!', 0, 3)).to.equal(true);
             });
 
-            it('Should return true when minimum count parameter is at maximum range', () => {
+            it('Should return true when minimum length parameter is at maximum range', () => {
                 expect(UtilityEngine.isSymbol('!!!', 3, 3)).to.equal(true);
             });
 
-            it('Should return true when minimum count parameter is zero', () => {
+            it('Should return true when minimum length parameter is zero', () => {
                 expect(UtilityEngine.isSymbol('!!!', 0, 3)).to.equal(true);
             });
 
 
-            it('Should return false when minimum count parameter is too big', () => {
+            it('Should return false when minimum length parameter is too big', () => {
                 expect(UtilityEngine.isSymbol('!!!', 4, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is bigger than maximum count', () => {
+            it('Should return false when minimum length parameter is bigger than maximum count', () => {
                 expect(UtilityEngine.isSymbol('!!!', 4, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is null', () => {
+            it('Should return false when minimum length parameter is null', () => {
                 expect(UtilityEngine.isSymbol('!', null, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is true', () => {
+            it('Should return false when minimum length parameter is true', () => {
                 expect(UtilityEngine.isSymbol('!', true, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is false', () => {
+            it('Should return false when minimum length parameter is false', () => {
                 expect(UtilityEngine.isSymbol('!', false, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is an object', () => {
+            it('Should return false when minimum length parameter is an object', () => {
                 expect(UtilityEngine.isSymbol('!', {}, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is a string', () => {
+            it('Should return false when minimum length parameter is a string', () => {
                 expect(UtilityEngine.isSymbol('!', 'string', 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is an array', () => {
+            it('Should return false when minimum length parameter is an array', () => {
                 expect(UtilityEngine.isSymbol('!', [], 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is a function', () => {
+            it('Should return false when minimum length parameter is a function', () => {
                 expect(UtilityEngine.isSymbol('!', function() {}, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter negative number', () => {
+            it('Should return false when minimum length parameter negative number', () => {
                 expect(UtilityEngine.isSymbol('!', -1, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is positive infinity', () => {
+            it('Should return false when minimum length parameter is positive infinity', () => {
                 expect(UtilityEngine.isSymbol('!', Number.POSITIVE_INFINITY, 3)).to.equal(false);
             });
 
-            it('Should return false when minimum count parameter is negative infinity', () => {
+            it('Should return false when minimum length parameter is negative infinity', () => {
                 expect(UtilityEngine.isSymbol('!', Number.NEGATIVE_INFINITY, 3)).to.equal(false);
             });
         });
 
-        describe('#isSymbol(value, minimumCount, MAXIMUMCOUNT)', function() {
-            it('Should return true when maximum count parameter is undefined', () => {
+        describe('#isSymbol(value, minimumLength, MAXIMUMLENGTH)', function() {
+            it('Should return true when maximum count length is undefined', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, undefined)).to.equal(true);
             });
 
-            it('Should return true when maximum count parameter is small enough', () => {
+            it('Should return true when maximum count length is small enough', () => {
                 expect(UtilityEngine.isSymbol('!!!', undefined, 3)).to.equal(true);
             });
 
-            it('Should return true when maximum count parameter is big enough', () => {
+            it('Should return true when maximum count length is big enough', () => {
                 expect(UtilityEngine.isSymbol('!!!', undefined, 5)).to.equal(true);
             });
 
-            it('Should return true when maximum count parameter is at maximum range', () => {
+            it('Should return true when maximum count length is at maximum range', () => {
                 expect(UtilityEngine.isSymbol('!!!', undefined, Number.POSITIVE_INFINITY)).to.equal(true);
             });
 
 
-            it('Should return false when maximum count parameter is too small', () => {
+            it('Should return false when maximum count length is too small', () => {
                 expect(UtilityEngine.isSymbol('!!!', undefined, 2)).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is smaller than minimum count', () => {
+            it('Should return false when maximum count length is smaller than minimum count', () => {
                 expect(UtilityEngine.isSymbol('!!!', 3, 2)).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is null', () => {
+            it('Should return false when maximum count length is null', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, null)).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is true', () => {
+            it('Should return false when maximum count length is true', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, true)).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is false', () => {
+            it('Should return false when maximum count length is false', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, false)).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is an object', () => {
+            it('Should return false when maximum count length is an object', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, {})).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is a string', () => {
+            it('Should return false when maximum count length is a string', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, 'string')).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is an array', () => {
+            it('Should return false when maximum count length is an array', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, [])).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is a function', () => {
+            it('Should return false when maximum count length is a function', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, function() {})).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter negative number', () => {
+            it('Should return false when maximum count length negative number', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, -1)).to.equal(false);
             });
 
-            it('Should return false when maximum count parameter is negative infinity', () => {
+            it('Should return false when maximum count length is negative infinity', () => {
                 expect(UtilityEngine.isSymbol('!', undefined, Number.NEGATIVE_INFINITY)).to.equal(false);
             });
         });
