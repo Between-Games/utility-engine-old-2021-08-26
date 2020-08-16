@@ -221,18 +221,18 @@ export function hasExtendedUppercaseLetters(value, minimumCount = 1, maximumCoun
 // ╔═════╝ ║╔═════╝ ║║ ║║ ║║ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗
 // ╚═══════╝╚═══════╝╚═╝╚═╝╚═╝╚═══════╝╚═══════╝╚═══════╝
 
-export function isSymbol(value, minimumLength = 1, maximumLength = 1) {         //
-    return isNumber(minimumLength, 0, maximumLength) &&                         //
-        isNumber(maximumLength, minimumLength) &&                               //
-        isString(value, minimumLength, maximumLength) &&                        //
-        isArray(value.match(_symbolRegex), value.length, value.length);   //
+export function isSymbol(value, minimumLength = 1, maximumLength = 1) { //
+    return isNumber(minimumLength, 0, maximumLength) &&                 //
+        isNumber(maximumLength, minimumLength) &&                       //
+        isString(value, minimumLength, maximumLength) &&                //
+        isArray(value.match(_symbolRegex), value.length, value.length); //
 }
 
-export function hasSymbols(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  // The value was found to be a string with whitespace
+export function hasSymbols(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {  //
     return isNumber(minimumCount, 0, maximumCount) &&                                           //
         isNumber(maximumCount, minimumCount) &&                                                 //
         isString(value, minimumCount) &&                                                        //
-        isArray(value.split(' '), minimumCount + 1, maximumCount + 1);                          //
+        isArray((value.match(_symbolRegex) || []), minimumCount, maximumCount);                 //
 }
 
 // ╔═╗╔═╗╔═╗╔═╗   ╔═╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
