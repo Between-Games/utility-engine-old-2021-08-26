@@ -192,13 +192,13 @@ describe('Letter', function() {
             });
 
             it('Should return true when minimum length parameter is minimum range', () => {
-                expect(UtilityEngine.isLetter('abc', 1, 3)).to.equal(true);
+                expect(UtilityEngine.isLetter('abc', 0, 3)).to.equal(true);
             });
 
-
-            it('Should return false when minimum length parameter is smaller than minimum range', () => {
-                expect(UtilityEngine.isLetter('abc', 0, 3)).to.equal(false);
+            it('Should return true when minimum length parameter is zero', () => {
+                expect(UtilityEngine.isLetter('abc', 0, 3)).to.equal(true);
             });
+
 
             it('Should return false when minimum length parameter is null', () => {
                 expect(UtilityEngine.isLetter('abc', null, 3)).to.equal(false);
@@ -429,13 +429,13 @@ describe('Letter', function() {
             });
 
             it('Should return true when minimum length parameter is minimum range', () => {
-                expect(UtilityEngine.isLowercaseLetter('abc', 1, 3)).to.equal(true);
+                expect(UtilityEngine.isLowercaseLetter('abc', 0, 3)).to.equal(true);
             });
 
-
-            it('Should return false when minimum length parameter is smaller than minimum range', () => {
-                expect(UtilityEngine.isLowercaseLetter('abc', 0, 3)).to.equal(false);
+            it('Should return true when minimum length parameter is zero', () => {
+                expect(UtilityEngine.isLowercaseLetter('abc', 0, 3)).to.equal(true);
             });
+
 
             it('Should return false when minimum length parameter is null', () => {
                 expect(UtilityEngine.isLowercaseLetter('abc', null, 3)).to.equal(false);
@@ -667,13 +667,13 @@ describe('Letter', function() {
             });
 
             it('Should return true when minimum length parameter is minimum range', () => {
-                expect(UtilityEngine.isUppercaseLetter('ABC', 1, 3)).to.equal(true);
+                expect(UtilityEngine.isUppercaseLetter('ABC', 0, 3)).to.equal(true);
             });
 
-
-            it('Should return false when minimum length parameter is smaller than minimum range', () => {
-                expect(UtilityEngine.isUppercaseLetter('ABC', 0, 3)).to.equal(false);
+            it('Should return true when minimum length parameter is zero', () => {
+                expect(UtilityEngine.isUppercaseLetter('ABC', 0, 3)).to.equal(true);
             });
+
 
             it('Should return false when minimum length parameter is null', () => {
                 expect(UtilityEngine.isUppercaseLetter('ABC', null, 3)).to.equal(false);

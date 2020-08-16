@@ -137,21 +137,21 @@ export function hasSpecialCharacterCount(value, minimumCount = 1, maximumCount =
 // ╚═══════╝╚═══════╝   ╚═╝      ╚═╝   ╚═══════╝╚═╝ ╚═══╝
 
 export function isLetter(value, minimumLength = 1, maximumLength = 1) { //
-    return isNumber(minimumLength, 1, maximumLength) &&                 //
+    return isNumber(minimumLength, 0, maximumLength) &&                 //
         isNumber(maximumLength, minimumLength) &&                       //
         isString(value, minimumLength, maximumLength) &&                //
         isEmptyArray((value.match(/[^a-zA-Z]/g) || []));                //
 }
 
 export function isLowercaseLetter(value, minimumLength = 1, maximumLength = 1) {    //
-    return isNumber(minimumLength, 1, maximumLength) &&                             //
+    return isNumber(minimumLength, 0, maximumLength) &&                             //
         isNumber(maximumLength, minimumLength) &&                                   //
         isString(value, minimumLength, maximumLength) &&                            //
         isEmptyArray((value.match(/[^a-z]/g) || []));                               //
 }
 
 export function isUppercaseLetter(value, minimumLength = 1, maximumLength = 1) {    //
-    return isNumber(minimumLength, 1, maximumLength) &&                             //
+    return isNumber(minimumLength, 0, maximumLength) &&                             //
         isNumber(maximumLength, minimumLength) &&                                   //
         isString(value, minimumLength, maximumLength) &&                            //
         isEmptyArray((value.match(/[^A-Z]/g) || []));                               //
