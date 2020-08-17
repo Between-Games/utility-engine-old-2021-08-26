@@ -9,7 +9,7 @@ export function isWhitespace(value: any, minimumLength?: number, maximumLength?:
 export function hasWhitespaces(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
 export function isSymbol(value: any, minimumLength?: number, maximumLength?: number): boolean;
-export function hasSymbol(value: any, minimumCount?: number, maximumCount?: number): boolean;
+export function hasSymbols(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
 export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function isLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
@@ -71,7 +71,7 @@ declare module 'UtilityEngine' {
     export function hasWhitespaces(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isSymbol(value: any, minimumLength?: number, maximumLength?: number): boolean;
-    export function hasSymbol(value: any, minimumCount?: number, maximumCount?: number): boolean;
+    export function hasSymbols(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
