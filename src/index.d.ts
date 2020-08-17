@@ -12,12 +12,13 @@ export function hasSymbol(value: any, minimumCount?: number, maximumCount?: numb
 export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function isLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function isUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
-export function isExtendedLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
-export function isExtendedLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
-export function isExtendedUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function hasLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
+
+export function isExtendedLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function isExtendedLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function isExtendedUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function hasExtendedLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasExtendedLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
 export function hasExtendedUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
@@ -71,12 +72,13 @@ declare module 'UtilityEngine' {
     export function isLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
-    export function isExtendedLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
-    export function isExtendedLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
-    export function isExtendedUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function hasLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
+
+    export function isExtendedLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function isExtendedLowercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function isExtendedUppercaseLetter(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function hasExtendedLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasExtendedLowercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
     export function hasExtendedUppercaseLetters(value: any, minimumCount?: number, maximumCount?: number): boolean;
@@ -114,4 +116,5 @@ declare module 'UtilityEngine' {
     export function isArray(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isFilledArray(value: any, maximumLength?: number): boolean;
     export function isEmptyArray(value: any): boolean;
+
 }

@@ -121,14 +121,6 @@ export function hasDigitCount(value, minimumCount = 1, maximumCount = Number.POS
         isArray(value.match(/\d/g) || [], minimumCount, maximumCount);                              //
 }
 
-
-export function hasSpecialCharacterCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {    //
-    return isNumber(minimumCount, 0, maximumCount) &&                                                           //
-        isNumber(maximumCount, minimumCount) &&                                                                 //
-        isString(value, minimumCount) &&                                                                        //
-        isArray((value.match(/[^a-zß-öø-ÿA-ZÀ-ÖØ-ÞĀ-ſƀ0-9\s]/g) || []), minimumCount, maximumCount);            //
-}
-
 // ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
 // ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
 // ║ ║      ║ ╚═════╗   ║ ║      ║ ║   ║ ╚═════╗║ ╚═══╝ ║
@@ -400,12 +392,13 @@ export default {
     isLetter,
     isLowercaseLetter,
     isUppercaseLetter,
-    isExtendedLetter,
-    isExtendedLowercaseLetter,
-    isExtendedUppercaseLetter,
     hasLetters,
     hasLowercaseLetters,
     hasUppercaseLetters,
+
+    isExtendedLetter,
+    isExtendedLowercaseLetter,
+    isExtendedUppercaseLetter,
     hasExtendedLetters,
     hasExtendedLowercaseLetters,
     hasExtendedUppercaseLetters,
