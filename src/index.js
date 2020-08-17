@@ -114,11 +114,25 @@ export function isEmptyString(value) {              // The provided value was fo
     return isString(value) && '' === value.trim();  // The provided value was found to be an empty string
 }
 
-export function hasDigitCount(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   //
-    return isNumber(minimumCount, 0, maximumCount) &&                                               //
-        isNumber(maximumCount, minimumCount) &&                                                     //
-        isString(value, minimumCount) &&                                                            //
-        isArray(value.match(/\d/g) || [], minimumCount, maximumCount);                              //
+// ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+// ╚╗ ╔══╗ ║╚══╗ ╔══╝║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝
+//  ║ ║  ║ ║   ║ ║   ║ ║ ╔═══╗   ║ ║      ║ ║
+//  ║ ║  ║ ║   ║ ║   ║ ║ ╚═╗ ║   ║ ║      ║ ║
+// ╔╝ ╚══╝ ║╔══╝ ╚══╗║ ╚═══╝ ║╔══╝ ╚══╗   ║ ║
+// ╚═══════╝╚═══════╝╚═══════╝╚═══════╝   ╚═╝
+
+export function isDigit(value, minimumLength = 1, maximumLength = 1) {  //
+    return isNumber(minimumLength, 0, maximumLength) &&                 //
+        isNumber(maximumLength, minimumLength) &&                       //
+        isString(value, minimumLength, maximumLength) &&                //
+        isEmptyArray((value.match(/[^0-9]/g) || []));                   //
+}
+
+export function hasDigits(value, minimumCount = 1, maximumCount = Number.POSITIVE_INFINITY) {   //
+    return isNumber(minimumCount, 0, maximumCount) &&                                           //
+        isNumber(maximumCount, minimumCount) &&                                                 //
+        isString(value, minimumCount) &&                                                        //
+        isArray((value.match(/[0-9]/g) || []), minimumCount, maximumCount);                     //
 }
 
 // ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
@@ -381,10 +395,12 @@ export default {
     isString,
     isFilledString,
     isEmptyString,
-    hasDigitCount,
 
     isWhitespace,
     hasWhitespaces,
+
+    isDigit,
+    hasDigits,
 
     isSymbol,
     hasSymbols,

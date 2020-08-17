@@ -1,7 +1,9 @@
 export function isString(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function isFilledString(value: any, maximumLength?: number): boolean;
 export function isEmptyString(value: any): boolean;
-export function hasDigitCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
+
+export function isDigit(value: any, minimumLength?: number, maximumLength?: number): boolean;
+export function hasDigits(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
 export function isWhitespace(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function hasWhitespaces(value: any, minimumCount?: number, maximumCount?: number): boolean;
@@ -61,7 +63,9 @@ declare module 'UtilityEngine' {
     export function isString(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isFilledString(value: any, maximumLength?: number): boolean;
     export function isEmptyString(value: any): boolean;
-    export function hasDigitCount(value: any, minimumCount?: number, maximumCount?: number): boolean;
+
+    export function isDigit(value: any, minimumLength?: number, maximumLength?: number): boolean;
+    export function hasDigits(value: any, minimumCount?: number, maximumCount?: number): boolean;
 
     export function isWhitespace(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function hasWhitespaces(value: any, minimumCount?: number, maximumCount?: number): boolean;

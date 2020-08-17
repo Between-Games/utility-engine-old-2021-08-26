@@ -7,6 +7,19 @@
 
 'use strict';   // Extend JavaScript strict mode to the entire script
 
+// ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
+// ╚══╗ ╔══╝║ ╔╗ ╔╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║╚══╗ ╔══╝
+//    ║ ║   ║ ║║ ║║ ║║ ╚═══╝ ║║ ║   ║ ║║ ╚═══╝ ║   ║ ║
+//    ║ ║   ║ ║║ ║║ ║║ ╔═════╝║ ║   ║ ║║ ╔═╗ ╔═╝   ║ ║
+// ╔══╝ ╚══╗║ ║║ ║║ ║║ ║      ║ ╚═══╝ ║║ ║ ║ ╚═╗   ║ ║
+// ╚═══════╝╚═╝╚═╝╚═╝╚═╝      ╚═══════╝╚═╝ ╚═══╝   ╚═╝
+
+import UtilityEngine from '../dist/index.js';
+
+import chai from 'chai';
+
+const expect = chai.expect;
+
 // ╔═══════╗╔═══════╗╔═══════╗╔═╗      ╔═══════╗╔═══════╗╔═══════╗
 // ╚╗ ╔══╗ ║║ ╔═════╝║ ╔═════╝║ ║      ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═════╝
 //  ║ ║  ║ ║║ ╚═════╗║ ║      ║ ║      ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗
@@ -40,20 +53,7 @@ const _latinBLetters = `${_latinBLowercaseLetters}${_latinBUppercaseLetters}`;
 const _latinLetters = `${_basicLatinLetters}${_latin1Letters}${_latinALetters}${_latinBLetters}`;
 const _greekLetters = `${_greekLowercaseLetters}${_greekUppercaseLetters}`;
 
-const _latinCharacters = `${_latinLetters}${_basicLatinSymbols}${_latin1Symbols}`;
-
-// ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
-// ╚══╗ ╔══╝║ ╔╗ ╔╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║╚══╗ ╔══╝
-//    ║ ║   ║ ║║ ║║ ║║ ╚═══╝ ║║ ║   ║ ║║ ╚═══╝ ║   ║ ║
-//    ║ ║   ║ ║║ ║║ ║║ ╔═════╝║ ║   ║ ║║ ╔═╗ ╔═╝   ║ ║
-// ╔══╝ ╚══╗║ ║║ ║║ ║║ ║      ║ ╚═══╝ ║║ ║ ║ ╚═╗   ║ ║
-// ╚═══════╝╚═╝╚═╝╚═╝╚═╝      ╚═══════╝╚═╝ ╚═══╝   ╚═╝
-
-import UtilityEngine from '../dist/index.js';
-
-import chai from 'chai';
-
-const expect = chai.expect;
+const _latinCharacters = `${_latinLetters}${_basicLatinSymbols}${_latin1Symbols}${_basicLatinDigits}`;
 
 // ╔═══════╗╔═╗   ╔═╗╔═══════╗╔══════╗ ╔═══════╗╔═╗
 // ║ ╔═════╝║ ║   ║ ║║ ╔╗ ╔╗ ║║ ╔══╗ ║ ║ ╔═══╗ ║║ ║
@@ -670,7 +670,7 @@ describe('Symbol', function() {
                 expect(UtilityEngine.hasSymbols(_latinALetters, 1, 500)).to.equal(false);
             });
 
-            it('Should return trufalsee when value contains only latin-A lowercase letters', () => {
+            it('Should return false when value contains only latin-A lowercase letters', () => {
                 expect(UtilityEngine.hasSymbols(_latinALowercaseLetters, 1, 500)).to.equal(false);
             });
 

@@ -53,7 +53,7 @@ const _latinBLetters = `${_latinBLowercaseLetters}${_latinBUppercaseLetters}`;
 const _latinLetters = `${_basicLatinLetters}${_latin1Letters}${_latinALetters}${_latinBLetters}`;
 const _greekLetters = `${_greekLowercaseLetters}${_greekUppercaseLetters}`;
 
-const _latinCharacters = `${_latinLetters}${_basicLatinSymbols}${_latin1Symbols}`;
+const _latinCharacters = `${_latinLetters}${_basicLatinSymbols}${_latin1Symbols}${_basicLatinDigits}`;
 
 // ╔═╗      ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═══════╗
 // ║ ║      ║ ╔═════╝╚══╗ ╔══╝╚══╗ ╔══╝║ ╔═════╝║ ╔═══╗ ║
