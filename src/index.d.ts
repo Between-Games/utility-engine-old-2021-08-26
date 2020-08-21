@@ -55,7 +55,7 @@ export function isNull(value: any): boolean;
 export function isNullish(value: any): boolean;
 export function isUndefined(value: any): boolean;
 
-export function toArray(value: any): boolean;
+export function toArray(value: any): any[];
 export function isArray(value: any, minimumLength?: number, maximumLength?: number): boolean;
 export function isFilledArray(value: any, maximumLength?: number): boolean;
 export function isEmptyArray(value: any): boolean;
@@ -118,7 +118,7 @@ declare module 'UtilityEngine' {
     export function isNullish(value: any): boolean;
     export function isUndefined(value: any): boolean;
 
-    export function toArray(value: any): boolean;
+    export function toArray(value: any): any[];
     export function isArray(value: any, minimumLength?: number, maximumLength?: number): boolean;
     export function isFilledArray(value: any, maximumLength?: number): boolean;
     export function isEmptyArray(value: any): boolean;
