@@ -27,7 +27,7 @@ const expect = chai.expect;
 // ║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═════╗║ ╚═════╗║ ║   ║ ║║ ║║ ╚╝ ║
 // ╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═══════╝╚═╝   ╚═╝╚═╝╚════╝
 
-describe('Function', function() {
+describe('Boolean', function() {
     // ╔═══════╗╔═══════╗         ╔══════╗ ╔═══════╗╔═══════╗╔═╗      ╔═══════╗╔═══════╗╔════╗╔═╗
     // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔══╗ ║ ║ ╔═══╗ ║║ ╔═══╗ ║║ ║      ║ ╔═════╝║ ╔═══╗ ║║ ╔╗ ║║ ║
     //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚══╝ ╚╗║ ║   ║ ║║ ║   ║ ║║ ║      ║ ╚═════╗║ ╚═══╝ ║║ ║║ ║║ ║
@@ -225,6 +225,116 @@ describe('Function', function() {
 
         it('Should return false when value is a class declaration', () => {
             expect(UtilityEngine.isFalsy(class Class {})).to.equal(false);
+        });
+    });
+
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═╗   ╔═╗╔═══════╗╔═╗   ╔═╗╔═╗   ╔═╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ╚══╗ ╔══╝║ ╔═══╗ ║║ ║   ║ ║╚══╗ ╔══╝║ ║   ║ ║║ ║   ║ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗   ║ ║   ║ ╚═══╝ ║║ ║   ║ ║   ║ ║   ║ ╚═══╝ ║║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝   ║ ║   ║ ╔═╗ ╔═╝║ ║   ║ ║   ║ ║   ║ ╔═══╗ ║╚═════╗ ║
+    // ╔══╝ ╚══╗╔═════╝ ║            ║ ║   ║ ║ ║ ╚═╗║ ╚═══╝ ║   ║ ║   ║ ║   ║ ║╔═════╝ ║
+    // ╚═══════╝╚═══════╝            ╚═╝   ╚═╝ ╚═══╝╚═══════╝   ╚═╝   ╚═╝   ╚═╝╚═══════╝
+
+    describe('#isTruthy(VALUE)', function() {
+        it('Should return true when value is true boolean', () => {
+            expect(UtilityEngine.isTruthy(true)).to.equal(true);
+        });
+
+        it('Should return true when value is an empty object', () => {
+            expect(UtilityEngine.isTruthy({})).to.equal(true);
+        });
+
+        it('Should return true when value is an empty array', () => {
+            expect(UtilityEngine.isTruthy([])).to.equal(true);
+        });
+
+        it('Should return true when value is a function', () => {
+            expect(UtilityEngine.isTruthy(function() {})).to.equal(true);
+        });
+
+        it('Should return true when value is a filled object', () => {
+            expect(UtilityEngine.isTruthy({foo: 'bar'})).to.equal(true);
+        });
+
+        it('Should return true when value is a number', () => {
+            expect(UtilityEngine.isTruthy(1)).to.equal(true);
+        });
+
+        it('Should return true when value is a primitive number', () => {
+            expect(UtilityEngine.isTruthy(Number('1'))).to.equal(true);
+        });
+
+        it('Should return true when value is a wrapped primitive number', () => {
+            expect(UtilityEngine.isTruthy(new Number('1'))).to.equal(true);
+        });
+
+        it('Should return true when value is a filled string', () => {
+            expect(UtilityEngine.isTruthy('string')).to.equal(true);
+        });
+
+        it('Should return true when value is a primitive string', () => {
+            expect(UtilityEngine.isTruthy(String('string'))).to.equal(true);
+        });
+
+        it('Should return true when value is a wrapped primitive string', () => {
+            expect(UtilityEngine.isTruthy(new String('string'))).to.equal(true);
+        });
+
+        it('Should return true when value is a filled array', () => {
+            expect(UtilityEngine.isTruthy([1, 2, 3])).to.equal(true);
+        });
+
+        it('Should return true when value is a map', () => {
+            expect(UtilityEngine.isTruthy(new Map())).to.equal(true);
+        });
+
+        it('Should return true when value is a date', () => {
+            expect(UtilityEngine.isTruthy(new Date())).to.equal(true);
+        });
+
+        it('Should return true when value is a class instance', () => {
+            expect(UtilityEngine.isTruthy(new (class Class {})())).to.equal(true);
+        });
+
+        it('Should return true when value is a class instance', () => {
+            expect(UtilityEngine.isTruthy(new (class Class {}))).to.equal(true);
+        });
+
+        it('Should return true when value is a class declaration', () => {
+            expect(UtilityEngine.isTruthy(class Class {})).to.equal(true);
+        });
+
+
+        it('Should return false when value is null', () => {
+            expect(UtilityEngine.isTruthy(null)).to.equal(false);
+        });
+
+        it('Should return false when value is undefined', () => {
+            expect(UtilityEngine.isTruthy(undefined)).to.equal(false);
+        });
+
+        it('Should return false when value is false boolean', () => {
+            expect(UtilityEngine.isTruthy(false)).to.equal(false);
+        });
+
+        it('Should return false when value is NaN', () => {
+            expect(UtilityEngine.isTruthy(NaN)).to.equal(false);
+        });
+
+        it('Should return false when value is an empty string', () => {
+            expect(UtilityEngine.isTruthy('')).to.equal(false);
+        });
+
+        it('Should return false when value is a zero', () => {
+            expect(UtilityEngine.isTruthy(0)).to.equal(false);
+        });
+
+        it('Should return false when value is a positive zero', () => {
+            expect(UtilityEngine.isTruthy(+0)).to.equal(false);
+        });
+
+        it('Should return false when value is a negative zero', () => {
+            expect(UtilityEngine.isTruthy(-0)).to.equal(false);
         });
     });
 });

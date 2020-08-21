@@ -331,8 +331,8 @@ export function isFalsy(value) {    //
     return !value;                  //
 }
 
-export function isTruthy() {                                                //
-    throw new Error('The provided function has not yet been implemented');  //
+export function isTruthy(value) {   //
+    return !!value;                 //
 }
 
 // ╔════╗╔═╗╔═╗   ╔═╗╔═╗      ╔═╗      ╔═══════╗╔═══════╗╔═╗   ╔═╗
