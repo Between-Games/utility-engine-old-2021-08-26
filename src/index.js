@@ -328,7 +328,7 @@ export function isBoolean(value) {              //
 }
 
 export function isFalsy(value) {    //
-    return !!value;                 //
+    return !value;                  //
 }
 
 export function isTruthy() {                                                //
