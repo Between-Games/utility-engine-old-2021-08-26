@@ -328,17 +328,11 @@ export function isBoolean(value) {              //
 }
 
 export function isFalsy(value) {    //
-    return value === 0 ||           //
-        value === 0n ||             //
-        value === null ||           //
-        value === undefined ||      //
-        Number.isNaN(value) ||      //
-        value === false ||          //
-        value === '';               //
+    return !value;                  //
 }
 
-export function isTruthy() {                                                //
-    throw new Error('The provided function has not yet been implemented');  //
+export function isTruthy(value) {   //
+    return !!value;                 //
 }
 
 // ╔════╗╔═╗╔═╗   ╔═╗╔═╗      ╔═╗      ╔═══════╗╔═══════╗╔═╗   ╔═╗
