@@ -367,6 +367,11 @@ export function isNull(value) { //
 // ║ ║   ║ ║║ ║ ║ ╚═╗║ ║ ║ ╚═╗║ ║   ║ ║╔═════╝ ║
 // ╚═╝   ╚═╝╚═╝ ╚═══╝╚═╝ ╚═══╝╚═╝   ╚═╝╚═══════╝
 
+export function toArray(value) {            //
+    return isArray(value) ? value :         //
+        isUndefined(value) ? [] : [value];  //
+}
+
 export function isArray(value, minimumLength = 0, maximumLength = Number.POSITIVE_INFINITY) {   //
     return isPositiveNumber(minimumLength) &&                                                   //
         isPositiveNumber(maximumLength) &&                                                      //
@@ -449,6 +454,7 @@ export default {
     isNullish,
     isUndefined,
 
+    toArray,
     isArray,
     isEmptyArray,
     isFilledArray,
