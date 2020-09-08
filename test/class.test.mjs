@@ -76,6 +76,10 @@ describe('Class', function() {
                 expect(UtilityEngine.isClass(SubSubclass)).to.equal(true);
             });
 
+            it('Should return true when value is a function', () => {
+                expect(UtilityEngine.isClass(function() {})).to.equal(true);
+            });
+
 
             it('Should return false when value is a superclass instance', () => {
                 expect(UtilityEngine.isClass(superclassInstance)).to.equal(false);
@@ -103,10 +107,6 @@ describe('Class', function() {
 
             it('Should return false when value is a filled object', () => {
                 expect(UtilityEngine.isClass({foo: 'bar'})).to.equal(false);
-            });
-
-            it('Should return false when value is a function', () => {
-                expect(UtilityEngine.isClass(function() {})).to.equal(false);
             });
 
             it('Should return false when value is true boolean', () => {

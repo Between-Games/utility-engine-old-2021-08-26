@@ -28,12 +28,107 @@ const expect = chai.expect;
 // ╚═╝   ╚═╝╚═╝ ╚═══╝╚═╝ ╚═══╝╚═╝   ╚═╝╚═══════╝
 
 describe('Array', function() {
-// ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗
-// ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ║   ║ ║
-//    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║
-//    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═══╗ ║║ ╔═╗ ╔═╝║ ╔═╗ ╔═╝║ ╔═══╗ ║╚═════╗ ║
-// ╔══╝ ╚══╗╔═════╝ ║         ║ ║   ║ ║║ ║ ║ ╚═╗║ ║ ║ ╚═╗║ ║   ║ ║╔═════╝ ║
-// ╚═══════╝╚═══════╝         ╚═╝   ╚═╝╚═╝ ╚═══╝╚═╝ ╚═══╝╚═╝   ╚═╝╚═══════╝
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗
+    // ╚══╗ ╔══╝║ ╔═══╗ ║         ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ║   ║ ║
+    //    ║ ║   ║ ║   ║ ║╔═══════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║
+    //    ║ ║   ║ ║   ║ ║╚═══════╝║ ╔═══╗ ║║ ╔═╗ ╔═╝║ ╔═╗ ╔═╝║ ╔═══╗ ║╚═════╗ ║
+    //    ║ ║   ║ ╚═══╝ ║         ║ ║   ║ ║║ ║ ║ ╚═╗║ ║ ║ ╚═╗║ ║   ║ ║╔═════╝ ║
+    //    ╚═╝   ╚═══════╝         ╚═╝   ╚═╝╚═╝ ╚═══╝╚═╝ ╚═══╝╚═╝   ╚═╝╚═══════╝
+
+    describe('#toArray(value)', function() {
+        describe('#toArray(VALUE)', function() {
+            it('Should return an empty array when value parameter is empty', () => {
+                expect(UtilityEngine.toArray()).to.deep.equal([]);
+            });
+
+            it('Should return an empty array when value parameter is undefined', () => {
+                expect(UtilityEngine.toArray(undefined)).to.deep.equal([]);
+            });
+
+            it('Should return an empty array when value parameter is an empty', () => {
+                expect(UtilityEngine.toArray(undefined)).to.deep.equal([]);
+            });
+
+            it('Should return a filled array when value parameter is a filled array', () => {
+                expect(UtilityEngine.toArray([1, 2, 3])).to.deep.equal([1, 2, 3]);
+            });
+
+            it('Should return a filled array when value is NaN', () => {
+                expect(UtilityEngine.toArray(NaN)).to.deep.equal([NaN]);
+            });
+
+            it('Should return a filled array when value is an empty string', () => {
+                expect(UtilityEngine.toArray('')).to.deep.equal(['']);
+            });
+
+            it('Should return a filled array when value is true boolean', () => {
+                expect(UtilityEngine.toArray(true)).to.deep.equal([true]);
+            });
+
+            it('Should return a filled array when value is false boolean', () => {
+                expect(UtilityEngine.toArray(false)).to.deep.equal([false]);
+            });
+
+            it('Should return a filled array when value is an empty object', () => {
+                expect(UtilityEngine.toArray({})).to.deep.equal([{}]);
+            });
+
+            it('Should return a filled array when value is a filled object', () => {
+                expect(UtilityEngine.toArray({foo: 'bar'})).to.deep.equal([{foo: 'bar'}]);
+            });
+
+            it('Should return a filled array when value is a number', () => {
+                expect(UtilityEngine.toArray(1)).to.deep.equal([1]);
+            });
+
+            it('Should return a filled array when value is a zero', () => {
+                expect(UtilityEngine.toArray(0)).to.deep.equal([0]);
+            });
+
+            it('Should return a filled array when value is a primitive number', () => {
+                expect(UtilityEngine.toArray(Number('1'))).to.deep.equal([Number('1')]);
+            });
+
+            it('Should return a filled array when value is a wrapped primitive number', () => {
+                expect(UtilityEngine.toArray(new Number('1'))).to.deep.equal([new Number('1')]);
+            });
+
+            it('Should return a filled array when value is a filled string', () => {
+                expect(UtilityEngine.toArray('string')).to.deep.equal(['string']);
+            });
+
+            it('Should return a filled array when value is a primitive string', () => {
+                expect(UtilityEngine.toArray(String('string'))).to.deep.equal([String('string')]);
+            });
+
+            it('Should return a filled array when value is a wrapped primitive string', () => {
+                expect(UtilityEngine.toArray(new String('string'))).to.deep.equal([new String('string')]);
+            });
+
+            it('Should return a filled array when value is a map', () => {
+                expect(UtilityEngine.toArray(new Map())).to.deep.equal([new Map()]);
+            });
+
+            it('Should return a filled array when value is a date', () => {
+                expect(UtilityEngine.toArray(new Date())).to.deep.equal([new Date()]);
+            });
+
+            it('Should return a filled array when value is a class instance', () => {
+                expect(UtilityEngine.toArray(new (class Class {}))).to.deep.equal([new (class Class {})]);
+            });
+
+            it('Should return a filled array when value is a class instance', () => {
+                expect(UtilityEngine.toArray(new (class Class {})())).to.deep.equal([new (class Class {})()]);
+            });
+        });
+    });
+
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ║   ║ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═══╗ ║║ ╔═╗ ╔═╝║ ╔═╗ ╔═╝║ ╔═══╗ ║╚═════╗ ║
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ║   ║ ║║ ║ ║ ╚═╗║ ║ ║ ╚═╗║ ║   ║ ║╔═════╝ ║
+    // ╚═══════╝╚═══════╝         ╚═╝   ╚═╝╚═╝ ╚═══╝╚═╝ ╚═══╝╚═╝   ╚═╝╚═══════╝
 
     describe('#isArray(value, minimumLength, maximumLength)', function() {
         describe('#isArray(VALUE, minimumLength, maximumLength)', function() {
@@ -354,6 +449,68 @@ describe('Array', function() {
             it('Should return false when maximum length parameter is too small', () => {
                 expect(UtilityEngine.isFilledArray([1, 2, 3], 2)).to.equal(false);
             });
+        });
+    });
+
+    // ╔═══════╗╔═══════╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗         ╔═══════╗╔═══════╗╔═══════╗╔═══════╗╔═╗   ╔═╗
+    // ╚══╗ ╔══╝║ ╔═════╝         ║ ╔═════╝║ ╔╗ ╔╗ ║║ ╔═══╗ ║╚══╗ ╔══╝║ ║   ║ ║         ║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ╔═══╗ ║║ ║   ║ ║
+    //    ║ ║   ║ ╚═════╗╔═══════╗║ ╚═════╗║ ║║ ║║ ║║ ╚═══╝ ║   ║ ║   ║ ╚═══╝ ║╔═══════╗║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║║ ╚═══╝ ║
+    //    ║ ║   ╚═════╗ ║╚═══════╝║ ╔═════╝║ ║║ ║║ ║║ ╔═════╝   ║ ║   ╚═════╗ ║╚═══════╝║ ╔═══╗ ║║ ╔═╗ ╔═╝║ ╔═╗ ╔═╝║ ╔═══╗ ║╚═════╗ ║
+    // ╔══╝ ╚══╗╔═════╝ ║         ║ ╚═════╗║ ║║ ║║ ║║ ║         ║ ║   ╔═════╝ ║         ║ ║   ║ ║║ ║ ║ ╚═╗║ ║ ║ ╚═╗║ ║   ║ ║╔═════╝ ║
+    // ╚═══════╝╚═══════╝         ╚═══════╝╚═╝╚═╝╚═╝╚═╝         ╚═╝   ╚═══════╝         ╚═╝   ╚═╝╚═╝ ╚═══╝╚═╝ ╚═══╝╚═╝   ╚═╝╚═══════╝
+
+    describe('#isEmptyArray(VALUE, maximumLength)', function() {
+        it('Should return true when value is an empty array', () => {
+            expect(UtilityEngine.isEmptyArray([])).to.equal(true);
+        });
+
+        it('Should return true when value is instantiated empty array', () => {
+            expect(UtilityEngine.isEmptyArray(new Array())).to.equal(true);
+        });
+
+        it('Should return true when value is instantiated empty array', () => {
+            expect(UtilityEngine.isEmptyArray(new Array(0))).to.equal(true);
+        });
+
+
+        it('Should return false when value is a filled array', () => {
+            expect(UtilityEngine.isEmptyArray([1, 2, 3])).to.equal(false);
+        });
+
+        it('Should return false when value is true', () => {
+            expect(UtilityEngine.isEmptyArray(true)).to.equal(false);
+        });
+
+        it('Should return false when value is false', () => {
+            expect(UtilityEngine.isEmptyArray(false)).to.equal(false);
+        });
+
+        it('Should return false when value is null', () => {
+            expect(UtilityEngine.isEmptyArray(null)).to.equal(false);
+        });
+
+        it('Should return false when value is undefined', () => {
+            expect(UtilityEngine.isEmptyArray(undefined)).to.equal(false);
+        });
+
+        it('Should return false when value is an object', () => {
+            expect(UtilityEngine.isEmptyArray({})).to.equal(false);
+        });
+
+        it('Should return false when value is an empty string', () => {
+            expect(UtilityEngine.isEmptyArray('')).to.equal(false);
+        });
+
+        it('Should return false when value is a filled string', () => {
+            expect(UtilityEngine.isEmptyArray('string')).to.equal(false);
+        });
+
+        it('Should return false when value is a number', () => {
+            expect(UtilityEngine.isEmptyArray(0)).to.equal(false);
+        });
+
+        it('Should return false when value is a function', () => {
+            expect(UtilityEngine.isEmptyArray(function() {})).to.equal(false);
         });
     });
 });
