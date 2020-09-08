@@ -67,10 +67,7 @@ export function isObjectLiteral(value) {        //
 // ╚═══════╝╚═══════╝╚═╝   ╚═╝╚═══════╝╚═══════╝
 
 export function isClass(value, superclassValue) {                                           //
-    return isObject(value) &&                                                               //
-        isObject(value.prototype) &&                                                        //
-        isObject(value.prototype.constructor) &&                                            //
-        value.prototype.constructor.toString().substring(0, 5) === 'class' &&               //
+    return isFunction(value) &&                                                             //
         (isUndefined(superclassValue) || isSubclassOfSuperclass(value, superclassValue));   //
 }
 
