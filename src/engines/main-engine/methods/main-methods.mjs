@@ -13,3 +13,4 @@
 // ╚═══════╝╚═╝╚════╝╚═╝      ╚═══════╝╚═╝ ╚═══╝   ╚═╝   ╚═══════╝
 
 export * from './number/number-methods.mjs';
+export * from './string/string-methods.mjs';
